@@ -1,0 +1,32 @@
+[
+  {
+    "language": "Bangla (বাংলা)",
+    "level": 5,
+    "firstLetter": "ক"
+  },
+  {
+    "language": "Russian (Русский)",
+    "level": 2,
+    "firstLetter": "Д"
+  },
+  {
+    "language": "Hindi (हिन्दी)",
+    "level": 3,
+    "firstLetter": "ह"
+  },
+  {
+    "language": "Urdu (اردو)",
+    "level": 2,
+    "firstLetter": "ق"
+  },
+  {
+    "language": "English",
+    "level": 4,
+    "firstLetter": "E"
+  },
+  {
+    "language": "Arabic (عربي)",
+    "level": 1,
+    "firstLetter": "ح"
+  }
+]
