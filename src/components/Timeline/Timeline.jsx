@@ -9,6 +9,7 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
+  Transition,
 } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { PhotoProvider, PhotoView } from "react-photo-view";
@@ -164,53 +165,62 @@ function Timeline() {
             Below are a few examples
             <ChevronDownIcon className="w-5 group-data-[open]:rotate-180" />
           </DisclosureButton>
-          <DisclosurePanel className="text-gray-950 mt-2">
-            <ul className="list-disc">
-              <li>
-                <p>
-                  This is the first website I ever built, using only HTML and
-                  CSS
-                </p>
-                <a
-                  className="inline-block underline"
-                  target="_blank"
-                  href="https://friendly-duckanoo-c8eb59.netlify.app/"
-                >
-                  Copa America 2021
-                </a>
-              </li>
-              <li>
-                <p>My first website made with Bootstrap</p>
-                <a
-                  className="inline-block underline"
-                  target="_blank"
-                  href="https://nifty-hermann-e91805.netlify.app/"
-                >
-                  Honda CBR
-                </a>
-              </li>
-              <li>
-                <p>Used JavaScript for basic arithmetic in this website</p>
-                <a
-                  className="inline-block underline"
-                  target="_blank"
-                  href="https://quirky-hoover-0f3a24.netlify.app/"
-                >
-                  iMac with Apple M1 Chip
-                </a>
-              </li>
-              <li>
-                <p>Fetching data</p>
-                <a
-                  className="inline-block underline"
-                  target="_blank"
-                  href="https://wonderful-torvalds-569da8.netlify.app/"
-                >
-                  Book Archive
-                </a>
-              </li>
-            </ul>
-          </DisclosurePanel>
+
+          <Transition
+            className="transition-all duration-700 overflow-hidden"
+            enterFrom="transform scale-95 max-h-0"
+            enterTo="transform scale-100 max-h-96"
+            leaveFrom="transform scale-100 max-h-96"
+            leaveTo="transform scale-95 max-h-0"
+          >
+            <DisclosurePanel className="text-gray-950">
+              <ul>
+                <li>
+                  <p>
+                    This is the first website I ever built, using only HTML and
+                    CSS
+                  </p>
+                  <a
+                    className="inline-block underline"
+                    target="_blank"
+                    href="https://friendly-duckanoo-c8eb59.netlify.app/"
+                  >
+                    Copa America 2021
+                  </a>
+                </li>
+                <li>
+                  <p>My first website made with Bootstrap</p>
+                  <a
+                    className="inline-block underline"
+                    target="_blank"
+                    href="https://nifty-hermann-e91805.netlify.app/"
+                  >
+                    Honda CBR
+                  </a>
+                </li>
+                <li>
+                  <p>Used JavaScript for basic arithmetic in this website</p>
+                  <a
+                    className="inline-block underline"
+                    target="_blank"
+                    href="https://quirky-hoover-0f3a24.netlify.app/"
+                  >
+                    iMac with Apple M1 Chip
+                  </a>
+                </li>
+                <li>
+                  <p>Fetching data</p>
+                  <a
+                    className="inline-block underline"
+                    target="_blank"
+                    href="https://wonderful-torvalds-569da8.netlify.app/"
+                  >
+                    Book Archive
+                  </a>
+                </li>
+              </ul>
+            </DisclosurePanel>
+          </Transition>
         </Disclosure>
       </VerticalTimelineElement>
       <VerticalTimelineElement
