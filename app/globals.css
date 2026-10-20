@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #FCFCF9;
+  --bg-2: #F2F1EC;
+  --text: #0F0F0E;
+  --text-2: #6B6B63;
+  --text-3: #9A9993;
+  --line: #E8E6DF;
+  --line-strong: #0F0F0E;
+  --accent: #FF4D2E;
+  --accent-2: #E6FF55;
+  --bd-green: #006A4E;
+  --bd-red: #F42A41;
+  --card: #FFFFFF;
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+}
+
+.dark {
+  --bg: #10100F;
+  --bg-2: #191917;
+  --text: #F5F4EF;
+  --text-2: #9A9993;
+  --text-3: #6B6B63;
+  --line: #232220;
+  --line-strong: #F5F4EF;
+  --accent: #FF6B4A;
+  --accent-2: #E6FF55;
+  --bd-green: #0aa07a;
+  --bd-red: #ff4d5e;
+  --card: #1C1C19;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Keep anchored sections clear of the sticky header */
+[id] {
+  scroll-margin-top: calc(72px + var(--safe-area-inset-top));
+}
+
+* {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+.serif {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+}
+
+.mono {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+::selection {
+  background: var(--accent-2);
+  color: var(--text);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* In the base layer so Tailwind transition utilities (hover effects) still win */
+@layer base {
+  .theme-transition * {
+    transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-pulse {
+    animation: none;
+  }
+}

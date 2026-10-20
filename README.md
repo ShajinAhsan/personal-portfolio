@@ -1,8 +1,23 @@
-# React + Vite
+# Shajin Ahsan Shuvo — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Next.js (App Router) + Tailwind CSS v4. Content renders on the server; only the theme toggle,
+mobile menu and contact form are client components.
 
-Currently, two official plugins are available:
+## Run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+cp .env.example .env.local   # fill in RESEND_API_KEY
+npm run dev
+```
+
+## Contact form
+
+`app/actions.ts` is a Server Action that sends mail with [Resend](https://resend.com).
+Set `RESEND_API_KEY` (and optionally `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`) in `.env.local`
+and in your Vercel project settings. Without a verified domain, keep the default sender
+`onboarding@resend.dev` — Resend only delivers those to your own account email.
+
+## Edit content
+
+All text lives in `data/` (`profile.ts`, `projects.ts`, `skills.ts`). Section layout is in `components/`.

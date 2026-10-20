@@ -1,0 +1,147 @@
+import { Satellite } from "lucide-react";
+
+export default function Education() {
+  return (
+    <section
+      id="education"
+      className="mx-auto max-w-330 px-6 lg:px-8 py-14 md:py-20 border-t"
+      style={{ borderColor: "var(--line)" }}
+    >
+      <div className="grid grid-cols-12 gap-8">
+        <div className="col-span-12 md:col-span-3">
+          <div className="sticky top-23">
+            <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40">
+              (03) — Education &amp; Journey
+            </div>
+            <div className="mt-6 hidden md:block space-y-3">
+              <div className="flex items-center gap-2 mono text-[10px] opacity-50">
+                <span className="h-2 w-2 rounded-full bg-(--bd-green)" />{" "}
+                Bangladesh Flag Colors as Accent
+              </div>
+              <div className="h-px w-full bg-(--line)" />
+              <div className="mono text-[10px] opacity-40 leading-relaxed">
+                GPA 5 in HSC • CSE at CUET • MERN from Programming Hero • CS
+                Fundamentals from Phitron
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-span-12 md:col-span-9">
+          <div className="grid md:grid-cols-2 gap-10">
+            <div
+              className="relative border-l pl-8 md:pl-10 space-y-10"
+              style={{ borderColor: "var(--line)" }}
+            >
+              <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-40 -ml-8 md:-ml-10 mb-2 pl-8 md:pl-10">
+                Academic
+              </div>
+
+              <div className="relative">
+                <span
+                  className="absolute -left-9.25 md:-left-11.25 top-1 h-3.5 w-3.5 rounded-full border-[3px] bg-(--bg-2)"
+                  style={{ borderColor: "var(--text)" }}
+                />
+                <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40 mb-2">
+                  2026 — Present • Chittagong
+                </div>
+                <h3 className="text-[20px] md:text-[24px] font-bold tracking-[-0.02em] leading-[1.05]">
+                  Chittagong University of Engineering &amp; Technology — CUET
+                </h3>
+                <div className="mt-2 text-[13px]">
+                  <span className="inline-flex rounded-full bg-(--accent-2) text-black px-3 py-1 mono text-[10px] tracking-widest uppercase font-medium mr-2">
+                    B.Sc. CSE • Undergraduate
+                  </span>
+                </div>
+                <p className="mt-3 max-w-[50ch] text-[14px] leading-[1.6] opacity-70">
+                  Studying Computer Science and Engineering. Core engineering +
+                  systems design + building practical projects bridging hardware
+                  and software.
+                </p>
+              </div>
+
+              <div className="relative">
+                <span
+                  className="absolute -left-9.25 md:-left-11.25 top-1 h-3.5 w-3.5 rounded-full bg-(--bg-2) border"
+                  style={{ borderColor: "var(--line)" }}
+                />
+                <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40 mb-2">
+                  2024-25 • Dhaka
+                </div>
+                <h3 className="text-[18px] md:text-[22px] font-bold tracking-[-0.02em]">
+                  BAF Shaheen College Kurmitola
+                </h3>
+                <div
+                  className="mt-2 inline-flex rounded-full border px-3 py-1 mono text-[10px] tracking-widest uppercase"
+                  style={{ borderColor: "var(--line)" }}
+                >
+                  Higher Secondary • Science
+                </div>
+                <p className="mt-3 text-[14px] opacity-70">
+                  Built the foundation — curiosity, discipline, first exposure
+                  to building with code.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className="relative border-l pl-8 md:pl-10 space-y-10"
+              style={{ borderColor: "var(--line)" }}
+            >
+              <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-40 -ml-8 md:-ml-10 mb-2 pl-8 md:pl-10">
+                Learning Journey
+              </div>
+
+              <div className="relative">
+                <span
+                  className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full"
+                  style={{ background: "var(--accent)" }}
+                />
+                <div className="mono text-[11px] opacity-50 mb-1">
+                  2021 • Programming Hero
+                </div>
+                <h4 className="text-[15px] font-semibold">
+                  MERN Stack — Complete Web Development
+                </h4>
+                <p className="mt-2 text-[13px] opacity-70 leading-relaxed">
+                  Learned MongoDB, Express, React, Node from Programming Hero.
+                  Built first live projects including weather app.
+                </p>
+              </div>
+
+              <div className="relative">
+                <span
+                  className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full"
+                  style={{ background: "var(--bd-red)" }}
+                />
+                <div className="mono text-[11px] opacity-50 mb-1">
+                  Recent • Phitron
+                </div>
+                <h4 className="text-[15px] font-semibold">
+                  CS Fundamentals Course
+                </h4>
+                <p className="mt-2 text-[13px] opacity-70 leading-relaxed">
+                  CS fundamentals — DSA, OOP, databases. Strengthening core CSE
+                  alongside CUET coursework.
+                </p>
+              </div>
+
+              <div
+                className="relative rounded-[14px] border p-3 bg-(--bg-2)"
+                style={{ borderColor: "var(--line)" }}
+              >
+                <div className="mono text-[9px] tracking-[0.2em] uppercase opacity-50 flex items-center gap-2">
+                  <Satellite size={12} /> Now Exploring
+                </div>
+                <div className="mt-2 text-[12px] font-medium leading-snug">
+                  Hardware × Software interfaces • Drone stabilization with
+                  MPU6050 • Linux hardening • Cybersecurity basics
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
