@@ -6,66 +6,13 @@ import {
   type Project,
 } from "@/data/projects";
 import { ExternalLink } from "lucide-react";
+import { Suspense } from "react";
 import { GithubIcon } from "./Icons";
+import WeatherPreview, { WeatherFallback } from "./WeatherPreview";
 
-function WeatherPreview() {
-  const stats = [
-    { k: "Humidity", v: "78%" },
-    { k: "Wind", v: "8 km/h" },
-    { k: "Feels", v: "26°C" },
-  ];
-
-  return (
-    <div
-      className="md:col-span-5 relative min-h-65 p-3 bg-[#0F0F0E]"
-      aria-hidden="true"
-    >
-      <div className="h-full w-full rounded-[20px] border border-[#2A2A26] overflow-hidden relative p-5 flex flex-col justify-between bg-[#161614]">
-        <div className="flex justify-between mono text-[9px] tracking-widest uppercase text-white/40">
-          <span>shajin-weather.web.app / Weather</span>
-          <span>●●●</span>
-        </div>
-        <div className="mt-8 space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="h-12 w-12 rounded-full bg-linear-to-br from-sky-400 to-blue-600 flex items-center justify-center text-white text-[18px]">
-              ⛅
-            </div>
-            <div>
-              <div className="text-white font-bold text-[22px]">24°C</div>
-              <div className="mono text-[10px] text-white/60">
-                Dhaka, Bangladesh • Cloudy
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            {stats.map((s) => (
-              <div
-                key={s.k}
-                className="rounded-[10px] bg-[#1E1E1A] border border-[#2A2A26] p-2.5"
-              >
-                <div className="mono text-[7px] text-white/40 uppercase tracking-widest">
-                  {s.k}
-                </div>
-                <div className="text-white text-[12px] font-semibold mt-1">
-                  {s.v}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="h-8 rounded-full bg-[#1E1E1A] border border-[#2A2A26] flex items-center px-3 gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#16C784]" />
-            <span className="mono text-[10px] text-white/60">
-              Live API • Updated just now
-            </span>
-          </div>
-        </div>
-        <div className="mono text-[8px] tracking-[0.2em] uppercase text-white/20 mt-4">
-          Screenshot placeholder — real data from openweathermap
-        </div>
-      </div>
-    </div>
-  );
-}
+<Suspense fallback={<WeatherFallback />}>
+  <WeatherPreview />
+</Suspense>;
 
 function FeaturedProject() {
   const p = featuredProject;
@@ -111,7 +58,7 @@ function FeaturedProject() {
             href={p.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="h-9 px-5 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-2 mono text-[11px] tracking-widest uppercase"
+            className="h-9 px-5 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-2 mono text-[11px] tracking-wider uppercase"
           >
             Live Site <ExternalLink size={12} />
           </a>
@@ -119,7 +66,7 @@ function FeaturedProject() {
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="h-9 px-5 rounded-full border inline-flex items-center gap-2 mono text-[11px] tracking-widest uppercase"
+            className="h-9 px-5 rounded-full border inline-flex items-center gap-2 mono text-[11px] tracking-wider uppercase"
             style={{ borderColor: "var(--line)" }}
           >
             <GithubIcon size={12} /> GitHub
@@ -191,12 +138,12 @@ function ProjectCard({ project: p }: { project: Project }) {
             href={p.github ?? profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="h-8 px-4 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-1.5 mono text-[10px] tracking-widest uppercase"
+            className="h-8 px-4 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-1.5 mono text-[10px] tracking-wider uppercase"
           >
             <GithubIcon size={12} /> GitHub
           </a>
           <span
-            className="h-8 px-4 rounded-full border inline-flex items-center mono text-[10px] tracking-widest uppercase opacity-60"
+            className="h-8 px-4 rounded-full border inline-flex items-center mono text-[10px] tracking-wider uppercase opacity-60"
             style={{ borderColor: "var(--line)" }}
           >
             {p.wip ? "Building" : "Prototype"}
