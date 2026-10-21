@@ -30,12 +30,12 @@ export default function Hero() {
               style={{ background: "var(--bd-green)" }}
             />
             <span className="mono text-[10px] tracking-[0.18em] uppercase">
-              Chittagong, BD — CSE • CUET
+              Chittagong, BD — 22°20'N
             </span>
             <span className="h-1 w-1 rounded-full bg-(--text-3)" />
-            <span className="mono text-[10px] tracking-[0.18em] uppercase">
+            {/* <span className="mono text-[10px] tracking-[0.18em] uppercase">
               {profile.studentId}
-            </span>
+            </span> */}
           </div>
           <div className="inline-flex items-center gap-2">
             <span
@@ -47,7 +47,7 @@ export default function Hero() {
               style={{ background: "var(--bd-red)" }}
             />
             <span className="mono text-[10px] tracking-[0.18em] uppercase opacity-50">
-              Bangladesh • Portfolio / 01
+              Portfolio / 01
             </span>
           </div>
         </div>
