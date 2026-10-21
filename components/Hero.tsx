@@ -2,18 +2,11 @@ import { profile } from "@/data/profile";
 import { projectCount } from "@/data/projects";
 import { Cpu, Mail, Terminal } from "lucide-react";
 import Image from "next/image";
-
+const glow = (color: string) =>
+  `radial-gradient(closest-side, ${color} 0%, ${color} 15%, color-mix(in srgb, ${color} 60%, transparent) 55%, color-mix(in srgb, ${color} 20%, transparent) 78%, transparent 100%)`;
 export default function Hero() {
   return (
     <section className="relative mx-auto max-w-330 px-6 lg:px-8 pt-8 md:pt-12 pb-14">
-      <div
-        className="pointer-events-none absolute -top-24 -right-24 h-130 w-130 rounded-full blur-[90px] opacity-[0.12]"
-        style={{ background: "var(--accent-2)" }}
-      />
-      <div
-        className="pointer-events-none absolute top-32 right-[22%] h-55 w-55 rounded-full blur-2xl opacity-[0.18]"
-        style={{ background: "var(--bd-green)" }}
-      />
       <div
         className="pointer-events-none absolute top-40 left-[40%] h-px w-30 hidden md:block"
         style={{ background: "var(--line-strong)" }}
@@ -46,12 +39,20 @@ export default function Hero() {
 
         <div className="col-span-12 grid lg:grid-cols-12 gap-8 items-start">
           <div className="relative isolate lg:col-span-7 order-2 lg:order-1">
-            <div
+            {/* <div
               className="pointer-events-none absolute -top-8 -left-10 -z-10 h-85 w-[min(560px,90%)] rounded-full blur-[100px] opacity-25 dark:opacity-40"
               style={{
                 background:
                   "radial-gradient(circle, var(--bd-red) 0%, var(--accent-2) 30%, transparent 100%)",
-              }}
+              }} Safari browser has some problem rendering blur, so i removed it
+            /> */}
+            <div
+              className="pointer-events-none absolute -z-10 top-[24%] left-[28%] h-140 w-140 sm:opacity-18 sm:w-190 -translate-x-1/2 -translate-y-1/2 opacity-[0.25]"
+              style={{ background: glow("var(--accent-2)") }}
+            />
+            <div
+              className="pointer-events-none absolute -z-10 top-[30%] left-[32%] h-85 w-85 sm:w-110 -translate-x-1/2 -translate-y-1/2 opacity-[0.04]"
+              style={{ background: glow("var(--bd-red)") }}
             />
             <h1 className="font-black leading-[0.85] tracking-[-0.04em] text-[14vw] md:text-[10vw] lg:text-[110px] xl:text-[128px] flex flex-col">
               <span className="flex items-baseline gap-[0.08em]">
@@ -65,10 +66,12 @@ export default function Hero() {
                 <span className="text-[0.72em] font-extrabold tracking-tighter opacity-[0.12]">
                   AHSAN
                 </span>
-                <span>SHUVO</span>
-                <sup className="mono text-[11px] md:text-[13px] font-medium tracking-widest ml-2 opacity-40">
-                  ©2026
-                </sup>
+                <span>
+                  SHUVO
+                  <sub className="mono text-[11px] md:text-[13px] font-medium tracking-widest ml-2 opacity-40">
+                    ©2026
+                  </sub>
+                </span>
               </span>
             </h1>
 
@@ -229,7 +232,16 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 order-1 lg:order-2">
+          <div className="relative isolate lg:col-span-5 order-1 lg:order-2">
+            <div
+              className="pointer-events-none absolute -z-10 top-[20%] left-4/5 h-140 w-140 -translate-x-1/2 -translate-y-1/2 opacity-[0.15]"
+              style={{ background: glow("var(--accent-2)") }}
+            />
+            <div
+              className="pointer-events-none absolute -z-10 top-[20%] left-3/4 h-95 w-95 -translate-x-1/2 -translate-y-1/2 opacity-[0.02]"
+              style={{ background: glow("var(--bd-red)") }}
+            />
+
             <div className="relative mx-auto lg:ml-auto max-w-105">
               <div
                 className="absolute -top-4 -left-4 h-18 w-18 rounded-full border-[6px] hidden md:block"
