@@ -75,7 +75,12 @@ body {
   html {
     scroll-behavior: auto;
   }
+
   .animate-pulse {
+    animation: none;
+  }
+
+  .animate-ping {
     animation: none;
   }
 }
