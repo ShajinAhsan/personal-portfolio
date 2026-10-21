@@ -127,9 +127,6 @@ export default function Contact() {
                 cse@cuet • {profile.githubHandle}
               </div>
             </div>
-            <div className="ml-auto mono text-[10px] px-2.5 py-1 rounded-full bg-[#16C784] text-white">
-              ● Online
-            </div>
           </div>
 
           <div className="mt-4 flex gap-2">
