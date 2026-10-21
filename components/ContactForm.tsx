@@ -32,7 +32,7 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <label className="flex flex-col gap-2">
           <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
             Your Name
@@ -44,7 +44,7 @@ export default function ContactForm() {
             required
             maxLength={100}
             autoComplete="name"
-            className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) transition"
+            className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) transition w-full min-w-0"
             style={{ borderColor: "var(--line)" }}
           />
         </label>
@@ -60,7 +60,7 @@ export default function ContactForm() {
             required
             maxLength={200}
             autoComplete="email"
-            className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) transition"
+            className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) transition w-full min-w-0"
             style={{ borderColor: "var(--line)" }}
           />
         </label>
