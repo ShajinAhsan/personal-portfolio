@@ -9,7 +9,7 @@ export default function About() {
       className="mx-auto max-w-330 px-6 lg:px-8 py-14 md:py-20 border-t"
       style={{ borderColor: "var(--line)" }}
     >
-      <div className="grid grid-cols-12 gap-8">
+      <div className="grid grid-cols-12 gap-y-8 md:gap-x-8">
         <div className="col-span-12 md:col-span-3">
           <div className="sticky top-23 flex flex-col gap-4">
             <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40">
@@ -20,7 +20,7 @@ export default function About() {
               style={{ background: "var(--line-strong)" }}
             />
             <div className="hidden md:block mono text-[10px] leading-[1.6] opacity-40 max-w-[20ch]">
-              Builder studying CSE at CUET. Hardware × Software. Bangladesh.
+              Builder studying CSE at CUET. Hardware x Software. Bangladesh.
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@ export default function About() {
               </h2>
               <div className="mt-7 space-y-4 text-[15px] leading-[1.75] opacity-80 max-w-[58ch]">
                 <p>
-                  I’m{" "}
+                  I'm{" "}
                   <span className="font-semibold text-(--text)">
                     {profile.name}
                   </span>{" "}
@@ -55,7 +55,7 @@ export default function About() {
                 <p className="opacity-70">
                   On the systems side, I live in Linux terminals — Debian, Kali,
                   Ubuntu, ZorinOS, Arch. Interested in DevOps, Cybersecurity,
-                  Astronomy, Archaeology. Outside labs, I’m usually deep into a
+                  Astronomy, Archaeology. Outside labs, I'm usually deep into a
                   story game.
                 </p>
               </div>
