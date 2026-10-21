@@ -1,9 +1,11 @@
 import { profile } from "@/data/profile";
 import { projectCount } from "@/data/projects";
-import { Cpu, Mail, Terminal } from "lucide-react";
+import { Mail } from "lucide-react";
 import Image from "next/image";
+import TerminalCard from "./TerminalCard";
 const glow = (color: string) =>
   `radial-gradient(closest-side, ${color} 0%, ${color} 15%, color-mix(in srgb, ${color} 60%, transparent) 55%, color-mix(in srgb, ${color} 20%, transparent) 78%, transparent 100%)`;
+
 export default function Hero() {
   return (
     <section className="relative mx-auto max-w-330 px-6 lg:px-8 pt-8 md:pt-12 pb-14">
@@ -287,45 +289,15 @@ export default function Hero() {
                       />
                     </div>
                   </div>
-                  <div className="absolute top-3 left-3 mono text-[9px] tracking-widest uppercase px-2.5 py-1 rounded-full bg-white/90 text-black backdrop-blur">
-                    Flag • Intentional
-                  </div>
+                  {/* <div className="absolute top-3 left-3 mono text-[9px] tracking-widest uppercase px-2.5 py-1 rounded-full bg-white/90 text-black backdrop-blur">
+                    Flag • Bangladesh
+                  </div> */}
                   {/* <div className="absolute top-3 right-3 h-7 w-7 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-[12px]">
                     🇧🇩
                   </div> */}
                 </div>
               </div>
-
-              <button className="mt-6 p-2 hidden md:flex items-center gap-2 mono text-[10px] tracking-[0.18rem] uppercase opacity-30 cursor-pointer animate-pulse">
-                <span>Scroll</span>
-                <span className="h-3.5 w-px bg-current" />
-                <span>↓</span>
-              </button>
-
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                <div
-                  className="rounded-2xl border p-3.5 bg-(--bg-2)"
-                  style={{ borderColor: "var(--line)" }}
-                >
-                  <div className="flex items-center gap-2 mono text-[9px] tracking-[0.2em] uppercase opacity-50">
-                    <Cpu size={12} /> Hardware
-                  </div>
-                  <div className="mt-2 text-[12px] font-medium leading-snug">
-                    Line Follower • Drone MPU6050 • Relay Socket
-                  </div>
-                </div>
-                <div
-                  className="rounded-2xl border p-3.5 bg-(--card)"
-                  style={{ borderColor: "var(--line)" }}
-                >
-                  <div className="flex items-center gap-2 mono text-[9px] tracking-[0.2em] uppercase opacity-50">
-                    <Terminal size={12} /> Systems
-                  </div>
-                  <div className="mt-2 text-[12px] font-medium leading-snug">
-                    Debian, Kali, Arch, Ubuntu, ZorinOS
-                  </div>
-                </div>
-              </div>
+              <TerminalCard />
             </div>
           </div>
         </div>
