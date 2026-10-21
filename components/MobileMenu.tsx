@@ -26,18 +26,20 @@ export default function MobileMenu() {
         aria-expanded={open}
         aria-controls="mobile-menu"
       >
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1.5">
           <span
-            className="h-[1.5px] w-3.5 bg-current block transition-all"
-            style={{ transform: open ? "rotate(45deg) translateY(4px)" : "" }}
+            className="h-px w-4 bg-current block transition-all"
+            style={{ transform: open ? "translateY(3.5px) rotate(45deg)" : "" }}
           />
-          <span
+          {/* <span
             className="h-[1.5px] w-3.5 bg-current block"
             style={{ opacity: open ? 0 : 1 }}
-          />
+          /> */}
           <span
-            className="h-[1.5px] w-3.5 bg-current block transition-all"
-            style={{ transform: open ? "rotate(-45deg) translateY(-4px)" : "" }}
+            className="h-px w-4 bg-current block transition-all"
+            style={{
+              transform: open ? "translateY(-3.5px) rotate(-45deg)" : "",
+            }}
           />
         </div>
       </button>
