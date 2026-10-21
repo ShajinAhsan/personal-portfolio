@@ -16,7 +16,7 @@ export const featuredProject = {
   desc: "My first weather website built in 2022. Live weather data with clean UI. Deployed on Firebase - still running. Looking forward to upgrading it using latest technology in 2026.",
   tags: ["React.js", "Weather API", "Firebase", "Tailwindcss"],
   liveUrl: "https://shajin-weather.web.app",
-  meta: "2022 • Featured • Live",
+  meta: "2022 • Live",
 };
 
 export const projects: Project[] = [
