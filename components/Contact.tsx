@@ -17,6 +17,11 @@ const quickLinks = [
     href: `mailto:${profile.institutionalEmail}`,
   },
 ];
+const socialLinks = [
+  { label: "Facebook", value: profile.facebookHandle, href: profile.facebook },
+  { label: "LinkedIn", value: profile.linkedinHandle, href: profile.linkedin },
+  { label: "Twitter", value: profile.twitterHandle, href: profile.twitter },
+];
 
 export default function Contact() {
   return (
@@ -95,7 +100,7 @@ export default function Contact() {
                   Location
                 </div>
                 <div className="mt-1 text-[14px] font-medium">
-                  Madarganj / Dhaka / Chittagong, Bangladesh
+                  Jamalpur / Dhaka / Chittagong, Bangladesh
                 </div>
                 <div className="mono text-[11px] opacity-50 mt-1">
                   Open to remote &amp; campus collabs
@@ -119,7 +124,7 @@ export default function Contact() {
             <div>
               <div className="text-[14px] font-semibold">{profile.name}</div>
               <div className="mono text-[11px] opacity-60">
-                CSE @ CUET • Builder • {profile.githubHandle}
+                cse@cuet • {profile.githubHandle}
               </div>
             </div>
             <div className="ml-auto mono text-[10px] px-2.5 py-1 rounded-full bg-[#16C784] text-white">
@@ -144,7 +149,7 @@ export default function Contact() {
           <ContactForm />
 
           <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
-            {quickLinks.map((link) => {
+            {socialLinks.map((link) => {
               const external = link.href.startsWith("http");
               return (
                 <a

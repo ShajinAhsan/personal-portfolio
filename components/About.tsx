@@ -1,5 +1,6 @@
-import { games, profile } from "@/data/profile";
+import { games } from "@/data/profile";
 import { Gamepad2 } from "lucide-react";
+import GamesList from "./GameList";
 import Skills from "./Skills";
 
 export default function About() {
@@ -19,8 +20,10 @@ export default function About() {
               className="h-px w-12"
               style={{ background: "var(--line-strong)" }}
             />
-            <div className="hidden md:block mono text-[10px] leading-[1.6] opacity-40 max-w-[20ch]">
-              Builder studying CSE at CUET. Hardware x Software. Bangladesh.
+            <div className="hidden md:block mono text-[11px] leading-[1.6] opacity-40 max-w-[20ch]">
+              Input: Curiosity
+              <br />
+              Output: Working things
             </div>
           </div>
         </div>
@@ -34,29 +37,34 @@ export default function About() {
               </h2>
               <div className="mt-7 space-y-4 text-[15px] leading-[1.75] opacity-80 max-w-[58ch]">
                 <p>
-                  I'm{" "}
-                  <span className="font-semibold text-(--text)">
-                    {profile.name}
-                  </span>{" "}
-                  — from Madarganj, now in Chittagong. Studying{" "}
-                  <span className="font-semibold">
-                    Computer Science &amp; Engineering at CUET
+                  I’m{" "}
+                  <span className="font-semibold text-[var(--text)]">
+                    Shajin Ahsan Shuvo
                   </span>
-                  . I came to engineering because I like taking things apart. I
-                  stayed because I like putting better things back together.
+                  , a{" "}
+                  <span className="font-semibold">
+                    Computer Science &amp; Engineering student at CUET
+                  </span>{" "}
+                  from Madarganj, Jamalpur, now in Chittagong. I came to
+                  engineering because I like taking things apart, and I stayed
+                  because I like putting better things back together.
                 </p>
                 <p>
-                  I split time between core CS fundamentals, MERN web dev, and
-                  hands-on hardware — Arduino Uno R3, Nano, ESP32, ESP-01, relay
-                  modules, MPU6050. Built a remote-controlled wall socket, a
-                  line-following car, and currently prototyping a drone with
-                  gyro stabilization.
+                  My work sits between software and hardware. On the web, I
+                  build full-stack with MERN and others. On the bench, I work
+                  with Arduino Uno R3m Nano, ESP32, ESP-01, relay modules and
+                  the MPU6050 and so on. So far that's a remote-controlled wall
+                  socket, a line-following car, and a gyro-stabilized drone
+                  that's still in prototype.
                 </p>
                 <p className="opacity-70">
-                  On the systems side, I live in Linux terminals — Debian, Kali,
-                  Ubuntu, ZorinOS, Arch. Interested in DevOps, Cybersecurity,
-                  Astronomy, Archaeology. Outside labs, I'm usually deep into a
-                  story game.
+                  Outside the editor, I live in the Linux terminal (Debian,
+                  Kali, Ubuntu, Arch used so far) and follow DevOps,
+                  cybersecurity, astronomy and archaeology. When the labs close,
+                  I'm usually deep in{" "}
+                  <span className="border-b border-(--accent-2)">
+                    story-driven games.
+                  </span>
                 </p>
               </div>
 
@@ -67,20 +75,9 @@ export default function About() {
                 <div className="flex items-center gap-2 mono text-[10px] tracking-[0.18em] uppercase opacity-60">
                   <Gamepad2 size={14} /> Plays
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {games.map((game) => (
-                    <span
-                      key={game}
-                      className="mono text-[10px] px-2.5 py-1 rounded-full border bg-(--card)"
-                      style={{ borderColor: "var(--line)" }}
-                    >
-                      {game}
-                    </span>
-                  ))}
-                </div>
+                <GamesList games={games} />
               </div>
             </div>
-
             <Skills />
           </div>
         </div>

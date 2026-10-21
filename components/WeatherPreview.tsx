@@ -17,7 +17,7 @@ function WeatherCard({
   const status = loading
     ? "Loading…"
     : weather
-      ? `Live API • Updated ${weather.updatedAt}`
+      ? `Live API • Updated ${weather.updatedAt} Dhaka time`
       : "Live data unavailable right now";
 
   return (
@@ -93,13 +93,13 @@ function WeatherCard({
           </div>
           <div className="h-8 rounded-full bg-[#1E1E1A] border border-[#2A2A26] flex items-center px-3 gap-2">
             <span
-              className={`h-2 w-2 rounded-full ${weather ? "bg-[#16C784]" : "bg-white/30"}`}
+              className={`h-1 w-1 rounded-full ${weather ? "bg-[#16C784] animate-ping [animation-duration:2000ms]" : "bg-white/30"}`}
             />
             <span className="mono text-[10px] text-white/60">{status}</span>
           </div>
         </div>
-        <div className="mono text-[8px] tracking-[0.2em] uppercase text-white/40 mt-4">
-          Data: OpenWeather
+        <div className="mono text-[8px] md:text-[10px] tracking-wide text-white/40 mt-4">
+          Data via OpenWeather • Auto-syncs turned on
         </div>
       </div>
     </div>

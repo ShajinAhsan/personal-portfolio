@@ -96,7 +96,7 @@ export default function ContactForm() {
       <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
         <div className="mono text-[11px] opacity-50 max-w-[28ch]">
           Your message goes straight to my inbox, and I reply to the email you
-          enter.
+          sent me :)
         </div>
         <button
           type="submit"

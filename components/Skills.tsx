@@ -7,28 +7,29 @@ export default function Skills() {
         Skills — Expanded
       </div>
       <div className="space-y-4">
-        {skillGroups.map((group) => (
+        {skillGroups.map(({ cat, icon: Icon, items }) => (
           <div
-            key={group.cat}
+            key={cat}
             className="rounded-[18px] border p-4 bg-(--card)"
             style={{ borderColor: "var(--line)" }}
           >
             <div className="flex items-center justify-between">
               <div className="mono text-[10px] tracking-[0.2em] uppercase font-semibold">
-                {group.cat}
+                {cat}
               </div>
               <div
-                className="mono text-[8px] px-2 py-1 rounded-full border"
+                className="h-7 w-7 rounded-full border flex items-center justify-center"
                 style={{
                   borderColor: "var(--line)",
                   background: "var(--bg-2)",
                 }}
+                aria-hidden="true"
               >
-                {group.icon}
+                <Icon size={13} />
               </div>
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
-              {group.items.map((item) => (
+              {items.map((item) => (
                 <span
                   key={item}
                   className="text-[11px] px-3 py-1.5 rounded-full border bg-(--bg-2) leading-tight"

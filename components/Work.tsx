@@ -59,7 +59,7 @@ function FeaturedProject() {
             Live Site <ExternalLink size={12} />
           </a>
           <a
-            href={profile.github}
+            href={`${profile.github}/shajin-weather`}
             target="_blank"
             rel="noopener noreferrer"
             className="h-9 px-5 rounded-full border inline-flex items-center gap-2 mono text-[11px] tracking-wider uppercase"
@@ -88,7 +88,7 @@ function ProjectCard({ project: p }: { project: Project }) {
             <span className="mono text-[11px] tracking-[0.2em]">{p.n}</span>
             <span className="h-px w-6 bg-current opacity-20" />
             <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
-              {p.year} {p.wip ? "• WIP" : ""}
+              {p.year}
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -132,14 +132,16 @@ function ProjectCard({ project: p }: { project: Project }) {
           className="mt-6 pt-5 border-t flex gap-2"
           style={{ borderColor: "var(--line)" }}
         >
-          <a
-            href={p.github ?? profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="h-8 px-4 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-1.5 mono text-[10px] tracking-wider uppercase"
-          >
-            <GithubIcon size={12} /> GitHub
-          </a>
+          {p.github && (
+            <a
+              href={p.github ?? profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-8 px-4 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-1.5 mono text-[10px] tracking-wider uppercase"
+            >
+              <GithubIcon size={12} /> GitHub
+            </a>
+          )}
           <span
             className="h-8 px-4 rounded-full border inline-flex items-center mono text-[10px] tracking-wider uppercase opacity-60"
             style={{ borderColor: "var(--line)" }}

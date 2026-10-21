@@ -20,7 +20,7 @@ export default function MobileMenu() {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="md:hidden h-9 w-9 rounded-full border flex items-center justify-center"
+        className="md:hidden h-9 w-9 rounded-full border flex items-center justify-center cursor-pointer"
         style={{ borderColor: "var(--line)" }}
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
@@ -47,8 +47,11 @@ export default function MobileMenu() {
       {open && (
         <div
           id="mobile-menu"
-          className="md:hidden absolute inset-x-0 top-full border-t border-b px-6 py-6 flex flex-col gap-5"
-          style={{ borderColor: "var(--line)", background: "var(--bg)" }}
+          className="md:hidden absolute inset-x-0 top-full border-t border-b px-6 py-6 flex flex-col gap-5 backdrop-blur-xl"
+          style={{
+            borderColor: "var(--line)",
+            background: "color-mix(in srgb, var(--bg) 88%, transparent)",
+          }}
         >
           {navLinks.map((link) => (
             <a

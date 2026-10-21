@@ -15,13 +15,12 @@ export default function Education() {
             </div>
             <div className="mt-6 hidden md:block space-y-3">
               <div className="flex items-center gap-2 mono text-[10px] opacity-50">
-                <span className="h-2 w-2 rounded-full bg-(--bd-green)" />{" "}
-                Bangladesh Flag Colors as Accent
+                <span className="h-2 w-2 rounded-full bg-(--bd-green)" /> Always
+                compiling.
               </div>
               <div className="h-px w-full bg-(--line)" />
-              <div className="mono text-[10px] opacity-40 leading-relaxed">
-                GPA 5 in HSC • CSE at CUET • MERN from Programming Hero • CS
-                Fundamentals from Phitron
+              <div className="mono text-[11px] opacity-40 leading-relaxed">
+                Degree by day. Side projects by night.
               </div>
             </div>
           </div>
@@ -39,8 +38,8 @@ export default function Education() {
 
               <div className="relative">
                 <span
-                  className="absolute -left-9.25 md:-left-11.25 top-1 h-3.5 w-3.5 rounded-full border-[3px] bg-(--bg-2)"
-                  style={{ borderColor: "var(--text)" }}
+                  className="absolute -left-9.25 md:-left-11.25 top-1 h-3.5 w-3.5 rounded-full border-[3px] bg-(--bg-2) -translate-x-1/6"
+                  style={{ borderColor: "var(--bd-red)" }}
                 />
                 <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40 mb-2">
                   2026 — Present • Chittagong
@@ -62,11 +61,11 @@ export default function Education() {
 
               <div className="relative">
                 <span
-                  className="absolute -left-9.25 md:-left-11.25 top-1 h-3.5 w-3.5 rounded-full bg-(--bg-2) border"
-                  style={{ borderColor: "var(--line)" }}
+                  className="absolute -translate-x-1/6 -left-9.25 md:-left-11.25 top-1 h-3.5 w-3.5 rounded-full bg-(--bg-2) border"
+                  style={{ borderColor: "var(--bd-green)" }}
                 />
                 <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40 mb-2">
-                  2024-25 • Dhaka
+                  2024-25 • Dhaka Cantonment
                 </div>
                 <h3 className="text-[18px] md:text-[22px] font-bold tracking-[-0.02em]">
                   BAF Shaheen College Kurmitola
@@ -78,8 +77,9 @@ export default function Education() {
                   Higher Secondary • Science
                 </div>
                 <p className="mt-3 text-[14px] opacity-70">
-                  Built the foundation — curiosity, discipline, first exposure
-                  to building with code.
+                  Built the foundation — establishing first principles —
+                  analytical thinking, structural discipline, and scientific
+                  fundamentals.
                 </p>
               </div>
             </div>
@@ -94,7 +94,7 @@ export default function Education() {
 
               <div className="relative">
                 <span
-                  className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full"
+                  className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full opacity-66"
                   style={{ background: "var(--accent)" }}
                 />
                 <div className="mono text-[11px] opacity-50 mb-1">
@@ -109,6 +109,23 @@ export default function Education() {
                 </p>
               </div>
 
+              <div className="relative">
+                <span
+                  className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full opacity-77"
+                  style={{ background: "var(--bd-red)" }}
+                />
+                <div className="mono text-[11px] opacity-50 mb-1">
+                  2023 • Udemy
+                </div>
+                <h4 className="text-[15px] font-semibold">
+                  Arduino Step by Step: Getting Serious With Arduino
+                </h4>
+                <p className="mt-2 text-[13px] opacity-70 leading-relaxed">
+                  Advanced embedded systems, complex sensor interfacing, and
+                  hardware-level C++ programming. I built a line-following car
+                  and a remote-controlled wall socket.
+                </p>
+              </div>
               <div className="relative">
                 <span
                   className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full"
@@ -134,8 +151,10 @@ export default function Education() {
                   <Satellite size={12} /> Now Exploring
                 </div>
                 <div className="mt-2 text-[12px] font-medium leading-snug">
-                  Hardware × Software interfaces • Drone stabilization with
-                  MPU6050 • Linux hardening • Cybersecurity basics
+                  Drone stabilization using cheap MPU6050 gyro sensor —
+                  Implemented PID control loops, sensor data filtering
+                  (Complementary/Kalman filters), and hardware-level I2C
+                  communication to stabilize multirotor flight dynamics.
                 </div>
               </div>
             </div>

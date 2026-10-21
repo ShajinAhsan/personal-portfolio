@@ -1,45 +1,51 @@
+import {
+  Binary,
+  Compass,
+  Globe,
+  Terminal,
+  type LucideIcon,
+} from "lucide-react";
+
 export type SkillGroup = {
   cat: string;
-  icon: string;
+  icon: LucideIcon;
   items: string[];
 };
 
 export const skillGroups: SkillGroup[] = [
   {
-    cat: "Programming & Web",
-    icon: "MERN",
+    cat: "Web & Software",
+    icon: Globe,
     items: [
-      "MERN Stack — MongoDB, Express, React, Node",
-      "JavaScript / TypeScript",
-      "C++ / Python",
-      "CS Fundamentals — Phitron",
-      "React • Firebase • Next.js",
+      "TypeScript",
+      "Next.js",
+      "React",
+      "Node.js",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Prisma",
     ],
   },
   {
-    cat: "Systems & DevOps",
-    icon: "Linux",
-    items: [
-      "Linux — Debian, Kali, Ubuntu, ZorinOS, Arch",
-      "Linux Terminal — fluent",
-      "DevOps basics",
-      "Git / GitHub — shajinahsan",
-    ],
+    cat: "Problem Solving",
+    icon: Binary,
+    items: ["C", "C++", "Python", "Data Structures", "Competitive Programming"],
   },
   {
-    cat: "Hardware & Robotics",
-    icon: "Robotics",
-    items: [
-      "Arduino Uno R3, Nano, ESP32, ESP-01",
-      "Robotics & Circuits",
-      "MPU6050 Gyro sensor",
-      "Relay modules • Remote Socket",
-      "Line Following Car • Drone (WIP)",
-    ],
+    cat: "Systems & Tools",
+    icon: Terminal,
+    items: ["Linux", "Arch", "Kali", "Debian", "Git & GitHub"],
   },
   {
-    cat: "Interests",
-    icon: "Focus",
-    items: ["Cybersecurity", "Astronomy", "Archaeology", "Programming", "DevOps"],
+    cat: "Side Quests",
+    icon: Compass,
+    items: [
+      "Cybersecurity",
+      "Astronomy",
+      "History",
+      "Archaeology",
+      "Travel",
+      "Gaming",
+    ],
   },
 ];

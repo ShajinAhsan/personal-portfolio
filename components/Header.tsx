@@ -6,13 +6,17 @@ import ThemeToggle from "./ThemeToggle";
 export default function Header() {
   return (
     <header
-      className="sticky z-50 w-full border-b backdrop-blur-xl"
+      className="sticky z-50 w-full border-b"
       style={{
         top: "var(--safe-area-inset-top)",
-        background: "color-mix(in srgb, var(--bg) 88%, transparent)",
         borderColor: "var(--line)",
       }}
     >
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 backdrop-blur-xl"
+        style={{ background: "color-mix(in srgb, var(--bg) 88%, transparent)" }}
+      />
       <div className="mx-auto max-w-330 px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <a
@@ -64,7 +68,7 @@ export default function Header() {
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="h-9 w-9 rounded-full border flex items-center justify-center hover:scale-105 transition-transform"
+            className="h-9 w-9 rounded-full border flex items-center justify-center hover:scale-105 transition-transform cursor-pointer"
             style={{ borderColor: "var(--line)", background: "var(--card)" }}
             aria-label="GitHub"
           >
