@@ -30,13 +30,20 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "shajin.me",
   description:
-    "Portfolio of Shajin Ahsan Shuvo, a CSE student at CUET building across MERN web development, Linux systems and hardware robotics.",
+    "Portfolio of Shajin Ahsan Shuvo, a CSE student at CUET building across MERN web development, Linux systems and hardware.",
   openGraph: {
     title: "shajin.me",
     description:
-      "MERN web dev, Linux systems and hands-on hardware — projects from Bangladesh.",
+      "MERN web dev, Linux systems and hands-on hardware. Portfolio of Shajin Ahsan Shuvo.",
     type: "website",
-    images: [{ url: "/portrait.jpg", width: 1254, height: 1254 }],
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Shajin Ahsan Shuvo",
+      },
+    ],
   },
   twitter: { card: "summary_large_image" },
 };
