@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     description:
       "MERN web dev, Linux systems and hands-on hardware. Portfolio of Shajin Ahsan Shuvo.",
     type: "website",
+    url: siteUrl,
     images: [
       {
         url: "/og-image.jpg",
