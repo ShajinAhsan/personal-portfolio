@@ -1,7 +1,7 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
 /**
  * Icons swap with Tailwind's `dark:` variant, so the markup is identical on the
@@ -14,7 +14,7 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="h-9 w-9 rounded-full border flex items-center justify-center hover:scale-105 transition-all duration-300"
+      className="h-9 w-9 rounded-full border flex items-center justify-center hover:scale-105 transition-all duration-300 cursor-pointer"
       style={{ borderColor: "var(--line)", background: "var(--card)" }}
       aria-label="Toggle theme"
     >
