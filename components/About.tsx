@@ -52,7 +52,7 @@ export default function About() {
                 <p>
                   My work sits between software and hardware. On the web, I
                   build full-stack with MERN and others. On the bench, I work
-                  with Arduino Uno R3m Nano, ESP32, ESP-01, relay modules and
+                  with Arduino Uno R3, Nano, ESP32, ESP-01, relay modules and
                   the MPU6050 and so on. So far that's a remote-controlled wall
                   socket, a line-following car, and a gyro-stabilized drone
                   that's still in prototype.
