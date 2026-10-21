@@ -10,10 +10,6 @@ import { Suspense } from "react";
 import { GithubIcon } from "./Icons";
 import WeatherPreview, { WeatherFallback } from "./WeatherPreview";
 
-<Suspense fallback={<WeatherFallback />}>
-  <WeatherPreview />
-</Suspense>;
-
 function FeaturedProject() {
   const p = featuredProject;
   return (
@@ -73,7 +69,9 @@ function FeaturedProject() {
           </a>
         </div>
       </div>
-      <WeatherPreview />
+      <Suspense fallback={<WeatherFallback />}>
+        <WeatherPreview />
+      </Suspense>
     </div>
   );
 }
