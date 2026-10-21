@@ -25,7 +25,7 @@ export default function Contact() {
       className="mx-auto max-w-330 px-6 lg:px-8 py-14 md:py-20 border-t"
       style={{ borderColor: "var(--line)" }}
     >
-      <div className="grid grid-cols-12 gap-10">
+      <div className="grid grid-cols-12 gap-y-10 lg:gap-x-10">
         <div className="col-span-12 lg:col-span-5">
           <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40 mb-6">
             (05) — Contact

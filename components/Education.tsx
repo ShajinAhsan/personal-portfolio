@@ -7,7 +7,7 @@ export default function Education() {
       className="mx-auto max-w-330 px-6 lg:px-8 py-14 md:py-20 border-t"
       style={{ borderColor: "var(--line)" }}
     >
-      <div className="grid grid-cols-12 gap-8">
+      <div className="grid grid-cols-12 gap-y-8 md:gap-x-8">
         <div className="col-span-12 md:col-span-3">
           <div className="sticky top-23">
             <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40">
