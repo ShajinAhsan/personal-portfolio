@@ -37,8 +37,8 @@ export default function About() {
               </h2>
               <div className="mt-7 space-y-4 text-[15px] leading-[1.75] opacity-80 max-w-[58ch]">
                 <p>
-                  I’m{" "}
-                  <span className="font-semibold text-[var(--text)]">
+                  I'm{" "}
+                  <span className="font-semibold text-(--text)">
                     Shajin Ahsan Shuvo
                   </span>
                   , a{" "}
