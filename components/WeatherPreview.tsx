@@ -23,7 +23,7 @@ function WeatherCard({
     <div className="md:col-span-5 relative min-h-65 p-3 bg-[#0F0F0E]">
       <div className="h-full w-full rounded-[20px] border border-[#2A2A26] overflow-hidden relative p-5 flex flex-col justify-between bg-[#161614]">
         <div className="flex justify-between mono text-[9px] tracking-widest uppercase text-white/40">
-          <span>shajin-weather.web.app / Weather</span>
+          <span>Weather</span>
           <div className="flex gap-1.5" aria-hidden="true">
             <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
             <span className="h-2 w-2 rounded-full bg-[#FFBD2E]" />

@@ -1,4 +1,6 @@
+import { profile } from "@/data/profile";
 import type { Project } from "@/data/projects";
+import { GithubIcon } from "./Icons";
 
 const events = [
   { label: "Lane change", at: "28%", color: "var(--accent-2)" },
@@ -179,7 +181,8 @@ function DashcamPreview() {
 }
 export default function DashcamCard({ project: p }: { project: Project }) {
   return (
-    <div
+    <article
+      aria-labelledby={`project-${p.n}-title`}
       className="group relative rounded-[28px] border overflow-hidden grid md:grid-cols-12 mb-6"
       style={{ borderColor: "var(--line)", background: "var(--card)" }}
     >
@@ -188,11 +191,14 @@ export default function DashcamCard({ project: p }: { project: Project }) {
           <span className="mono text-[10px] tracking-[0.2em]">{p.n}</span>
           <span className="h-px w-8 bg-current opacity-20" />
           <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
-            {p.year} • Prototype
+            <time dateTime={p.year}>{p.year}</time> • Prototype
           </span>
         </div>
 
-        <h3 className="mt-7 text-[28px] md:text-[34px] font-bold tracking-[-0.02em] leading-[0.95]">
+        <h3
+          id={`project-${p.n}-title`}
+          className="mt-7 text-[28px] md:text-[34px] font-bold tracking-[-0.02em] leading-[0.95]"
+        >
           {p.title}
         </h3>
         <div className="mono text-[12px] tracking-[0.14em] uppercase opacity-50 mt-2">
@@ -216,8 +222,18 @@ export default function DashcamCard({ project: p }: { project: Project }) {
         </div>
 
         <div className="mt-auto pt-8 flex gap-3">
+          {p.github && (
+            <a
+              href={p.github ?? profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-9 px-5 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-2 mono text-[10px] tracking-widest uppercase"
+            >
+              <GithubIcon size={12} /> GitHub
+            </a>
+          )}
           <span
-            className="h-9 px-5 rounded-full border inline-flex items-center mono text-[11px] tracking-widest uppercase"
+            className="h-9 px-5 rounded-full border inline-flex items-center mono text-[10px] tracking-widest uppercase"
             style={{ borderColor: "var(--line)" }}
           >
             Prototype
@@ -226,6 +242,6 @@ export default function DashcamCard({ project: p }: { project: Project }) {
       </div>
 
       <DashcamPreview />
-    </div>
+    </article>
   );
 }

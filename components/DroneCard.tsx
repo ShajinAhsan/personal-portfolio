@@ -1,4 +1,6 @@
+import { profile } from "@/data/profile";
 import type { Project } from "@/data/projects";
+import { GithubIcon } from "./Icons";
 
 const TRACE_PATH =
   "M0 40.0 C10.1 40.0 13.9 68.6 24.0 68.6 C41.6 68.6 48.4 23.1 66.0 23.1 C81.1 23.1 86.9 49.1 102.0 49.1 C115.9 49.1 121.1 35.5 135.0 35.5 C147.6 35.5 152.4 42.0 165.0 42.0 C177.6 42.0 182.4 39.2 195.0 39.2 C207.6 39.2 212.4 40.0 225.0 40.0 C256.5 40.0 268.5 40.0 300.0 40.0";
@@ -196,7 +198,8 @@ function DronePreview() {
 
 export default function DroneCard({ project: p }: { project: Project }) {
   return (
-    <div
+    <article
+      aria-labelledby={`project-${p.n}-title`}
       className="group relative rounded-[28px] border overflow-hidden grid md:grid-cols-12 mb-6"
       style={{ borderColor: "var(--line)", background: "var(--card)" }}
     >
@@ -205,14 +208,17 @@ export default function DroneCard({ project: p }: { project: Project }) {
           <span className="mono text-[11px] tracking-[0.2em]">{p.n}</span>
           <span className="h-px w-8 bg-current opacity-20" />
           <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
-            {p.year} • In the lab
+            <time dateTime={p.year}>{p.year}</time> • In the lab
           </span>
           <span className="ml-auto inline-flex items-center gap-1.5 mono text-[9px] px-2 py-1 rounded-full bg-(--bd-red) text-white">
             <span className="h-1 w-1 rounded-full bg-white animate-pulse" /> WIP
           </span>
         </div>
 
-        <h3 className="mt-7 text-[28px] md:text-[34px] font-bold tracking-[-0.02em] leading-[0.95]">
+        <h3
+          id={`project-${p.n}-title`}
+          className="mt-7 text-[28px] md:text-[34px] font-bold tracking-[-0.02em] leading-[0.95]"
+        >
           {p.title}
         </h3>
         <div className="mono text-[12px] tracking-[0.14em] uppercase opacity-50 mt-2">
@@ -236,6 +242,16 @@ export default function DroneCard({ project: p }: { project: Project }) {
         </div>
 
         <div className="mt-auto pt-8 flex gap-3">
+          {p.github && (
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-9 px-5 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-2 mono text-[10px] tracking-widest uppercase"
+            >
+              <GithubIcon size={12} /> GitHub
+            </a>
+          )}
           <span
             className="h-9 px-5 rounded-full border inline-flex items-center mono text-[10px] tracking-widest uppercase"
             style={{ borderColor: "var(--line)" }}
@@ -246,6 +262,6 @@ export default function DroneCard({ project: p }: { project: Project }) {
       </div>
 
       <DronePreview />
-    </div>
+    </article>
   );
 }

@@ -2,22 +2,25 @@ import { profile } from "@/data/profile";
 import {
   dashcamProject,
   droneProject,
-  featuredProject,
+  lineFollowerProject,
   projectCount,
-  projects,
-  type Project,
+  socketProject,
+  weatherProject,
 } from "@/data/projects";
 import { ExternalLink } from "lucide-react";
 import { Suspense } from "react";
 import DashcamCard from "./DashcamCard";
 import DroneCard from "./DroneCard";
 import { GithubIcon } from "./Icons";
+import LineFollowerCard from "./LineFollowerCard";
+import SocketCard from "./SocketCard";
 import WeatherPreview, { WeatherFallback } from "./WeatherPreview";
 
-function FeaturedProject() {
-  const p = featuredProject;
+function WeatherProject() {
+  const p = weatherProject;
   return (
-    <div
+    <article
+      aria-labelledby={`project-${p.n}-title`}
       className="rounded-[28px] border overflow-hidden mb-6 grid md:grid-cols-12"
       style={{ borderColor: "var(--line)", background: "var(--card)" }}
     >
@@ -26,18 +29,21 @@ function FeaturedProject() {
           <span className="mono text-[11px] tracking-[0.2em]">{p.n}</span>
           <span className="h-px w-8 bg-current opacity-20" />
           <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
-            {p.meta}
+            Live since <time dateTime={p.year}>{p.year}</time>
           </span>
           <span className="ml-auto inline-flex items-center gap-1.5 mono text-[9px] px-2 py-1 rounded-full bg-[#16C784] text-white">
             <span className="h-1 w-1 rounded-full bg-white animate-pulse" />{" "}
             LIVE
           </span>
         </div>
-        <h3 className="mt-7 text-[28px] md:text-[34px] font-bold tracking-[-0.02em] leading-[0.95]">
+        <h3
+          id={`project-${p.n}-title`}
+          className="mt-7 text-[28px] md:text-[34px] font-bold tracking-[-0.02em] leading-[0.95]"
+        >
           {p.title}
         </h3>
         <div className="mono text-[12px] tracking-[0.14em] uppercase opacity-50 mt-2">
-          {p.tagline}
+          Firebase
         </div>
         <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] opacity-70 max-w-[48ch]">
           {p.desc}
@@ -76,100 +82,7 @@ function FeaturedProject() {
       <Suspense fallback={<WeatherFallback />}>
         <WeatherPreview />
       </Suspense>
-    </div>
-  );
-}
-function spanFor(index: number, total: number) {
-  // md: pairs, and an odd last card spans the full row
-  const md =
-    total % 2 === 1 && index === total - 1 ? "md:col-span-12" : "md:col-span-6";
-  // lg: 3 per row when that divides evenly, 2 per row for 4/8/..., else 3 per row with the leftovers widened
-  if (total % 3 === 0) return `${md} lg:col-span-4`;
-  if (total % 2 === 0) return `${md} lg:col-span-6`;
-  const leftover = total % 3;
-  const inLastRow = index >= total - leftover;
-  const lg = !inLastRow
-    ? "lg:col-span-4"
-    : leftover === 2
-      ? "lg:col-span-6"
-      : "lg:col-span-12";
-  return `${md} ${lg}`;
-}
-function ProjectCard({ project: p, span }: { project: Project; span: string }) {
-  return (
-    <div
-      className={`group relative rounded-[26px] border overflow-hidden flex flex-col ${span}`}
-      style={{ borderColor: "var(--line)", background: "var(--card)" }}
-    >
-      <div className="p-6 md:p-7 flex flex-col flex-1">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="mono text-[11px] tracking-[0.2em]">{p.n}</span>
-            <span className="h-px w-6 bg-current opacity-20" />
-            <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
-              {p.year}
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            {p.wip && (
-              <span className="mono text-[8px] px-2 py-1 rounded-full bg-(--bd-red) text-white uppercase">
-                WIP
-              </span>
-            )}
-            <span
-              className="h-7 w-7 rounded-full border flex items-center justify-center group-hover:rotate-45 transition-transform"
-              style={{ borderColor: "var(--line)" }}
-              aria-hidden="true"
-            >
-              ↗
-            </span>
-          </div>
-        </div>
-        <div className="mt-6">
-          <h3 className="text-[22px] md:text-[24px] font-bold tracking-[-0.02em] leading-[0.95]">
-            {p.title}
-          </h3>
-          <div className="mono text-[11px] tracking-[0.14em] uppercase opacity-50 mt-1.5">
-            {p.subtitle}
-          </div>
-        </div>
-        <p className="mt-4 text-[13px] leading-[1.6] opacity-70 min-h-13">
-          {p.desc}
-        </p>
-        <div className="mt-5 flex flex-wrap gap-1.5">
-          {p.tags.map((tag) => (
-            <span
-              key={tag}
-              className="mono text-[9px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full border"
-              style={{ borderColor: "var(--line)", background: "var(--bg-2)" }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <div
-          className="mt-6 pt-5 border-t flex gap-2"
-          style={{ borderColor: "var(--line)" }}
-        >
-          {p.github && (
-            <a
-              href={p.github ?? profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-8 px-4 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-1.5 mono text-[10px] tracking-wider uppercase"
-            >
-              <GithubIcon size={12} /> GitHub
-            </a>
-          )}
-          <span
-            className="h-8 px-4 rounded-full border inline-flex items-center mono text-[10px] tracking-wider uppercase opacity-60"
-            style={{ borderColor: "var(--line)" }}
-          >
-            {p.wip ? "Building" : "Prototype"}
-          </span>
-        </div>
-      </div>
-    </div>
+    </article>
   );
 }
 
@@ -199,18 +112,10 @@ export default function Work() {
       </div>
 
       <DroneCard project={droneProject} />
-      <FeaturedProject />
+      <WeatherProject />
       <DashcamCard project={dashcamProject} />
-
-      <div className="grid md:grid-cols-12 gap-5 md:gap-6">
-        {projects.map((project, i) => (
-          <ProjectCard
-            key={project.title}
-            project={project}
-            span={spanFor(i, projects.length)}
-          />
-        ))}
-      </div>
+      <SocketCard project={socketProject} />
+      <LineFollowerCard project={lineFollowerProject} />
     </section>
   );
 }
