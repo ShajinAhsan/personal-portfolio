@@ -266,6 +266,7 @@ export default function Hero() {
                     alt="Shajin Ahsan Shuvo — Formal portrait with Bangladesh flag"
                     fill
                     preload
+                    fetchPriority="high"
                     sizes="(min-width: 1024px) 420px, 100vw"
                     className="object-cover object-top"
                   />
