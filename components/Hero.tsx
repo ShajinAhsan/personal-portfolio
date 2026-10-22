@@ -1,6 +1,6 @@
 import { profile } from "@/data/profile";
 import { projectCount } from "@/data/projects";
-import { Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import Image from "next/image";
 import TerminalCard from "./TerminalCard";
 const glow = (color: string) =>
@@ -103,9 +103,11 @@ export default function Hero() {
                 className="group h-11.5 px-7 rounded-full bg-(--text) text-(--bg) mono text-[12px] tracking-wide sm:tracking-[0.14em] uppercase font-medium inline-flex items-center gap-2 hover:opacity-90 transition"
               >
                 View Work — {projectCount} Projects
-                <span className="group-hover:translate-x-0.5 transition-transform">
-                  →
-                </span>
+                <ArrowRight
+                  aria-hidden="true"
+                  className="transition-transform group-hover:translate-x-0.5"
+                  size={15}
+                />
               </a>
               <a
                 href={`mailto:${profile.personalEmail}`}

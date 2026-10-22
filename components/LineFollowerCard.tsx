@@ -1,5 +1,6 @@
 import { profile } from "@/data/profile";
 import type { Project } from "@/data/projects";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { GithubIcon } from "./Icons";
 
 const TRACK =
@@ -204,7 +205,10 @@ function LineFollowerPreview() {
             <div className="col-span-3 rounded-[8px] bg-[#1E1E1A] border border-[#2A2A26] p-2">
               <div className="flex justify-between mono text-[7px] text-white/70">
                 <span>Line position</span>
-                <span>S1 ← → S5</span>
+                <span className="inline-flex items-center gap-0.5">
+                  S1 <ArrowLeft aria-hidden="true" size={8} />
+                  <ArrowRight aria-hidden="true" size={8} /> S5
+                </span>
               </div>
               <div className="relative mt-2 h-6">
                 <div className="grid h-full grid-cols-5 gap-1">

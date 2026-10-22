@@ -2,7 +2,7 @@
 
 import { profile } from "@/data/profile";
 import { projectCount } from "@/data/projects";
-import { Terminal } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUp, Terminal } from "lucide-react";
 import {
   useCallback,
   useEffect,
@@ -120,8 +120,9 @@ function run(input: string): ReactNode {
             </div>
           ))}
           <dd className={`${dim} col-span-2 mt-1`}>
-            Tab completes, ↑ ↓ walks history. There are a few hidden commands
-            too.
+            Tab completes, <ArrowUp aria-hidden="true" size={11} />{" "}
+            <ArrowDown aria-hidden="true" size={11} /> walks history. There are
+            a few hidden commands too.
           </dd>
         </dl>
       );
@@ -186,7 +187,9 @@ function run(input: string): ReactNode {
     case "projects":
       return (
         <Row>
-          <span className={dim}>{projectCount} projects → </span>
+          <span className={`${dim} inline-flex items-center gap-1`}>
+            {projectCount} projects <ArrowRight aria-hidden="true" size={12} />
+          </span>
           <Link href="#work">#work</Link>
         </Row>
       );
@@ -579,8 +582,10 @@ export default function TerminalCard() {
         >
           <InfoList />
           <p className={`${dim} mt-auto text-xs`}>
-            Tab completes commands. ↑ ↓ walks history. Ctrl+L clears the screen.
-          </p>
+              Tab completes commands. <ArrowUp aria-hidden="true" size={11} />{" "}
+              <ArrowDown aria-hidden="true" size={11} /> walks history. Ctrl+L
+              clears the screen.
+            </p>
         </aside>
       </div>
 

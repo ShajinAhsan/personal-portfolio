@@ -1,6 +1,7 @@
 "use client";
 
 import { sendMessage, type ContactState } from "@/app/actions";
+import { ArrowRight } from "lucide-react";
 import { useActionState } from "react";
 
 const initialState: ContactState = {
@@ -115,7 +116,12 @@ export default function ContactForm() {
             ? "Sending…"
             : state.status === "success"
               ? "Sent ✓"
-              : "Send message →"}
+              : (
+                <>
+                  Send message
+                  <ArrowRight aria-hidden="true" size={15} />
+                </>
+              )}
         </button>
       </div>
 

@@ -1,3 +1,5 @@
+import { ArrowUp } from "lucide-react";
+
 export default function Footer() {
   return (
     <footer className="border-t mt-6" style={{ borderColor: "var(--line)" }}>
@@ -21,8 +23,9 @@ export default function Footer() {
         <div className="flex items-center gap-5 mono text-[11px] tracking-[0.18em] uppercase text-(--text-2)">
           <span className="hidden sm:inline">MERN • Linux • Robotics</span>
           <span className="h-3 w-px bg-current opacity-20" />
-          <a href="#top" className="p-1">
-            Back to top ↑
+          <a href="#top" className="flex items-center gap-1 p-1">
+            Back to top
+            <ArrowUp aria-hidden="true" size={14} />
           </a>
         </div>
       </div>

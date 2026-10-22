@@ -1,5 +1,6 @@
 import { profile } from "@/data/profile";
 import type { Project } from "@/data/projects";
+import { ArrowRight } from "lucide-react";
 import { GithubIcon } from "./Icons";
 
 const TRACE_PATH =
@@ -138,7 +139,9 @@ function DronePreview() {
             <div className="col-span-3 rounded-lg bg-[#1E1E1A] border border-[#2A2A26] p-2">
               <div className="flex justify-between mono text-[7px] text-white/70">
                 <span>Roll angle</span>
-                <span>±22° → 0°</span>
+                <span className="inline-flex items-center gap-0.5">
+                  ±22° <ArrowRight aria-hidden="true" size={8} /> 0°
+                </span>
               </div>
               <div className="relative mt-1 h-14 overflow-hidden">
                 <div className="absolute inset-x-0 top-1/2 border-t border-dashed border-white/15" />

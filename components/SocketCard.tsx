@@ -1,5 +1,6 @@
 import { profile } from "@/data/profile";
 import type { Project } from "@/data/projects";
+import { ArrowRight } from "lucide-react";
 import { GithubIcon } from "./Icons";
 
 const PINS = [52, 60, 68, 76, 84, 92, 100, 108];
@@ -402,7 +403,9 @@ function SocketPreview() {
           <div className="mt-3 rounded-lg bg-[#1E1E1A] border border-[#2A2A26] p-2.5">
             <div className="flex justify-between mono text-[7px] text-white/70">
               <span>Command log</span>
-              <span>ESP32 → RELAY</span>
+              <span className="inline-flex items-center gap-1">
+                ESP32 <ArrowRight aria-hidden="true" size={9} /> RELAY
+              </span>
             </div>
             <div className="mt-2 mono text-[8px] leading-3.5">
               <div className="relative h-3.5">
