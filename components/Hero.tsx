@@ -59,7 +59,10 @@ export default function Hero() {
               className="pointer-events-none absolute -z-10 top-[30%] left-[32%] h-85 w-85 sm:w-110 -translate-x-1/2 -translate-y-1/2 opacity-[0.04]"
               style={{ background: glow("var(--bd-red)") }}
             />
-            <h1 id="hero-title" className="font-black leading-[0.85] tracking-[-0.04em] text-[14vw] md:text-[10vw] lg:text-[110px] xl:text-[128px] flex flex-col">
+            <h1
+              id="hero-title"
+              className="font-black leading-[0.85] tracking-[-0.04em] text-[14vw] md:text-[10vw] lg:text-[110px] xl:text-[128px] flex flex-col"
+            >
               <span className="flex items-baseline gap-[0.08em]">
                 <span>SHAJIN</span>
                 <span
@@ -205,7 +208,9 @@ export default function Hero() {
                 <div className="text-[13px] font-medium leading-tight">
                   Chittagong
                   <br />
-                  <span className="text-(--text-2)">Madarganj / Dhaka origin</span>
+                  <span className="text-(--text-2)">
+                    Madarganj / Dhaka origin
+                  </span>
                 </div>
               </div>
               <div>
@@ -300,9 +305,11 @@ export default function Hero() {
                   </div> */}
                 </div>
               </div>
-              <TerminalCard />
             </div>
           </div>
+        </div>
+        <div className="col-span-12 mt-2 mb-6 lg:mt-6 lg:mb-0">
+          <TerminalCard />
         </div>
       </div>
     </section>
