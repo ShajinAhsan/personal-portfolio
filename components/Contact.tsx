@@ -36,13 +36,13 @@ export default function Contact() {
               >
                 <Mail size={16} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-40">
                   Personal Email
                 </div>
                 <a
                   href={`mailto:${profile.personalEmail}`}
-                  className="mt-1 text-[14px] font-medium underline decoration-(--bd-green) decoration-2 block"
+                  className="mt-1 text-[14px] font-medium underline decoration-(--bd-green) decoration-2 block break-all"
                 >
                   {profile.personalEmail}
                 </a>
@@ -59,13 +59,13 @@ export default function Contact() {
               >
                 🎓
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-40">
                   Institutional
                 </div>
                 <a
                   href={`mailto:${profile.institutionalEmail}`}
-                  className="mt-1 text-[14px] font-medium block"
+                  className="mt-1 text-[14px] font-medium block break-all"
                 >
                   {profile.institutionalEmail}
                 </a>
@@ -82,7 +82,7 @@ export default function Contact() {
               >
                 <MapPin size={16} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-40">
                   Location
                 </div>

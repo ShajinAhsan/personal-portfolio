@@ -22,9 +22,9 @@ export default function ContactForm() {
       style={{ borderColor: "var(--line)" }}
     >
       <div className="flex items-center justify-between mb-8">
-        <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-60">
+        <h3 className="mono text-[11px] tracking-[0.2em] uppercase opacity-60">
           Send a message
-        </div>
+        </h3>
         <div className="flex gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-[#FF5F57]" />
           <span className="h-1.5 w-1.5 rounded-full bg-[#FFBD2E]" />
@@ -33,7 +33,7 @@ export default function ContactForm() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <label className="flex flex-col gap-2">
+        <label htmlFor="contact-name" className="flex flex-col gap-2">
           <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
             Your Name
           </span>
@@ -50,7 +50,7 @@ export default function ContactForm() {
             style={{ borderColor: "var(--line)" }}
           />
         </label>
-        <label className="flex flex-col gap-2">
+        <label htmlFor="contact-email" className="flex flex-col gap-2">
           <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
             Email Address
           </span>
@@ -70,7 +70,7 @@ export default function ContactForm() {
         </label>
       </div>
 
-      <label className="flex flex-col gap-2 mt-5">
+      <label htmlFor="contact-message" className="flex flex-col gap-2 mt-5">
         <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
           Project / Idea
         </span>
@@ -107,7 +107,8 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={pending}
-          className="h-11 px-7 rounded-full bg-(--text) text-(--bg) mono text-[12px] tracking-[0.14em] uppercase font-medium hover:opacity-90 disabled:opacity-60 transition flex items-center gap-2"
+          aria-busy={pending}
+          className="h-11 px-7 rounded-full bg-(--text) text-(--bg) mono text-[12px] tracking-[0.14em] uppercase font-medium hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer transition flex items-center gap-2"
         >
           {pending
             ? "Sending…"

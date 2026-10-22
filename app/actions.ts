@@ -1,6 +1,8 @@
 "use server";
 
 import { headers } from "next/headers";
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 import { Resend } from "resend";
 
 export type ContactState = {
@@ -12,47 +14,62 @@ export type ContactState = {
 
 const EMPTY = { name: "", email: "", message: "" };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
-const submissions = new Map<string, number[]>();
+const RATE_LIMIT_WINDOW = "15 m";
 
 function field(formData: FormData, key: string) {
   const value = formData.get(key);
   return typeof value === "string" ? value.trim() : "";
 }
 
+function clientIp(requestHeaders: Headers) {
+  return (
+    requestHeaders.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    requestHeaders.get("x-real-ip") ??
+    "unknown"
+  );
+}
+
+function retryAfter(reset: number) {
+  return Math.max(1, Math.ceil((reset - Date.now()) / 60_000));
+}
+
+async function checkRateLimit(ip: string, email: string) {
+  const url = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+
+  if (!url || !token) {
+    console.error("[contact] Upstash rate limiter is not configured");
+    return { configured: false as const };
+  }
+
+  const redis = new Redis({ url, token });
+  const ipLimiter = new Ratelimit({
+    redis,
+    limiter: Ratelimit.slidingWindow(RATE_LIMIT_MAX, RATE_LIMIT_WINDOW),
+    prefix: "contact:ip",
+  });
+  const emailLimiter = new Ratelimit({
+    redis,
+    limiter: Ratelimit.slidingWindow(RATE_LIMIT_MAX, RATE_LIMIT_WINDOW),
+    prefix: "contact:email",
+  });
+
+  const [ipResult, emailResult] = await Promise.all([
+    ipLimiter.limit(ip),
+    emailLimiter.limit(email.toLowerCase()),
+  ]);
+  const blockedResult = [ipResult, emailResult].find((result) => !result.success);
+
+  return blockedResult
+    ? { configured: true as const, allowed: false as const, reset: blockedResult.reset }
+    : { configured: true as const, allowed: true as const };
+}
+
 export async function sendMessage(
   _prev: ContactState,
   formData: FormData,
 ): Promise<ContactState> {
-  const requestHeaders = await headers();
-  const clientKey =
-    requestHeaders.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    requestHeaders.get("x-real-ip") ??
-    "unknown";
-  const now = Date.now();
-  const recentSubmissions = (submissions.get(clientKey) ?? []).filter(
-    (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS,
-  );
-
-  if (recentSubmissions.length >= RATE_LIMIT_MAX) {
-    const retryAfter = Math.max(
-      1,
-      Math.ceil(
-        (RATE_LIMIT_WINDOW_MS - (now - recentSubmissions[0])) / 60_000,
-      ),
-    );
-    return {
-      status: "error",
-      message: `Too many messages. Please try again in about ${retryAfter} minute${retryAfter === 1 ? "" : "s"}.`,
-      values: {
-        name: field(formData, "name"),
-        email: field(formData, "email"),
-        message: field(formData, "message"),
-      },
-    };
-  }
-
   const values = {
     name: field(formData, "name"),
     email: field(formData, "email"),
@@ -86,6 +103,34 @@ export async function sendMessage(
     return {
       status: "error",
       message: "Your message is too long. Shorten it and try again.",
+      values,
+    };
+  }
+
+  let rateLimit;
+  try {
+    rateLimit = await checkRateLimit(clientIp(await headers()), values.email);
+  } catch (err) {
+    console.error("[contact] rate limiter failed:", err);
+    return {
+      status: "error",
+      message: "The form is temporarily unavailable. Please try again later.",
+      values,
+    };
+  }
+
+  if (!rateLimit.configured) {
+    return {
+      status: "error",
+      message: "The form is temporarily unavailable. Please try again later.",
+      values,
+    };
+  }
+  if (!rateLimit.allowed) {
+    const minutes = retryAfter(rateLimit.reset);
+    return {
+      status: "error",
+      message: `Too many messages. Please try again in about ${minutes} minute${minutes === 1 ? "" : "s"}.`,
       values,
     };
   }
@@ -125,8 +170,6 @@ export async function sendMessage(
         values,
       };
     }
-    recentSubmissions.push(now);
-    submissions.set(clientKey, recentSubmissions);
   } catch (err) {
     console.error("[contact] send failed:", err);
     return {
