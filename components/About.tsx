@@ -32,9 +32,10 @@ export default function About() {
           <div className="grid lg:grid-cols-12 gap-10">
             <div className="lg:col-span-7">
               <h2 className="text-[30px] md:text-[42px] font-bold tracking-[-0.03em] leading-[0.95] max-w-[22ch]">
-                A curiosity-driven CSE builder who takes things apart to build
-                better.
+                A CSE student learning by building, experimenting, and
+                exploring.
               </h2>
+
               <div className="mt-7 space-y-4 text-[15px] leading-[1.75] opacity-80 max-w-[58ch]">
                 <p>
                   I'm{" "}
@@ -45,24 +46,29 @@ export default function About() {
                   <span className="font-semibold">
                     Computer Science &amp; Engineering student at CUET
                   </span>{" "}
-                  from Madarganj, Jamalpur, now in Chittagong. I came to
-                  engineering because I like taking things apart, and I stayed
-                  because I like putting better things back together.
+                  from Madarganj, Jamalpur, currently living in Chittagong. I've
+                  always enjoyed understanding how things work, and engineering
+                  gives me an opportunity to explore that interest through
+                  practical projects and continuous learning.
                 </p>
+
                 <p>
-                  My work sits between software and hardware. On the web, I
-                  build full-stack with MERN and others. On the bench, I work
-                  with Arduino Uno R3, Nano, ESP32, ESP-01, relay modules and
-                  the MPU6050 and so on. So far that's a remote-controlled wall
-                  socket, a line-following car, and a gyro-stabilized drone
-                  that's still in prototype.
+                  I work on projects across software and hardware, from
+                  full-stack web applications using MERN and related
+                  technologies to small electronics projects with Arduino and
+                  ESP32 boards. Some of my experiments include a
+                  remote-controlled wall socket, a line-following car, and an
+                  ongoing prototype of a gyro-stabilized drone. Each project
+                  gives me something new to learn.
                 </p>
+
                 <p className="opacity-70">
-                  Outside the editor, I live in the Linux terminal (Debian,
-                  Kali, Ubuntu, Arch used so far) and follow DevOps,
-                  cybersecurity, astronomy and archaeology. When the labs close,
-                  I'm usually deep in{" "}
+                  Outside of development, I enjoy using Linux and exploring
+                  different distributions, including Debian, Ubuntu, Kali, and
+                  Arch. I'm also interested in cybersecurity, DevOps, astronomy,
+                  and archaeology. In my free time, I usually unwind with
                   <span className="border-b border-(--accent-2)">
+                    {" "}
                     story-driven games.
                   </span>
                 </p>
