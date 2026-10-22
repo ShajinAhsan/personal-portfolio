@@ -71,7 +71,7 @@ export default function Hero() {
                 />
               </span>
               <span className="flex flex-wrap items-baseline gap-[0.18em] mt-[-0.02em]">
-                <span className="text-[0.72em] font-extrabold tracking-tighter opacity-[0.12]">
+                <span className="text-[0.72em] font-extrabold tracking-tighter text-(--text-2) opacity-75">
                   AHSAN
                 </span>
                 <span>
