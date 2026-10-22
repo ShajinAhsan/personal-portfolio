@@ -36,7 +36,7 @@ export default function Hero() {
             </span> */}
           </div>
           <div className="inline-flex items-center gap-2">
-            <span className="mono text-[10px] tracking-[0.18em] uppercase opacity-50">
+            <span className="mono text-[10px] tracking-[0.18em] uppercase text-(--text-2)">
               Portfolio / 01
             </span>
           </div>
@@ -73,7 +73,7 @@ export default function Hero() {
                 </span>
                 <span>
                   SHUVO
-                  <sub className="mono text-[11px] md:text-[13px] font-medium tracking-widest ml-2 opacity-40">
+                  <sub className="mono text-[11px] md:text-[13px] font-medium tracking-widest ml-2 text-(--text-2)">
                     ©2026
                   </sub>
                 </span>
@@ -83,11 +83,11 @@ export default function Hero() {
             <div className="mt-6 md:mt-8 max-w-[56ch]">
               <p className="text-[24px] md:text-[30px] leading-[1.15] tracking-[-0.02em] font-normal">
                 22.46°N 91.97°E{" "}
-                <span className="text-xs opacity-70">
+                <span className="text-xs text-(--text-2)">
                   EXPLORING THE KNOWN & UNKNOWN
                 </span>
               </p>
-              <p className="mt-4 text-[15px] leading-[1.65] font-normal opacity-70 max-w-[44ch]">
+              <p className="mt-4 text-[15px] leading-[1.65] font-normal text-(--text-2) max-w-[44ch]">
                 I like understanding how things work, from simple electronics to
                 software. Still learning, still experimenting, one project at a
                 time.
@@ -121,7 +121,7 @@ export default function Hero() {
               {/* 
               <div className="hidden p-6 md:p-8 flex-col justify-between">
                 <div className="flex justify-between">
-                  <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
+                  <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
                     Studio / Desk Setup — Chittagong
                   </div>
                   <div className="flex gap-1.5">
@@ -141,7 +141,7 @@ export default function Hero() {
                         className="absolute top-0 right-0 w-[180px] h-[180px] rounded-full blur-[30px] opacity-20"
                         style={{ background: "var(--accent)" }}
                       />
-                      <div className="mono text-[10px] tracking-widest uppercase opacity-40">
+                      <div className="mono text-[10px] tracking-widest uppercase text-(--text-2)">
                         Now Exploring
                       </div>
                       <div className="relative">
@@ -152,7 +152,7 @@ export default function Hero() {
                           <br />
                           Interfaces
                         </div>
-                        <div className="mt-3 mono text-[11px] opacity-60 leading-relaxed">
+                        <div className="mt-3 mono text-[11px] text-(--text-2) leading-relaxed">
                           Prototyping ideas at CUET labs. Breaking, fixing,
                           learning.
                         </div>
@@ -162,13 +162,13 @@ export default function Hero() {
 
                   <div className="col-span-4 flex flex-col gap-3">
                     <div className="rounded-[18px] bg-[var(--text)] text-[var(--bg)] p-4 flex-1 flex flex-col justify-between">
-                      <div className="mono text-[9px] tracking-[0.2em] uppercase opacity-60">
+                      <div className="mono text-[9px] tracking-[0.2em] uppercase text-(--text-2)">
                         Experience
                       </div>
                       <div className="text-[42px] font-black leading-none tracking-[-0.05em]">
                         02<span className="text-[18px] align-super">+</span>
                       </div>
-                      <div className="mono text-[10px] opacity-70 leading-tight">
+                      <div className="mono text-[10px] text-(--text-2) leading-tight">
                         Years building
                         <br />
                         side projects
@@ -179,7 +179,7 @@ export default function Hero() {
                       className="rounded-[18px] border p-4 bg-[var(--card)]"
                       style={{ borderColor: "var(--line)" }}
                     >
-                      <div className="mono text-[9px] tracking-[0.2em] uppercase opacity-40">
+                      <div className="mono text-[9px] tracking-[0.2em] uppercase text-(--text-2)">
                         Stack Signal
                       </div>
                       <div className="mt-2 flex flex-wrap gap-1.5">
@@ -199,27 +199,27 @@ export default function Hero() {
               </div> */}
 
               <div>
-                <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-40 mb-1.5">
+                <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2) mb-1.5">
                   Based
                 </div>
                 <div className="text-[13px] font-medium leading-tight">
                   Chittagong
                   <br />
-                  <span className="opacity-60">Madarganj / Dhaka origin</span>
+                  <span className="text-(--text-2)">Madarganj / Dhaka origin</span>
                 </div>
               </div>
               <div>
-                <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-40 mb-1.5">
+                <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2) mb-1.5">
                   Studying
                 </div>
                 <div className="text-[13px] font-medium leading-tight">
                   CSE at CUET
                   <br />
-                  <span className="opacity-60">{profile.studentId}</span>
+                  <span className="text-(--text-2)">{profile.studentId}</span>
                 </div>
               </div>
               <div>
-                <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-40 mb-1.5">
+                <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2) mb-1.5">
                   GitHub
                 </div>
                 <div className="text-[13px] font-medium leading-tight">
@@ -265,7 +265,7 @@ export default function Hero() {
                     src={profile.portrait}
                     alt="Shajin Ahsan Shuvo — Formal portrait with Bangladesh flag"
                     fill
-                    priority
+                    preload
                     sizes="(min-width: 1024px) 420px, 100vw"
                     className="object-cover object-top"
                   />

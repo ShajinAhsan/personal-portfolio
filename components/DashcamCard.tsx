@@ -22,7 +22,7 @@ function DashcamPreview() {
           borderColor: "color-mix(in srgb, var(--line) 60%, transparent)",
         }}
       >
-        <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/40">
+        <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/70">
           <span>Tesla Dashcam Insight.app / Dashboard</span>
           <div className="flex gap-1.5">
             <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
@@ -92,14 +92,14 @@ function DashcamPreview() {
             </div>
 
             {/* HUD */}
-            <div className="absolute left-2 top-2 flex items-center gap-1 mono text-[7px] text-white/70">
+            <div className="absolute left-2 top-2 flex items-center gap-1 mono text-[7px] text-white/80">
               <span className="h-1.5 w-1.5 rounded-full bg-[#FF5F57] animate-pulse" />{" "}
               REC
             </div>
-            <div className="absolute right-2 top-2 mono text-[7px] text-white/50">
+            <div className="absolute right-2 top-2 mono text-[7px] text-white/70">
               FRONT • 00:42:11
             </div>
-            <div className="absolute bottom-2 left-2 mono text-[7px] text-white/40">
+            <div className="absolute bottom-2 left-2 mono text-[7px] text-white/70">
               TRACKING 3 OBJECTS
             </div>
           </div>
@@ -124,7 +124,7 @@ function DashcamPreview() {
                 style={{ left: "28%" }}
               />
             </div>
-            <div className="mt-1 flex justify-between mono text-[7px] text-white/30">
+            <div className="mt-1 flex justify-between mono text-[7px] text-white/70">
               <span>00:00</span>
               <span>02:30:00</span>
             </div>
@@ -132,7 +132,7 @@ function DashcamPreview() {
               {events.map((e) => (
                 <span
                   key={e.label}
-                  className="inline-flex items-center gap-1 mono text-[8px] text-white/50"
+                  className="inline-flex items-center gap-1 mono text-[8px] text-white/70"
                 >
                   <span
                     className="h-1.5 w-1.5 rounded-full"
@@ -156,7 +156,7 @@ function DashcamPreview() {
                     borderColor: active ? "var(--accent-2)" : "#2A2A26",
                   }}
                 >
-                  <div className="flex items-center justify-between mono text-[7px] text-white/40">
+                  <div className="flex items-center justify-between mono text-[7px] text-white/70">
                     <span>{cam}</span>
                     {active && (
                       <span
@@ -172,7 +172,7 @@ function DashcamPreview() {
           </div>
         </div>
 
-        <div className="mt-5 mono text-[8px] tracking-[0.2em] uppercase text-white/30">
+        <div className="mt-5 mono text-[8px] tracking-[0.2em] uppercase text-white/70">
           Prototype Interface — Not Production Data
         </div>
       </div>
@@ -190,7 +190,7 @@ export default function DashcamCard({ project: p }: { project: Project }) {
         <div className="flex items-center gap-3">
           <span className="mono text-[10px] tracking-[0.2em]">{p.n}</span>
           <span className="h-px w-8 bg-current opacity-20" />
-          <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
+          <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             <time dateTime={p.year}>{p.year}</time> • Prototype
           </span>
         </div>
@@ -201,11 +201,11 @@ export default function DashcamCard({ project: p }: { project: Project }) {
         >
           {p.title}
         </h3>
-        <div className="mono text-[12px] tracking-[0.14em] uppercase opacity-50 mt-2">
+        <div className="mono text-[12px] tracking-[0.14em] uppercase text-(--text-2) mt-2">
           {p.subtitle}
         </div>
 
-        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] opacity-70 max-w-[48ch]">
+        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] text-(--text-2) max-w-[48ch]">
           {p.desc}
         </p>
 

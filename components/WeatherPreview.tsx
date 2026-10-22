@@ -22,7 +22,7 @@ function WeatherCard({
   return (
     <div className="md:col-span-5 relative min-h-65 p-3 bg-[#0F0F0E]">
       <div className="h-full w-full rounded-[20px] border border-[#2A2A26] overflow-hidden relative p-5 flex flex-col justify-between bg-[#161614]">
-        <div className="flex justify-between mono text-[9px] tracking-widest uppercase text-white/40">
+        <div className="flex justify-between mono text-[9px] tracking-widest uppercase text-white/70">
           <span>Weather</span>
           <div className="flex gap-1.5" aria-hidden="true">
             <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
@@ -39,7 +39,7 @@ function WeatherCard({
               <div className="text-white font-bold text-[22px]">
                 {weather ? `${weather.temp}°C` : dash}
               </div>
-              <div className="mono text-[10px] text-white/60">
+              <div className="mono text-[10px] text-white/80">
                 Dhaka, Bangladesh •{" "}
                 {weather?.description ?? (loading ? "Loading" : "Unavailable")}
               </div>
@@ -51,7 +51,7 @@ function WeatherCard({
                 key={s.k}
                 className="rounded-[10px] bg-[#1E1E1A] border border-[#2A2A26] p-2.5"
               >
-                <div className="mono text-[7px] text-white/40 uppercase tracking-widest">
+                <div className="mono text-[7px] text-white/70 uppercase tracking-widest">
                   {s.k}
                 </div>
                 <div className="text-white text-[12px] font-semibold mt-1">
@@ -64,10 +64,10 @@ function WeatherCard({
             <span
               className={`h-1 w-1 rounded-full ${weather ? "bg-[#16C784] animate-ping [animation-duration:2000ms]" : "bg-white/30"}`}
             />
-            <span className="mono text-[10px] text-white/60">{status}</span>
+            <span className="mono text-[10px] text-white/80">{status}</span>
           </div>
         </div>
-        <div className="mono text-[8px] md:text-[10px] tracking-wide text-white/40 mt-4">
+        <div className="mono text-[8px] md:text-[10px] tracking-wide text-white/70 mt-4">
           Data via OpenWeather • Auto-syncs turned on
         </div>
       </div>

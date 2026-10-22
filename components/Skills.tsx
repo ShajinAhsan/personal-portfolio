@@ -3,7 +3,7 @@ import { skillGroups } from "@/data/skills";
 export default function Skills() {
   return (
     <div id="skills" className="lg:col-span-5">
-      <h3 className="mono text-[11px] tracking-[0.2em] uppercase opacity-40 mb-3">
+      <h3 className="mono text-[11px] tracking-[0.2em] uppercase text-(--text-2) mb-3">
         Skills — Simplified
       </h3>
       <div className="space-y-4">

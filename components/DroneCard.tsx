@@ -17,7 +17,7 @@ function DronePreview() {
           borderColor: "color-mix(in srgb, var(--line) 60%, transparent)",
         }}
       >
-        <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/40">
+        <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/70">
           <span>Drone / Stabilize</span>
           <div className="flex gap-1.5">
             <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
@@ -38,7 +38,7 @@ function DronePreview() {
               }}
             />
             <div className="absolute inset-x-5 top-1/2 border-t border-dashed border-white/20" />
-            <span className="absolute right-5 top-1/2 -translate-y-full pb-0.5 mono text-[7px] text-white/30">
+            <span className="absolute right-5 top-1/2 -translate-y-full pb-0.5 mono text-[7px] text-white/70">
               TARGET 0°
             </span>
 
@@ -128,7 +128,7 @@ function DronePreview() {
                 ● STABLE
               </span>
             </div>
-            <div className="absolute bottom-2 left-2 mono text-[7px] text-white/40">
+            <div className="absolute bottom-2 left-2 mono text-[7px] text-white/70">
               ROLL AXIS
             </div>
           </div>
@@ -136,7 +136,7 @@ function DronePreview() {
           <div className="mt-3 grid grid-cols-5 gap-2">
             {/* Gyro trace */}
             <div className="col-span-3 rounded-lg bg-[#1E1E1A] border border-[#2A2A26] p-2">
-              <div className="flex justify-between mono text-[7px] text-white/40">
+              <div className="flex justify-between mono text-[7px] text-white/70">
                 <span>Roll angle</span>
                 <span>±22° → 0°</span>
               </div>
@@ -167,11 +167,11 @@ function DronePreview() {
 
             {/* Motor thrust */}
             <div className="col-span-2 rounded-lg bg-[#1E1E1A] border border-[#2A2A26] p-2">
-              <div className="mono text-[7px] text-white/40">Motor thrust</div>
+              <div className="mono text-[7px] text-white/70">Motor thrust</div>
               <div className="mt-2 space-y-2">
                 {(["L", "R"] as const).map((side) => (
                   <div key={side} className="flex items-center gap-1.5">
-                    <span className="mono text-[7px] text-white/40 w-2">
+                    <span className="mono text-[7px] text-white/70 w-2">
                       {side}
                     </span>
                     <div className="h-1.5 flex-1 overflow-hidden rounded bg-[#2A2A26]">
@@ -183,12 +183,12 @@ function DronePreview() {
                   </div>
                 ))}
               </div>
-              <div className="mt-2 mono text-[7px] text-white/30">PID: ON</div>
+              <div className="mt-2 mono text-[7px] text-white/70">PID: ON</div>
             </div>
           </div>
         </div>
 
-        <div className="mt-5 mono text-[8px] tracking-[0.2em] uppercase text-white/30">
+        <div className="mt-5 mono text-[8px] tracking-[0.2em] uppercase text-white/70">
           Simulated Telemetry — Not Flight Data
         </div>
       </div>
@@ -207,7 +207,7 @@ export default function DroneCard({ project: p }: { project: Project }) {
         <div className="flex items-center gap-3">
           <span className="mono text-[11px] tracking-[0.2em]">{p.n}</span>
           <span className="h-px w-8 bg-current opacity-20" />
-          <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
+          <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             <time dateTime={p.year}>{p.year}</time> • In the lab
           </span>
           <span className="ml-auto inline-flex items-center gap-1.5 mono text-[9px] px-2 py-1 rounded-full bg-(--bd-red) text-white">
@@ -221,11 +221,11 @@ export default function DroneCard({ project: p }: { project: Project }) {
         >
           {p.title}
         </h3>
-        <div className="mono text-[12px] tracking-[0.14em] uppercase opacity-50 mt-2">
+        <div className="mono text-[12px] tracking-[0.14em] uppercase text-(--text-2) mt-2">
           {p.subtitle}
         </div>
 
-        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] opacity-70 max-w-[48ch]">
+        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] text-(--text-2) max-w-[48ch]">
           {p.desc}
         </p>
 

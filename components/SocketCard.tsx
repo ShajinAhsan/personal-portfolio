@@ -17,7 +17,7 @@ function SocketPreview() {
           borderColor: "color-mix(in srgb, var(--line) 60%, transparent)",
         }}
       >
-        <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/40">
+        <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/70">
           <span>Socket Controller.app / Relay</span>
           <div className="flex gap-1.5">
             <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
@@ -375,7 +375,7 @@ function SocketPreview() {
               ESP32 • REMOTE LINK
             </div>
             <div className="absolute right-2 top-2 h-3 w-[84px] mono text-[7px]">
-              <span className="socket-lo absolute right-0 top-0 whitespace-nowrap text-white/50">
+              <span className="socket-lo absolute right-0 top-0 whitespace-nowrap text-white/70">
                 ● IDLE
               </span>
               <span className="socket-tx absolute right-0 top-0 whitespace-nowrap text-[#FFBD2E]">
@@ -385,11 +385,11 @@ function SocketPreview() {
                 ● RELAY ON
               </span>
             </div>
-            <div className="absolute bottom-2 left-2 mono text-[7px] text-white/40">
+            <div className="absolute bottom-2 left-2 mono text-[7px] text-white/70">
               RELAY MODULE
             </div>
             <div className="absolute bottom-2 right-2 h-3 w-[60px] mono text-[7px]">
-              <span className="socket-lo absolute right-0 top-0 whitespace-nowrap text-white/40">
+              <span className="socket-lo absolute right-0 top-0 whitespace-nowrap text-white/70">
                 LOAD OFF
               </span>
               <span className="socket-hi absolute right-0 top-0 whitespace-nowrap text-[#FFBD2E]">
@@ -400,7 +400,7 @@ function SocketPreview() {
 
           {/* Command log */}
           <div className="mt-3 rounded-lg bg-[#1E1E1A] border border-[#2A2A26] p-2.5">
-            <div className="flex justify-between mono text-[7px] text-white/40">
+            <div className="flex justify-between mono text-[7px] text-white/70">
               <span>Command log</span>
               <span>ESP32 → RELAY</span>
             </div>
@@ -409,7 +409,7 @@ function SocketPreview() {
                 <span className="socket-hi absolute left-0 top-0 whitespace-nowrap text-(--accent-2)">
                   &gt; gpio(23, HIGH)
                 </span>
-                <span className="socket-lo absolute left-0 top-0 whitespace-nowrap text-white/40">
+                <span className="socket-lo absolute left-0 top-0 whitespace-nowrap text-white/70">
                   &gt; gpio(23, LOW) // idle
                 </span>
               </div>
@@ -423,7 +423,7 @@ function SocketPreview() {
           </div>
         </div>
 
-        <div className="mt-5 mono text-[8px] tracking-[0.2em] uppercase text-white/30">
+        <div className="mt-5 mono text-[8px] tracking-[0.2em] uppercase text-white/70">
           Simulated Signal Flow — Not Live Data
         </div>
       </div>
@@ -442,7 +442,7 @@ export default function SocketCard({ project: p }: { project: Project }) {
         <div className="flex items-center gap-3">
           <span className="mono text-[11px] tracking-[0.2em]">{p.n}</span>
           <span className="h-px w-8 bg-current opacity-20" />
-          <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
+          <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             <time dateTime={p.year}>{p.year}</time> • Hardware hack
           </span>
         </div>
@@ -453,11 +453,11 @@ export default function SocketCard({ project: p }: { project: Project }) {
         >
           {p.title}
         </h3>
-        <div className="mono text-[12px] tracking-[0.14em] uppercase opacity-50 mt-2">
+        <div className="mono text-[12px] tracking-[0.14em] uppercase text-(--text-2) mt-2">
           {p.subtitle}
         </div>
 
-        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] opacity-70 max-w-[48ch]">
+        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] text-(--text-2) max-w-[48ch]">
           {p.desc}
         </p>
 
@@ -485,7 +485,7 @@ export default function SocketCard({ project: p }: { project: Project }) {
             </a>
           )}
           <span
-            className="h-9 px-5 rounded-full border inline-flex items-center mono text-[10px] tracking-widest uppercase opacity-60"
+            className="h-9 px-5 rounded-full border inline-flex items-center mono text-[10px] tracking-widest uppercase text-(--text-2)"
             style={{ borderColor: "var(--line)" }}
           >
             Prototype

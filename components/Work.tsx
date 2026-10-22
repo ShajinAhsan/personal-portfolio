@@ -28,7 +28,7 @@ function WeatherProject() {
         <div className="flex items-center gap-3">
           <span className="mono text-[11px] tracking-[0.2em]">{p.n}</span>
           <span className="h-px w-8 bg-current opacity-20" />
-          <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
+          <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             Live since <time dateTime={p.year}>{p.year}</time>
           </span>
           <span className="ml-auto inline-flex items-center gap-1.5 mono text-[9px] px-2 py-1 rounded-full bg-[#16C784] text-white">
@@ -42,10 +42,10 @@ function WeatherProject() {
         >
           {p.title}
         </h3>
-        <div className="mono text-[12px] tracking-[0.14em] uppercase opacity-50 mt-2">
+        <div className="mono text-[12px] tracking-[0.14em] uppercase text-(--text-2) mt-2">
           Firebase
         </div>
-        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] opacity-70 max-w-[48ch]">
+        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] text-(--text-2) max-w-[48ch]">
           {p.desc}
         </p>
         <div className="mt-6 flex flex-wrap gap-2">
@@ -95,7 +95,7 @@ export default function Work() {
     >
       <div className="flex flex-wrap items-end justify-between gap-6 mb-10 md:mb-14">
         <div>
-          <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40 mb-4">
+          <div className="mono text-[11px] tracking-[0.2em] uppercase text-(--text-2) mb-4">
             (04) — Selected Work • {projectCount} Projects
           </div>
           <h2 className="text-[36px] md:text-[60px] font-black tracking-[-0.04em] leading-[0.9]">
@@ -104,7 +104,7 @@ export default function Work() {
             taught me to build.
           </h2>
         </div>
-        <div className="mono text-[12px] leading-normal opacity-60 max-w-[32ch]">
+        <div className="mono text-[12px] leading-normal text-(--text-2) max-w-[32ch]">
           From my first weather site in 2022 to line-followers and gyro drones.
           Prototypes, shipped, documented on GitHub{" "}
           <span className="underline">{profile.githubHandle}</span>.

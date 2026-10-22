@@ -19,7 +19,7 @@ export default function Contact() {
     >
       <div className="grid grid-cols-12 gap-y-10 lg:gap-x-10">
         <div className="col-span-12 lg:col-span-5">
-          <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40 mb-6">
+          <div className="mono text-[11px] tracking-[0.2em] uppercase text-(--text-2) mb-6">
             (05) — Contact
           </div>
           <h2 className="text-[34px] md:text-[48px] font-black tracking-[-0.03em] leading-[0.9]">
@@ -37,7 +37,7 @@ export default function Contact() {
                 <Mail size={16} />
               </div>
               <div className="min-w-0">
-                <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-40">
+                <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
                   Personal Email
                 </div>
                 <a
@@ -46,7 +46,7 @@ export default function Contact() {
                 >
                   {profile.personalEmail}
                 </a>
-                <div className="mono text-[11px] opacity-50 mt-1">
+                <div className="mono text-[11px] text-(--text-2) mt-1">
                   Primary • Fast response
                 </div>
               </div>
@@ -60,7 +60,7 @@ export default function Contact() {
                 <span aria-hidden="true">🎓</span>
               </div>
               <div className="min-w-0">
-                <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-40">
+                <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
                   Institutional
                 </div>
                 <a
@@ -69,7 +69,7 @@ export default function Contact() {
                 >
                   {profile.institutionalEmail}
                 </a>
-                <div className="mono text-[11px] opacity-50 mt-1">
+                <div className="mono text-[11px] text-(--text-2) mt-1">
                   CUET CSE • Academic use
                 </div>
               </div>
@@ -83,13 +83,13 @@ export default function Contact() {
                 <MapPin size={16} />
               </div>
               <div className="min-w-0">
-                <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-40">
+                <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
                   Location
                 </div>
                 <div className="mt-1 text-[14px] font-medium">
                   Jamalpur / Dhaka / Chittagong, Bangladesh
                 </div>
-                <div className="mono text-[11px] opacity-50 mt-1">
+                <div className="mono text-[11px] text-(--text-2) mt-1">
                   Open to remote &amp; campus collabs
                 </div>
               </div>
@@ -110,7 +110,7 @@ export default function Contact() {
             />
             <div>
               <div className="text-[14px] font-semibold">{profile.name}</div>
-              <div className="mono text-[11px] opacity-60">
+              <div className="mono text-[11px] text-(--text-2)">
                 cse@cuet • {profile.githubHandle}
               </div>
             </div>
@@ -147,7 +147,7 @@ export default function Contact() {
                   <span className="mono text-[11px] tracking-[0.12em] uppercase">
                     {link.label}
                   </span>
-                  <span className="mono text-[9px] opacity-60 truncate ml-2 max-w-[14ch]">
+                  <span className="mono text-[9px] text-(--text-2) truncate ml-2 max-w-[14ch]">
                     {link.value}
                   </span>
                 </a>

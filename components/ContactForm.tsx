@@ -23,7 +23,7 @@ export default function ContactForm() {
       style={{ borderColor: "var(--line)" }}
     >
       <div className="flex items-center justify-between mb-8">
-        <h3 id="contact-form-title" className="mono text-[11px] tracking-[0.2em] uppercase opacity-60">
+        <h3 id="contact-form-title" className="mono text-[11px] tracking-[0.2em] uppercase text-(--text-2)">
           Send a message
         </h3>
         <div className="flex gap-1.5">
@@ -35,7 +35,7 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <label htmlFor="contact-name" className="flex flex-col gap-2">
-          <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
+          <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             Your Name
           </span>
           <input
@@ -52,7 +52,7 @@ export default function ContactForm() {
           />
         </label>
         <label htmlFor="contact-email" className="flex flex-col gap-2">
-          <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
+          <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             Email Address
           </span>
           <input
@@ -72,7 +72,7 @@ export default function ContactForm() {
       </div>
 
       <label htmlFor="contact-message" className="flex flex-col gap-2 mt-5">
-        <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
+        <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
           Project / Idea
         </span>
         <textarea
@@ -101,7 +101,7 @@ export default function ContactForm() {
       </div>
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-        <div className="mono text-[11px] opacity-50 max-w-[28ch]">
+        <div className="mono text-[11px] text-(--text-2) max-w-[28ch]">
           Your message goes straight to my inbox, and I reply to the email you
           sent me :)
         </div>

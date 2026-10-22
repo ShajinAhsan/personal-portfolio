@@ -13,14 +13,14 @@ export default function About() {
       <div className="grid grid-cols-12 gap-y-8 md:gap-x-8">
         <div className="col-span-12 md:col-span-3">
           <div className="sticky top-23 flex flex-col gap-4">
-            <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40">
+            <div className="mono text-[11px] tracking-[0.2em] uppercase text-(--text-2)">
               (02) — About
             </div>
             <div
               className="h-px w-12"
               style={{ background: "var(--line-strong)" }}
             />
-            <div className="hidden md:block mono text-[11px] leading-[1.6] opacity-40 max-w-[20ch]">
+            <div className="hidden md:block mono text-[11px] leading-[1.6] text-(--text-2) max-w-[20ch]">
               Input: Curiosity
               <br />
               Output: Working things
@@ -36,7 +36,7 @@ export default function About() {
                 exploring.
               </h2>
 
-              <div className="mt-7 space-y-4 text-[15px] leading-[1.75] opacity-80 max-w-[58ch]">
+              <div className="mt-7 space-y-4 text-[15px] leading-[1.75] text-(--text-2) max-w-[58ch]">
                 <p>
                   I&apos;m{" "}
                   <span className="font-semibold text-(--text)">
@@ -62,7 +62,7 @@ export default function About() {
                   gives me something new to learn.
                 </p>
 
-                <p className="opacity-70">
+                <p className="text-(--text-2)">
                   Outside of development, I enjoy using Linux and exploring
                   different distributions, including Debian, Ubuntu, Kali, and
                   Arch. I&apos;m also interested in cybersecurity, DevOps, astronomy,
@@ -78,7 +78,7 @@ export default function About() {
                 className="mt-8 rounded-[18px] border p-4 bg-(--bg-2) flex flex-wrap gap-3 items-center"
                 style={{ borderColor: "var(--line)" }}
               >
-                <div className="flex items-center gap-2 mono text-[10px] tracking-[0.18em] uppercase opacity-60">
+                <div className="flex items-center gap-2 mono text-[10px] tracking-[0.18em] uppercase text-(--text-2)">
                   <Gamepad2 size={14} /> Plays
                 </div>
                 <GamesList games={games} />

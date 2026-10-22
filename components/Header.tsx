@@ -34,7 +34,7 @@ export default function Header() {
             >
               S.
             </div>
-            <span className="mono text-[11px] tracking-[0.2em] uppercase opacity-60 hidden sm:block">
+            <span className="mono text-[11px] tracking-[0.2em] uppercase text-(--text-2) hidden sm:block">
               SHAJIN AHSAN
             </span>
           </a>

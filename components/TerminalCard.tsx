@@ -20,7 +20,7 @@ export default function TerminalCard() {
           <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
         </div>
 
-        <div className="mono flex items-center gap-2 text-[10px] opacity-50">
+        <div className="mono flex items-center gap-2 text-[10px] text-(--text-2)">
           <Terminal size={12} />
           zsh — shajin@me
         </div>
@@ -37,7 +37,7 @@ export default function TerminalCard() {
             <span className="text-(--bd-green)">%</span>
             <span>whoami</span>
           </div>
-          <p className="mt-0.5 opacity-70">shajinahsan</p>
+          <p className="mt-0.5 text-(--text-2)">shajinahsan</p>
         </div>
 
         {/* System */}
@@ -48,7 +48,7 @@ export default function TerminalCard() {
             <span className="text-(--bd-green)">%</span>
             <span>uname -o</span>
           </div>
-          <p className="mt-0.5 opacity-70">GNU/Linux</p>
+          <p className="mt-0.5 text-(--text-2)">GNU/Linux</p>
         </div>
 
         {/* Projects */}
@@ -76,7 +76,7 @@ export default function TerminalCard() {
             <span>git status --short</span>
           </div>
           <p className="mt-0.5 text-(--bd-green)"> M curiosity</p>
-          <p className="opacity-60 dark:opacity-50">
+          <p className="text-(--text-2)">
             Always a work in progress.
           </p>
         </div>

@@ -19,7 +19,7 @@ function LineFollowerPreview() {
           borderColor: "color-mix(in srgb, var(--line) 60%, transparent)",
         }}
       >
-        <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/40">
+        <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/70">
           <span>Line Follower.app / Telemetry</span>
           <div className="flex gap-1.5">
             <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
@@ -187,14 +187,14 @@ function LineFollowerPreview() {
               </g>
             </svg>
 
-            <div className="absolute left-2 top-2 flex items-center gap-1 mono text-[7px] text-white/70">
+            <div className="absolute left-2 top-2 flex items-center gap-1 mono text-[7px] text-white/80">
               <span className="h-1.5 w-1.5 rounded-full bg-[#16C784] animate-pulse" />{" "}
               5-CH IR ARRAY
             </div>
             <div className="absolute right-2 top-2 mono text-[7px] text-[#16C784]">
               ● TRACKING LINE
             </div>
-            <div className="absolute bottom-2 left-2 mono text-[7px] text-white/40">
+            <div className="absolute bottom-2 left-2 mono text-[7px] text-white/70">
               PID: ON
             </div>
           </div>
@@ -202,7 +202,7 @@ function LineFollowerPreview() {
           <div className="mt-3 grid grid-cols-5 gap-2">
             {/* Where the line sits under the sensor array */}
             <div className="col-span-3 rounded-[8px] bg-[#1E1E1A] border border-[#2A2A26] p-2">
-              <div className="flex justify-between mono text-[7px] text-white/40">
+              <div className="flex justify-between mono text-[7px] text-white/70">
                 <span>Line position</span>
                 <span>S1 ← → S5</span>
               </div>
@@ -211,7 +211,7 @@ function LineFollowerPreview() {
                   {SENSORS.map((s) => (
                     <div
                       key={s}
-                      className="flex items-center justify-center rounded border border-[#2A2A26] bg-[#161614] mono text-[6px] text-white/25"
+                      className="flex items-center justify-center rounded border border-[#2A2A26] bg-[#161614] mono text-[6px] text-white/70"
                     >
                       {s}
                     </div>
@@ -231,11 +231,11 @@ function LineFollowerPreview() {
 
             {/* Motor speed: the PID steers by slowing one side */}
             <div className="col-span-2 rounded-[8px] bg-[#1E1E1A] border border-[#2A2A26] p-2">
-              <div className="mono text-[7px] text-white/40">Motor speed</div>
+              <div className="mono text-[7px] text-white/70">Motor speed</div>
               <div className="mt-2 space-y-2">
                 {(["L", "R"] as const).map((side) => (
                   <div key={side} className="flex items-center gap-1.5">
-                    <span className="mono text-[7px] text-white/40 w-2">
+                    <span className="mono text-[7px] text-white/70 w-2">
                       {side}
                     </span>
                     <div className="h-1.5 flex-1 overflow-hidden rounded bg-[#2A2A26]">
@@ -247,14 +247,14 @@ function LineFollowerPreview() {
                   </div>
                 ))}
               </div>
-              <div className="mt-2 mono text-[7px] text-white/30">
+              <div className="mt-2 mono text-[7px] text-white/70">
                 Steering: auto
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-5 mono text-[8px] tracking-[0.2em] uppercase text-white/30">
+        <div className="mt-5 mono text-[8px] tracking-[0.2em] uppercase text-white/70">
           Simulated Track — Not Live Data
         </div>
       </div>
@@ -273,7 +273,7 @@ export default function LineFollowerCard({ project: p }: { project: Project }) {
         <div className="flex items-center gap-3">
           <span className="mono text-[11px] tracking-[0.2em]">{p.n}</span>
           <span className="h-px w-8 bg-current opacity-20" />
-          <span className="mono text-[10px] tracking-[0.2em] uppercase opacity-50">
+          <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             <time dateTime={p.year}>{p.year}</time> • Autonomous
           </span>
         </div>
@@ -284,11 +284,11 @@ export default function LineFollowerCard({ project: p }: { project: Project }) {
         >
           {p.title}
         </h3>
-        <div className="mono text-[12px] tracking-[0.14em] uppercase opacity-50 mt-2">
+        <div className="mono text-[12px] tracking-[0.14em] uppercase text-(--text-2) mt-2">
           {p.subtitle}
         </div>
 
-        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] opacity-70 max-w-[48ch]">
+        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] text-(--text-2) max-w-[48ch]">
           {p.desc}
         </p>
 
@@ -316,7 +316,7 @@ export default function LineFollowerCard({ project: p }: { project: Project }) {
             </a>
           )}
           <span
-            className="h-9 px-5 rounded-full border inline-flex items-center mono text-[10px] tracking-widest uppercase opacity-60"
+            className="h-9 px-5 rounded-full border inline-flex items-center mono text-[10px] tracking-widest uppercase text-(--text-2)"
             style={{ borderColor: "var(--line)" }}
           >
             Prototype
