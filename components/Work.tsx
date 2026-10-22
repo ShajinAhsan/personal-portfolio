@@ -31,7 +31,7 @@ function WeatherProject() {
           <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             Live since <time dateTime={p.year}>{p.year}</time>
           </span>
-          <span className="ml-auto inline-flex items-center gap-1.5 mono text-[9px] px-2 py-1 rounded-full bg-[#16C784] text-white">
+          <span className="ml-auto inline-flex items-center gap-1.5 mono text-[9px] px-2 py-1 rounded-full bg-[#16C784] text-black">
             <span className="h-1 w-1 rounded-full bg-white animate-pulse" />{" "}
             LIVE
           </span>

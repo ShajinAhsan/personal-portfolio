@@ -210,7 +210,7 @@ export default function DroneCard({ project: p }: { project: Project }) {
           <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             <time dateTime={p.year}>{p.year}</time> • In the lab
           </span>
-          <span className="ml-auto inline-flex items-center gap-1.5 mono text-[9px] px-2 py-1 rounded-full bg-(--bd-red) text-white">
+          <span className="ml-auto inline-flex items-center gap-1.5 mono text-[9px] px-2 py-1 rounded-full bg-(--bd-red) text-black">
             <span className="h-1 w-1 rounded-full bg-white animate-pulse" /> WIP
           </span>
         </div>

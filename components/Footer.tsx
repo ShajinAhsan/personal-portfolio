@@ -21,10 +21,7 @@ export default function Footer() {
         <div className="flex items-center gap-5 mono text-[11px] tracking-[0.18em] uppercase text-(--text-2)">
           <span className="hidden sm:inline">MERN • Linux • Robotics</span>
           <span className="h-3 w-px bg-current opacity-20" />
-          <a
-            href="#top"
-            className="opacity-90 hover:opacity-100 transition-opacity p-1"
-          >
+          <a href="#top" className="p-1">
             Back to top ↑
           </a>
         </div>

@@ -33,7 +33,7 @@ export default function TerminalCard() {
         <div>
           <div className="flex flex-wrap gap-x-1">
             <span className="text-(--bd-green)">shajin@me</span>
-            <span className="text-sky-400">~</span>
+            <span className="text-(--bd-green)">~</span>
             <span className="text-(--bd-green)">%</span>
             <span>whoami</span>
           </div>
@@ -44,7 +44,7 @@ export default function TerminalCard() {
         <div>
           <div className="flex flex-wrap gap-x-1">
             <span className="text-(--bd-green)">shajin@me</span>
-            <span className="text-sky-400">~</span>
+            <span className="text-(--bd-green)">~</span>
             <span className="text-(--bd-green)">%</span>
             <span>uname -o</span>
           </div>
@@ -55,15 +55,15 @@ export default function TerminalCard() {
         <div>
           <div className="flex flex-wrap gap-x-1">
             <span className="text-(--bd-green)">shajin@me</span>
-            <span className="text-sky-400">~/projects</span>
+            <span className="text-(--bd-green)">~/projects</span>
             <span className="text-(--bd-green)">%</span>
             <span>ls</span>
           </div>
           <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 pl-0.5">
-            <span className="text-sky-400">web/</span>
-            <span className="text-sky-400">systems/</span>
-            <span className="text-sky-400">embedded/</span>
-            <span className="text-sky-400">experiments/</span>
+            <span className="text-(--bd-green)">web/</span>
+            <span className="text-(--bd-green)">systems/</span>
+            <span className="text-(--bd-green)">embedded/</span>
+            <span className="text-(--bd-green)">experiments/</span>
           </div>
         </div>
 
@@ -71,7 +71,7 @@ export default function TerminalCard() {
         <div>
           <div className="flex flex-wrap gap-x-1">
             <span className="text-(--bd-green)">shajin@me</span>
-            <span className="text-sky-400">~/projects</span>
+            <span className="text-(--bd-green)">~/projects</span>
             <span className="text-(--bd-green)">%</span>
             <span>git status --short</span>
           </div>
@@ -84,7 +84,7 @@ export default function TerminalCard() {
         {/* Idle prompt */}
         <div className="flex flex-wrap items-center gap-x-1">
           <span className="text-(--bd-green)">shajin@me</span>
-          <span className="text-sky-400">~</span>
+          <span className="text-(--bd-green)">~</span>
           <span className="text-(--bd-green)">%</span>
           <span>git commit -m &quot;figured it out&quot;</span>
           <span
