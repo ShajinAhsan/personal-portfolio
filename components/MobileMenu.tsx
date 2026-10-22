@@ -67,9 +67,10 @@ export default function MobileMenu() {
       </button>
 
       {open && (
-        <div
+        <nav
           ref={menuRef}
           id="mobile-menu"
+          aria-label="Mobile navigation"
           className="md:hidden absolute inset-x-0 top-full border-t border-b px-6 py-6 flex flex-col gap-5 backdrop-blur-xl"
           style={{
             borderColor: "var(--line)",
@@ -111,7 +112,7 @@ export default function MobileMenu() {
               github/{profile.githubHandle}
             </a>
           </div>
-        </div>
+        </nav>
       )}
     </>
   );

@@ -40,7 +40,7 @@ export default function Header() {
           </a>
           <nav
             className="hidden md:flex items-center gap-7"
-            aria-label="Primary"
+            aria-label="Primary navigation"
           >
             {navLinks.map((link) => (
               <a

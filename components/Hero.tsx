@@ -8,7 +8,10 @@ const glow = (color: string) =>
 
 export default function Hero() {
   return (
-    <section className="relative mx-auto max-w-330 px-6 lg:px-8 pt-8 md:pt-12 pb-14">
+    <section
+      aria-labelledby="hero-title"
+      className="relative mx-auto max-w-330 px-6 lg:px-8 pt-8 md:pt-12 pb-14"
+    >
       <div
         className="pointer-events-none absolute top-40 left-[40%] h-px w-30 hidden md:block"
         style={{ background: "var(--line-strong)" }}
@@ -56,7 +59,7 @@ export default function Hero() {
               className="pointer-events-none absolute -z-10 top-[30%] left-[32%] h-85 w-85 sm:w-110 -translate-x-1/2 -translate-y-1/2 opacity-[0.04]"
               style={{ background: glow("var(--bd-red)") }}
             />
-            <h1 className="font-black leading-[0.85] tracking-[-0.04em] text-[14vw] md:text-[10vw] lg:text-[110px] xl:text-[128px] flex flex-col">
+            <h1 id="hero-title" className="font-black leading-[0.85] tracking-[-0.04em] text-[14vw] md:text-[10vw] lg:text-[110px] xl:text-[128px] flex flex-col">
               <span className="flex items-baseline gap-[0.08em]">
                 <span>SHAJIN</span>
                 <span

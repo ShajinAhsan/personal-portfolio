@@ -3,9 +3,9 @@ import { skillGroups } from "@/data/skills";
 export default function Skills() {
   return (
     <div id="skills" className="lg:col-span-5">
-      <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40 mb-3">
+      <h3 className="mono text-[11px] tracking-[0.2em] uppercase opacity-40 mb-3">
         Skills — Simplified
-      </div>
+      </h3>
       <div className="space-y-4">
         {skillGroups.map(({ cat, icon: Icon, items }) => (
           <div

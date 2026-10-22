@@ -57,7 +57,7 @@ export default function Contact() {
                 className="h-10 w-10 rounded-full border flex items-center justify-center shrink-0"
                 style={{ borderColor: "var(--line)" }}
               >
-                🎓
+                <span aria-hidden="true">🎓</span>
               </div>
               <div className="min-w-0">
                 <div className="mono text-[10px] tracking-[0.2em] uppercase opacity-40">

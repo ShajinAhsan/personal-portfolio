@@ -10,9 +10,9 @@ export default function Education() {
       <div className="grid grid-cols-12 gap-y-8 md:gap-x-8">
         <div className="col-span-12 md:col-span-3">
           <div className="sticky top-23">
-            <div className="mono text-[11px] tracking-[0.2em] uppercase opacity-40">
+            <h2 id="education-title" className="mono text-[11px] tracking-[0.2em] uppercase opacity-40">
               (03) — Education &amp; Journey
-            </div>
+            </h2>
             <div className="mt-6 hidden md:block space-y-3">
               <div className="flex items-center gap-2 mono text-[10px] opacity-50">
                 <span className="h-2 w-2 rounded-full bg-(--bd-green)" /> Always

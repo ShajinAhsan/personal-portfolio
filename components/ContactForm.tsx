@@ -18,11 +18,12 @@ export default function ContactForm() {
   return (
     <form
       action={formAction}
+      aria-labelledby="contact-form-title"
       className="rounded-[28px] border p-6 md:p-8 bg-(--card)"
       style={{ borderColor: "var(--line)" }}
     >
       <div className="flex items-center justify-between mb-8">
-        <h3 className="mono text-[11px] tracking-[0.2em] uppercase opacity-60">
+        <h3 id="contact-form-title" className="mono text-[11px] tracking-[0.2em] uppercase opacity-60">
           Send a message
         </h3>
         <div className="flex gap-1.5">

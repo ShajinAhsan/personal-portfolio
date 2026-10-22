@@ -1,5 +1,5 @@
-import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -26,18 +26,27 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteDescription =
+  "Portfolio of Shajin Ahsan Shuvo, a CSE student at CUET building across MERN web development, Linux systems and hardware.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "shajin.me",
-  description:
-    "Portfolio of Shajin Ahsan Shuvo, a CSE student at CUET building across MERN web development, Linux systems and hardware.",
+  title: {
+    default: "Shajin Ahsan Shuvo",
+    template: "%s | Shajin Ahsan Shuvo",
+  },
+  description: siteDescription,
+  alternates: { canonical: "/" },
+  authors: [{ name: "Shajin Ahsan Shuvo", url: siteUrl }],
+  creator: "Shajin Ahsan Shuvo",
   openGraph: {
-    title: "shajin.me",
+    title: "Shajin Ahsan Shuvo",
+    siteName: "shajin.me",
     description:
       "MERN web dev, Linux systems and hands-on hardware. Portfolio of Shajin Ahsan Shuvo.",
     type: "website",
     url: siteUrl,
+    locale: "en_US",
     images: [
       {
         url: "/og-image.jpg",
@@ -47,7 +56,14 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shajin Ahsan Shuvo — CSE Student & Builder",
+    description:
+      "MERN web dev, Linux systems and hands-on hardware. Portfolio of Shajin Ahsan Shuvo.",
+    creator: "@shajinahsan",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export const viewport: Viewport = {
@@ -70,6 +86,28 @@ export default function RootLayout({
       className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
     >
       <body className="theme-transition antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Shajin Ahsan Shuvo",
+              url: siteUrl,
+              image: `${siteUrl}/portrait.jpg`,
+              jobTitle: "Computer Science and Engineering Student",
+              worksFor: {
+                "@type": "EducationalOrganization",
+                name: "Chittagong University of Engineering & Technology",
+              },
+              sameAs: [
+                "https://github.com/shajinahsan",
+                "https://www.linkedin.com/in/shajinahsan",
+                "https://twitter.com/shajinahsan",
+              ],
+            }),
+          }}
+        />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
