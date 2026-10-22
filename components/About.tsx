@@ -38,7 +38,7 @@ export default function About() {
 
               <div className="mt-7 space-y-4 text-[15px] leading-[1.75] opacity-80 max-w-[58ch]">
                 <p>
-                  I'm{" "}
+                  I&apos;m{" "}
                   <span className="font-semibold text-(--text)">
                     Shajin Ahsan Shuvo
                   </span>
@@ -46,7 +46,7 @@ export default function About() {
                   <span className="font-semibold">
                     Computer Science &amp; Engineering student at CUET
                   </span>{" "}
-                  from Madarganj, Jamalpur, currently living in Chittagong. I've
+                  from Madarganj, Jamalpur, currently living in Chittagong. I&apos;ve
                   always enjoyed understanding how things work, and engineering
                   gives me an opportunity to explore that interest through
                   practical projects and continuous learning.
@@ -65,7 +65,7 @@ export default function About() {
                 <p className="opacity-70">
                   Outside of development, I enjoy using Linux and exploring
                   different distributions, including Debian, Ubuntu, Kali, and
-                  Arch. I'm also interested in cybersecurity, DevOps, astronomy,
+                  Arch. I&apos;m also interested in cybersecurity, DevOps, astronomy,
                   and archaeology. In my free time, I usually unwind with
                   <span className="border-b border-(--accent-2)">
                     {" "}

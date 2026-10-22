@@ -1,5 +1,4 @@
 import { getDhakaWeather, type Weather } from "@/lib/weather";
-import { Maximize2, Minus, X } from "lucide-react";
 
 function WeatherCard({
   weather,
@@ -25,40 +24,10 @@ function WeatherCard({
       <div className="h-full w-full rounded-[20px] border border-[#2A2A26] overflow-hidden relative p-5 flex flex-col justify-between bg-[#161614]">
         <div className="flex justify-between mono text-[9px] tracking-widest uppercase text-white/40">
           <span>shajin-weather.web.app / Weather</span>
-          <div className="group flex gap-2">
-            <button
-              type="button"
-              aria-label="Close"
-              className="h-3 w-3 rounded-full bg-[#FF5F57] cursor-pointer flex items-center justify-center"
-            >
-              <X
-                size={8}
-                strokeWidth={3}
-                className="text-black/60 opacity-0 group-hover:opacity-100 transition-opacity"
-              />
-            </button>
-            <button
-              type="button"
-              aria-label="Minimize"
-              className="h-3 w-3 rounded-full bg-[#FFBD2E] cursor-pointer flex items-center justify-center"
-            >
-              <Minus
-                size={8}
-                strokeWidth={3}
-                className="text-black/60 opacity-0 group-hover:opacity-100 transition-opacity"
-              />
-            </button>
-            <button
-              type="button"
-              aria-label="Expand"
-              className="h-3 w-3 rounded-full bg-[#28CA42] cursor-pointer flex items-center justify-center"
-            >
-              <Maximize2
-                size={7}
-                strokeWidth={3}
-                className="text-black/60 opacity-0 group-hover:opacity-100 transition-opacity"
-              />
-            </button>
+          <div className="flex gap-1.5" aria-hidden="true">
+            <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
+            <span className="h-2 w-2 rounded-full bg-[#FFBD2E]" />
+            <span className="h-2 w-2 rounded-full bg-[#28CA42]" />
           </div>
         </div>
         <div className="mt-8 space-y-3">

@@ -86,7 +86,7 @@ export default function TerminalCard() {
           <span className="text-(--bd-green)">shajin@me</span>
           <span className="text-sky-400">~</span>
           <span className="text-(--bd-green)">%</span>
-          <span>git commit -m "figured it out"</span>
+          <span>git commit -m &quot;figured it out&quot;</span>
           <span
             className="inline-block h-3.25 w-1.5 animate-pulse"
             style={{ background: "var(--text)" }}

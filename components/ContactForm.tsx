@@ -38,12 +38,14 @@ export default function ContactForm() {
             Your Name
           </span>
           <input
+            id="contact-name"
             name="name"
             defaultValue={state.values.name}
             placeholder="Your name"
             required
             maxLength={100}
             autoComplete="name"
+            aria-invalid={state.status === "error" ? true : undefined}
             className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) transition w-full min-w-0"
             style={{ borderColor: "var(--line)" }}
           />
@@ -53,6 +55,7 @@ export default function ContactForm() {
             Email Address
           </span>
           <input
+            id="contact-email"
             name="email"
             type="email"
             defaultValue={state.values.email}
@@ -60,6 +63,7 @@ export default function ContactForm() {
             required
             maxLength={200}
             autoComplete="email"
+            aria-invalid={state.status === "error" ? true : undefined}
             className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) transition w-full min-w-0"
             style={{ borderColor: "var(--line)" }}
           />
@@ -71,12 +75,14 @@ export default function ContactForm() {
           Project / Idea
         </span>
         <textarea
+          id="contact-message"
           name="message"
           defaultValue={state.values.message}
           placeholder="Tell me about what you want to build — hardware, web, or systems..."
           rows={5}
           required
           maxLength={5000}
+          aria-invalid={state.status === "error" ? true : undefined}
           className="rounded-[20px] border p-5 text-[14px] leading-normal bg-(--bg) outline-none focus:border-(--text) transition resize-none"
           style={{ borderColor: "var(--line)" }}
         />
@@ -113,7 +119,10 @@ export default function ContactForm() {
 
       <div aria-live="polite">
         {state.status === "success" && (
-          <div className="mt-5 rounded-full bg-(--accent-2) text-black px-4 py-2 mono text-[11px] tracking-widest uppercase inline-flex">
+          <div
+            role="status"
+            className="mt-5 rounded-full bg-(--accent-2) text-black px-4 py-2 mono text-[11px] tracking-widest uppercase inline-flex"
+          >
             Message sent — I&apos;ll reply to your email soon!
           </div>
         )}

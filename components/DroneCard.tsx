@@ -16,7 +16,7 @@ function DronePreview() {
         }}
       >
         <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/40">
-          <span>Drone FC.app / Stabilizer</span>
+          <span>Drone / Stabilize</span>
           <div className="flex gap-1.5">
             <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
             <span className="h-2 w-2 rounded-full bg-[#FFBD2E]" />
@@ -26,7 +26,7 @@ function DronePreview() {
 
         <div className="mt-5">
           {/* Attitude view: the drone gets knocked over, then levels itself */}
-          <div className="relative aspect-video lg:aspect-[21/9] overflow-hidden rounded-[12px] border border-[#2A2A26] bg-[#0F0F0E]">
+          <div className="relative aspect-video lg:aspect-21/9 overflow-hidden rounded-xl border border-[#2A2A26] bg-[#0F0F0E]">
             <div
               className="absolute inset-0 opacity-[0.07]"
               style={{
@@ -41,7 +41,7 @@ function DronePreview() {
             </span>
 
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="drone-tilt h-[70%] aspect-[5/3]">
+              <div className="drone-tilt h-[70%] aspect-5/3">
                 <svg viewBox="0 0 200 120" className="h-full w-full">
                   <line
                     x1="30"
@@ -115,7 +115,7 @@ function DronePreview() {
               <span className="h-1.5 w-1.5 rounded-full bg-[#16C784] animate-pulse" />{" "}
               MPU6050 • GYRO LIVE
             </div>
-            <div className="absolute right-2 top-2 h-3 w-[92px] mono text-[7px]">
+            <div className="absolute right-2 top-2 h-3 w-23 mono text-[7px]">
               <span className="drone-status-gust absolute right-0 top-0 whitespace-nowrap text-[#FF5F57]">
                 ● GUST DETECTED
               </span>
@@ -133,7 +133,7 @@ function DronePreview() {
 
           <div className="mt-3 grid grid-cols-5 gap-2">
             {/* Gyro trace */}
-            <div className="col-span-3 rounded-[8px] bg-[#1E1E1A] border border-[#2A2A26] p-2">
+            <div className="col-span-3 rounded-lg bg-[#1E1E1A] border border-[#2A2A26] p-2">
               <div className="flex justify-between mono text-[7px] text-white/40">
                 <span>Roll angle</span>
                 <span>±22° → 0°</span>
@@ -164,7 +164,7 @@ function DronePreview() {
             </div>
 
             {/* Motor thrust */}
-            <div className="col-span-2 rounded-[8px] bg-[#1E1E1A] border border-[#2A2A26] p-2">
+            <div className="col-span-2 rounded-lg bg-[#1E1E1A] border border-[#2A2A26] p-2">
               <div className="mono text-[7px] text-white/40">Motor thrust</div>
               <div className="mt-2 space-y-2">
                 {(["L", "R"] as const).map((side) => (

@@ -25,7 +25,7 @@ export default function Hero() {
               style={{ background: "var(--bd-green)" }}
             />
             <span className="mono text-[10px] tracking-[0.18em] uppercase">
-              Chittagong, BD — 22°20'N
+              Chittagong, BD — 22°20&apos;N
             </span>
             {/* <span className="h-1 w-1 rounded-full bg-(--text-3)" /> */}
             {/* <span className="mono text-[10px] tracking-[0.18em] uppercase">

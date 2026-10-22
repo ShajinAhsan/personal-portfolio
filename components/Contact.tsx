@@ -4,19 +4,6 @@ import Image from "next/image";
 import ContactForm from "./ContactForm";
 import { GithubIcon } from "./Icons";
 
-const quickLinks = [
-  { label: "GitHub", value: profile.githubHandle, href: profile.github },
-  {
-    label: "Personal",
-    value: profile.personalEmail,
-    href: `mailto:${profile.personalEmail}`,
-  },
-  {
-    label: "CUET",
-    value: profile.institutionalEmail,
-    href: `mailto:${profile.institutionalEmail}`,
-  },
-];
 const socialLinks = [
   { label: "Facebook", value: profile.facebookHandle, href: profile.facebook },
   { label: "LinkedIn", value: profile.linkedinHandle, href: profile.linkedin },
