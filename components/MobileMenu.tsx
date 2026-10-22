@@ -2,22 +2,44 @@
 
 import { navLinks, profile } from "@/data/profile";
 import { projectCount } from "@/data/projects";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /** Hamburger button + dropdown panel. The panel is positioned against the sticky header. */
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    firstLinkRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
+    };
+    const onPointerDown = (e: PointerEvent) => {
+      if (
+        !menuRef.current?.contains(e.target as Node) &&
+        !buttonRef.current?.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
   }, [open]);
 
   return (
     <>
       <button
+        ref={buttonRef}
         type="button"
         onClick={() => setOpen((o) => !o)}
         className="md:hidden h-9 w-9 rounded-full border flex items-center justify-center cursor-pointer"
@@ -46,6 +68,7 @@ export default function MobileMenu() {
 
       {open && (
         <div
+          ref={menuRef}
           id="mobile-menu"
           className="md:hidden absolute inset-x-0 top-full border-t border-b px-6 py-6 flex flex-col gap-5 backdrop-blur-xl"
           style={{
@@ -56,6 +79,7 @@ export default function MobileMenu() {
           {navLinks.map((link) => (
             <a
               key={link.id}
+              ref={link === navLinks[0] ? firstLinkRef : undefined}
               href={`#${link.id}`}
               onClick={() => setOpen(false)}
               className="text-left text-[28px] font-extrabold tracking-[-0.02em] leading-none flex items-center gap-3"
@@ -69,21 +93,20 @@ export default function MobileMenu() {
             </a>
           ))}
           <div
-            className="pt-4 border-t flex gap-3"
+            className="pt-4 border-t flex flex-col items-start gap-2"
             style={{ borderColor: "var(--line)" }}
           >
             <a
               href={`mailto:${profile.personalEmail}`}
-              className="mono text-[12px] underline"
+              className="mono text-[12px] underline break-all"
             >
               {profile.personalEmail}
             </a>
-            <span className="mono text-[11px] opacity-40">•</span>
             <a
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="mono text-[12px] underline"
+              className="mono text-[12px] underline break-all"
             >
               github/{profile.githubHandle}
             </a>
