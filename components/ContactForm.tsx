@@ -48,7 +48,7 @@ export default function ContactForm() {
             autoComplete="name"
             aria-invalid={state.status === "error" ? true : undefined}
             className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) transition w-full min-w-0"
-            style={{ borderColor: "var(--line)" }}
+            style={{ borderColor: "var(--control-line)" }}
           />
         </label>
         <label htmlFor="contact-email" className="flex flex-col gap-2">
@@ -66,7 +66,7 @@ export default function ContactForm() {
             autoComplete="email"
             aria-invalid={state.status === "error" ? true : undefined}
             className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) transition w-full min-w-0"
-            style={{ borderColor: "var(--line)" }}
+            style={{ borderColor: "var(--control-line)" }}
           />
         </label>
       </div>
@@ -85,7 +85,7 @@ export default function ContactForm() {
           maxLength={5000}
           aria-invalid={state.status === "error" ? true : undefined}
           className="rounded-[20px] border p-5 text-[14px] leading-normal bg-(--bg) outline-none focus:border-(--text) transition resize-none"
-          style={{ borderColor: "var(--line)" }}
+          style={{ borderColor: "var(--control-line)" }}
         />
       </label>
 
@@ -131,7 +131,7 @@ export default function ContactForm() {
         {state.status === "error" && (
           <div
             role="alert"
-            className="mt-5 rounded-[18px] bg-(--bd-red) text-white px-4 py-2 mono text-[11px] tracking-wider inline-flex"
+            className="mt-5 rounded-[18px] bg-(--bd-red) text-black px-4 py-2 mono text-[11px] tracking-wider inline-flex"
           >
             {state.message}
           </div>

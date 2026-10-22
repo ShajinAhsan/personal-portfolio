@@ -87,7 +87,7 @@ export default function MobileMenu() {
             >
               {link.label}
               {link.id === "work" && (
-                <span className="mono text-[10px] px-2 py-1 rounded-full bg-(--bd-green) text-white">
+                <span className="mono text-[10px] px-2 py-1 rounded-full bg-(--bd-green) text-white dark:bg-[#007A5D]">
                   {projectCount} projects
                 </span>
               )}
