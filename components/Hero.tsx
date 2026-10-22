@@ -78,17 +78,16 @@ export default function Hero() {
             </h1>
 
             <div className="mt-6 md:mt-8 max-w-[56ch]">
-              <p className="serif text-[24px] md:text-[30px] leading-[1.15] tracking-[-0.02em] font-normal">
-                Curious about everything.
-                <br />
-                <span className="italic opacity-60">
-                  Certain about nothing.
+              <p className="text-[24px] md:text-[30px] leading-[1.15] tracking-[-0.02em] font-normal">
+                22.46°N 91.97°E{" "}
+                <span className="text-xs opacity-70">
+                  EXPLORING THE KNOWN & UNKNOWN
                 </span>
               </p>
               <p className="mt-4 text-[15px] leading-[1.65] font-normal opacity-70 max-w-[44ch]">
-                CSE student at CUET — obsessed with how things work, from
-                relay-controlled sockets and line-followers to MERN apps and
-                Linux terminals. I learn by shipping.
+                I like understanding how things work, from simple electronics to
+                software. Still learning, still experimenting, one project at a
+                time.
               </p>
             </div>
 

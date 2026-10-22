@@ -1,5 +1,7 @@
 import { profile } from "@/data/profile";
 import {
+  dashcamProject,
+  droneProject,
   featuredProject,
   projectCount,
   projects,
@@ -7,6 +9,8 @@ import {
 } from "@/data/projects";
 import { ExternalLink } from "lucide-react";
 import { Suspense } from "react";
+import DashcamCard from "./DashcamCard";
+import DroneCard from "./DroneCard";
 import { GithubIcon } from "./Icons";
 import WeatherPreview, { WeatherFallback } from "./WeatherPreview";
 
@@ -75,11 +79,26 @@ function FeaturedProject() {
     </div>
   );
 }
-
-function ProjectCard({ project: p }: { project: Project }) {
+function spanFor(index: number, total: number) {
+  // md: pairs, and an odd last card spans the full row
+  const md =
+    total % 2 === 1 && index === total - 1 ? "md:col-span-12" : "md:col-span-6";
+  // lg: 3 per row when that divides evenly, 2 per row for 4/8/..., else 3 per row with the leftovers widened
+  if (total % 3 === 0) return `${md} lg:col-span-4`;
+  if (total % 2 === 0) return `${md} lg:col-span-6`;
+  const leftover = total % 3;
+  const inLastRow = index >= total - leftover;
+  const lg = !inLastRow
+    ? "lg:col-span-4"
+    : leftover === 2
+      ? "lg:col-span-6"
+      : "lg:col-span-12";
+  return `${md} ${lg}`;
+}
+function ProjectCard({ project: p, span }: { project: Project; span: string }) {
   return (
     <div
-      className="group relative rounded-[26px] border overflow-hidden flex flex-col md:col-span-6 lg:col-span-4"
+      className={`group relative rounded-[26px] border overflow-hidden flex flex-col ${span}`}
       style={{ borderColor: "var(--line)", background: "var(--card)" }}
     >
       <div className="p-6 md:p-7 flex flex-col flex-1">
@@ -179,11 +198,17 @@ export default function Work() {
         </div>
       </div>
 
+      <DroneCard project={droneProject} />
       <FeaturedProject />
+      <DashcamCard project={dashcamProject} />
 
       <div className="grid md:grid-cols-12 gap-5 md:gap-6">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+        {projects.map((project, i) => (
+          <ProjectCard
+            key={project.title}
+            project={project}
+            span={spanFor(i, projects.length)}
+          />
         ))}
       </div>
     </section>

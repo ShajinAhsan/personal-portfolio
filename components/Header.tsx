@@ -35,7 +35,7 @@ export default function Header() {
               S.
             </div>
             <span className="mono text-[11px] tracking-[0.2em] uppercase opacity-60 hidden sm:block">
-              CSE • CUET — 2026
+              SHAJIN AHSAN
             </span>
           </a>
           <nav

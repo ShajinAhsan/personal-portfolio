@@ -18,10 +18,27 @@ export const featuredProject = {
   liveUrl: "https://shajin-weather.web.app",
   meta: "2022 • Live",
 };
+export const dashcamProject: Project = {
+  n: "02",
+  title: "Tesla Dashcam Insight",
+  subtitle: "Video Analysis Tool",
+  desc: "Parses hours of Tesla dashcam footage to surface interesting events — detects lane changes, near-misses, and extracts clips automatically. Built for researchers and curious owners.",
+  tags: ["Python", "OpenCV", "Video Processing"],
+  year: "2026",
+};
+export const droneProject: Project = {
+  n: "03",
+  title: "Drone with MPU6050",
+  subtitle: "Gyro Stabilization • WIP",
+  desc: "Upcoming drone project using MPU6050 gyro sensor for stabilization. ESP32 + flight controller logic — work in progress, learning flight dynamics.",
+  tags: ["ESP32", "MPU6050", "Gyro"],
+  year: "2026",
+  wip: true,
+};
 
 export const projects: Project[] = [
   {
-    n: "02",
+    n: "04",
     title: "Remote Wall Socket",
     subtitle: "Relay Module • Arduino",
     desc: "Remote controlled wall socket using relay module. Control home appliances from distance using ESP-01 WiFi module. Built for home automation curiosity.",
@@ -30,7 +47,7 @@ export const projects: Project[] = [
     github: "https://github.com/shajinahsan",
   },
   {
-    n: "03",
+    n: "05",
     title: "Line Following Car",
     subtitle: "Robotics • Sensors",
     desc: "Autonomous line-following car using IR sensors and Arduino. PID tuned, obstacle aware.",
@@ -38,30 +55,14 @@ export const projects: Project[] = [
     year: "2023",
   },
   {
-    n: "04",
-    title: "Drone with MPU6050",
-    subtitle: "Gyro Stabilization • WIP",
-    desc: "Upcoming drone project using MPU6050 gyro sensor for stabilization. ESP32 + flight controller logic — work in progress, learning flight dynamics.",
-    tags: ["ESP32", "MPU6050", "Gyro"],
-    year: "2025",
-    wip: true,
-  },
-  {
-    n: "05",
+    n: "06",
     title: "CampusConnect",
     subtitle: "Student Platform",
     desc: "A unified hub for CUET students — class routines, club updates, lost & found, and peer help. Reducing friction between notice boards and reality.",
     tags: ["Next.js", "PostgreSQL", "BetterAuth"],
     year: "2026",
   },
-  {
-    n: "06",
-    title: "Tesla Dashcam Insight",
-    subtitle: "Video Analysis Tool",
-    desc: "Parses Tesla dashcam footage to surface interesting events — lane changes, near-misses, auto clip extraction. For researchers and curious owners.",
-    tags: ["Python", "OpenCV", "Video Processing"],
-    year: "2026",
-  },
+
   {
     n: "07",
     title: "Bravo",
@@ -72,4 +73,4 @@ export const projects: Project[] = [
   },
 ];
 
-export const projectCount = projects.length + 1;
+export const projectCount = projects.length + 3;
