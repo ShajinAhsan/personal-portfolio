@@ -84,3 +84,244 @@ body {
     animation: none;
   }
 }
+
+/* ── Drone stabilization demo (DroneCard) ──
+   Every element shares one 6s loop, so the drone, gyro trace and motor bars stay in sync. */
+.drone-tilt {
+  animation: drone-tilt 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.drone-motor-l,
+.drone-motor-r {
+  transform: scaleX(0.5);
+}
+
+.drone-motor-l {
+  animation: drone-motor-l 6s ease-in-out infinite;
+}
+
+.drone-motor-r {
+  animation: drone-motor-r 6s ease-in-out infinite;
+}
+
+.drone-trace {
+  animation: drone-trace 6s linear infinite;
+}
+
+.drone-cursor {
+  animation: drone-cursor 6s linear infinite;
+}
+
+.drone-status-gust,
+.drone-status-fix,
+.drone-status-ok {
+  opacity: 0;
+}
+
+.drone-status-gust {
+  animation: drone-status-gust 6s linear infinite;
+}
+
+.drone-status-fix {
+  animation: drone-status-fix 6s linear infinite;
+}
+
+.drone-status-ok {
+  animation: drone-status-ok 6s linear infinite;
+}
+
+@keyframes drone-tilt {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  8% {
+    transform: rotate(-22deg);
+  }
+
+  22% {
+    transform: rotate(13deg);
+  }
+
+  34% {
+    transform: rotate(-7deg);
+  }
+
+  45% {
+    transform: rotate(3.5deg);
+  }
+
+  55% {
+    transform: rotate(-1.5deg);
+  }
+
+  65% {
+    transform: rotate(0.6deg);
+  }
+
+  75%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes drone-motor-l {
+  0% {
+    transform: scaleX(0.5);
+  }
+
+  8% {
+    transform: scaleX(0.7);
+  }
+
+  22% {
+    transform: scaleX(0.38);
+  }
+
+  34% {
+    transform: scaleX(0.56);
+  }
+
+  45% {
+    transform: scaleX(0.47);
+  }
+
+  55% {
+    transform: scaleX(0.51);
+  }
+
+  65% {
+    transform: scaleX(0.49);
+  }
+
+  75%,
+  100% {
+    transform: scaleX(0.5);
+  }
+}
+
+@keyframes drone-motor-r {
+  0% {
+    transform: scaleX(0.5);
+  }
+
+  8% {
+    transform: scaleX(0.3);
+  }
+
+  22% {
+    transform: scaleX(0.62);
+  }
+
+  34% {
+    transform: scaleX(0.44);
+  }
+
+  45% {
+    transform: scaleX(0.53);
+  }
+
+  55% {
+    transform: scaleX(0.49);
+  }
+
+  65% {
+    transform: scaleX(0.51);
+  }
+
+  75%,
+  100% {
+    transform: scaleX(0.5);
+  }
+}
+
+@keyframes drone-trace {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes drone-cursor {
+  0% {
+    left: 0%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes drone-status-gust {
+
+  0%,
+  12% {
+    opacity: 1;
+  }
+
+  14%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes drone-status-fix {
+
+  0%,
+  12% {
+    opacity: 0;
+  }
+
+  14%,
+  68% {
+    opacity: 1;
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes drone-status-ok {
+
+  0%,
+  68% {
+    opacity: 0;
+  }
+
+  70%,
+  98% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .drone-tilt,
+  .drone-motor-l,
+  .drone-motor-r,
+  .drone-trace,
+  .drone-cursor,
+  .drone-status-gust,
+  .drone-status-fix,
+  .drone-status-ok {
+    animation: none;
+  }
+
+  .drone-status-ok {
+    opacity: 1;
+  }
+
+  .drone-cursor {
+    display: none;
+  }
+}
