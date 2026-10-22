@@ -311,6 +311,7 @@ function Prompt() {
 export default function TerminalCard() {
   const [entries, setEntries] = useState<Entry[]>([]);
   const [line, setLine] = useState("");
+  const [introStarted, setIntroStarted] = useState(false);
   const [busy, setBusy] = useState(true); // true while the intro auto-types
   const [focused, setFocused] = useState(false);
   const [history, setHistory] = useState<string[]>([]);
@@ -318,6 +319,7 @@ export default function TerminalCard() {
 
   const histIdx = useRef<number | null>(null);
   const nextId = useRef(0);
+  const terminalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const mailtoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -368,8 +370,34 @@ export default function TerminalCard() {
     };
   }, []);
 
+  // Wait until the card is visible so the intro is not missed above the fold.
+  useEffect(() => {
+    const el = terminalRef.current;
+    if (!el) return;
+
+    if (!("IntersectionObserver" in window)) {
+      const timeout = setTimeout(() => setIntroStarted(true), 0);
+      return () => clearTimeout(timeout);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setIntroStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
+
   // Intro: types a few commands on its own, then hands over control.
   useEffect(() => {
+    if (!introStarted) return;
+
     const runId = ++introRunRef.current;
     let alive = true;
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -408,7 +436,7 @@ export default function TerminalCard() {
     return () => {
       alive = false;
     };
-  }, [push]);
+  }, [introStarted, push]);
 
   // Keep the newest output in view without scrolling the page itself.
   useEffect(() => {
@@ -468,6 +496,7 @@ export default function TerminalCard() {
 
   return (
     <div
+      ref={terminalRef}
       className="w-full overflow-hidden rounded-2xl border"
       style={{ borderColor: "var(--line)", background: "var(--card)" }}
     >
