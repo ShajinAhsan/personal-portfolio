@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function NotFound() {
@@ -18,8 +19,7 @@ export default function NotFound() {
           backgroundImage:
             "linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px)",
           backgroundSize: "56px 56px",
-          maskImage:
-            "linear-gradient(to bottom, black 0%, transparent 82%)",
+          maskImage: "linear-gradient(to bottom, black 0%, transparent 82%)",
         }}
       />
 
@@ -61,7 +61,8 @@ export default function NotFound() {
               href="/"
               className="mono inline-flex h-11 items-center rounded-full bg-(--text) px-6 text-[11px] font-medium uppercase tracking-[0.14em] text-(--bg) transition hover:opacity-85"
             >
-              Return home <span className="ml-3 text-base">→</span>
+              <span>Return Home</span>
+              <ArrowRight aria-hidden="true" className="ml-2" size={15} />
             </Link>
             <Link
               href="/#work"
@@ -78,7 +79,10 @@ export default function NotFound() {
           className="relative overflow-hidden rounded-[28px] border bg-(--card) p-5 shadow-[0_24px_64px_-20px_rgba(0,0,0,0.18)] md:p-7"
           style={{ borderColor: "var(--line)" }}
         >
-          <div className="flex items-center justify-between border-b pb-4" style={{ borderColor: "var(--line)" }}>
+          <div
+            className="flex items-center justify-between border-b pb-4"
+            style={{ borderColor: "var(--line)" }}
+          >
             <div className="flex gap-1.5" aria-hidden="true">
               <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
@@ -89,7 +93,7 @@ export default function NotFound() {
             </span>
           </div>
 
-          <div className="mono py-8 text-[11px] leading-[2] sm:text-xs">
+          <div className="mono py-8 text-[11px] leading-loose sm:text-xs">
             <p className="text-(--text-2)">
               <span className="text-(--bd-green)">shajin@me</span> ~/portfolio
               <span className="text-(--text-3)"> % </span>
@@ -97,7 +101,7 @@ export default function NotFound() {
             </p>
             <p className="mt-5 text-(--bd-red)">
               <span className="mr-2" aria-hidden="true">
-                ×
+                x
               </span>
               route not found
             </p>
@@ -111,7 +115,7 @@ export default function NotFound() {
 
           <div
             aria-hidden="true"
-            className="relative h-36 overflow-hidden rounded-2xl border bg-(--bg-2)"
+            className="relative h-50 overflow-hidden rounded-2xl border bg-(--bg-2)"
             style={{ borderColor: "var(--line)" }}
           >
             <div
@@ -122,17 +126,16 @@ export default function NotFound() {
               className="absolute left-1/2 top-1/2 h-12 w-12 -translate-x-1/2 -translate-y-1/2 rounded-full border"
               style={{ borderColor: "var(--accent)" }}
             />
-            <span
-              className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-(--accent-2) shadow-[0_0_18px_var(--accent-2)]"
-            />
+            <span className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-(--accent-2) shadow-[0_0_18px_var(--accent-2)]" />
             <span
               className="absolute left-1/2 top-1/2 h-px w-1/2 origin-left animate-spin"
               style={{
-                background: "linear-gradient(90deg, var(--accent), transparent)",
+                background:
+                  "linear-gradient(90deg, var(--accent), transparent)",
                 animationDuration: "4s",
               }}
             />
-            <span className="absolute bottom-3 left-3 mono text-[9px] uppercase tracking-[0.16em] text-(--text-2)">
+            <span className="absolute bottom-2 left-3 mono text-[9px] uppercase tracking-[0.16em] text-(--text-2)">
               signal lost / searching
             </span>
           </div>
