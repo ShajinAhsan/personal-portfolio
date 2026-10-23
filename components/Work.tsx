@@ -1,5 +1,6 @@
 import { profile } from "@/data/profile";
 import {
+  attendanceProject,
   dashcamProject,
   droneProject,
   lineFollowerProject,
@@ -9,6 +10,7 @@ import {
 } from "@/data/projects";
 import { ExternalLink } from "lucide-react";
 import { Suspense } from "react";
+import AttendanceCard from "./AttendanceCard";
 import DashcamCard from "./DashcamCard";
 import DroneCard from "./DroneCard";
 import { GithubIcon } from "./Icons";
@@ -26,7 +28,6 @@ function WeatherProject() {
     >
       <div className="md:col-span-7 p-7 md:p-9 flex flex-col">
         <div className="flex items-center gap-3">
-          <span className="mono text-[11px] tracking-[0.2em]">{p.n}</span>
           <span className="h-px w-8 bg-current opacity-20" />
           <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             Live since <time dateTime={p.year}>{p.year}</time>
@@ -111,11 +112,12 @@ export default function Work() {
         </div>
       </div>
 
-      <DroneCard project={droneProject} />
       <WeatherProject />
+      <DroneCard project={droneProject} />
       <DashcamCard project={dashcamProject} />
-      <SocketCard project={socketProject} />
       <LineFollowerCard project={lineFollowerProject} />
+      <SocketCard project={socketProject} />
+      <AttendanceCard project={attendanceProject} />
     </section>
   );
 }

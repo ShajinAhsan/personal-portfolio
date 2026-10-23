@@ -128,7 +128,7 @@ export default function NotFound() {
             />
             <span className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-(--accent-2) shadow-[0_0_18px_var(--accent-2)]" />
             <span
-              className="absolute left-1/2 top-1/2 h-px w-1/2 origin-left animate-spin"
+              className="absolute left-1/2 top-1/2 h-px w-1/2 origin-left animate-spin motion-reduce:animate-none"
               style={{
                 background:
                   "linear-gradient(90deg, var(--accent), transparent)",

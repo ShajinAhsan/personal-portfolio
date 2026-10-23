@@ -330,10 +330,9 @@ export default function TerminalCard() {
   const announcementCountRef = useRef(0);
 
   const push = useCallback((cmd: string, out: ReactNode) => {
-    setEntries((e) => [
-      ...e,
-      { id: nextId.current++, cmd, out },
-    ].slice(-MAX_ENTRIES));
+    setEntries((e) =>
+      [...e, { id: nextId.current++, cmd, out }].slice(-MAX_ENTRIES),
+    );
   }, []);
 
   const exec = useCallback(
@@ -496,12 +495,15 @@ export default function TerminalCard() {
   };
 
   const showHint = !busy && !line && entries.length <= INTRO.length;
+  const terminalBorderColor = focused
+    ? "var(--control-line)"
+    : "var(--line)";
 
   return (
     <div
       ref={terminalRef}
       className="w-full overflow-hidden rounded-2xl border"
-      style={{ borderColor: "var(--line)", background: "var(--card)" }}
+      style={{ borderColor: terminalBorderColor, background: "var(--card)" }}
     >
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {announcement}
@@ -509,7 +511,7 @@ export default function TerminalCard() {
       {/* title bar */}
       <div
         className="flex items-center justify-between border-b px-4 py-3"
-        style={{ borderColor: "var(--line)" }}
+        style={{ borderColor: terminalBorderColor }}
       >
         <div className="flex w-24 items-center gap-1.5">
           <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
@@ -578,21 +580,21 @@ export default function TerminalCard() {
         <aside
           aria-label="System summary"
           className="mono hidden flex-col gap-5 border-l p-6 text-[13px] leading-relaxed lg:flex"
-          style={{ borderColor: "var(--line)" }}
+          style={{ borderColor: terminalBorderColor }}
         >
           <InfoList />
           <p className={`${dim} mt-auto text-xs`}>
-              Tab completes commands. <ArrowUp aria-hidden="true" size={11} />{" "}
-              <ArrowDown aria-hidden="true" size={11} /> walks history. Ctrl+L
-              clears the screen.
-            </p>
+            Tab completes commands. <ArrowUp aria-hidden="true" size={11} />{" "}
+            <ArrowDown aria-hidden="true" size={11} /> walks history. Ctrl+L
+            clears the screen.
+          </p>
         </aside>
       </div>
 
       {/* tap targets for phones, shortcuts for everyone */}
       <div
         className="flex flex-wrap gap-2 border-t px-4 py-2.5"
-        style={{ borderColor: "var(--line)" }}
+        style={{ borderColor: terminalBorderColor }}
       >
         {SUGGESTIONS.map((c) => (
           <button

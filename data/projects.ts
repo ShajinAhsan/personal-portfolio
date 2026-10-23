@@ -52,6 +52,14 @@ export const lineFollowerProject: Project = {
   tags: ["Arduino Nano", "IR Sensors"],
   year: "2023",
 };
+export const attendanceProject: Project = {
+  n: "06",
+  title: "Face Attendance Logger",
+  subtitle: "Computer Vision • Real-Time",
+  desc: "Replaces manual roll calls. It reads a live camera feed, detects every face in the frame, turns each one into a 128-dimensional embedding, and matches it against a pre-encoded database. Every match lands on an admin dashboard with a timestamp.",
+  tags: ["Python", "OpenCV", "Face Embeddings", "SQLite / PostgreSQL"],
+  year: "2026",
+};
 
 export const projects: Project[] = [
   weatherProject,
@@ -59,6 +67,6 @@ export const projects: Project[] = [
   droneProject,
   socketProject,
   lineFollowerProject,
+  attendanceProject,
 ];
-
 export const projectCount = projects.length;

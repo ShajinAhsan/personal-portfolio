@@ -208,7 +208,6 @@ export default function DroneCard({ project: p }: { project: Project }) {
     >
       <div className="md:col-span-5 p-7 md:p-9 flex flex-col">
         <div className="flex items-center gap-3">
-          <span className="mono text-[11px] tracking-[0.2em]">{p.n}</span>
           <span className="h-px w-8 bg-current opacity-20" />
           <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             <time dateTime={p.year}>{p.year}</time> • In the lab
@@ -256,8 +255,8 @@ export default function DroneCard({ project: p }: { project: Project }) {
             </a>
           )}
           <span
-            className="h-9 px-5 rounded-full border inline-flex items-center mono text-[10px] tracking-widest uppercase"
-            style={{ borderColor: "var(--line)" }}
+            className="h-9 px-5 rounded-full border inline-flex items-center mono text-[10px] tracking-widest uppercase text-(--text-2)"
+            style={{ borderColor: "var(--control-line)" }}
           >
             Building
           </span>
