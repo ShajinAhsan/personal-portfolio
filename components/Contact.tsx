@@ -1,5 +1,9 @@
 import { profile } from "@/data/profile";
-import { Mail, MapPin } from "lucide-react";
+import {
+  ArrowUpRight,
+  GraduationCap,
+  Mail,
+} from "lucide-react";
 import Image from "next/image";
 import ContactForm from "./ContactForm";
 import { GithubIcon } from "./Icons";
@@ -10,6 +14,9 @@ const socialLinks = [
   { label: "Twitter", value: profile.twitterHandle, href: profile.twitter },
 ];
 
+const glow = (color: string) =>
+  `radial-gradient(closest-side, ${color} 0%, ${color} 15%, color-mix(in srgb, ${color} 60%, transparent) 55%, color-mix(in srgb, ${color} 20%, transparent) 78%, transparent 100%)`;
+
 export default function Contact() {
   return (
     <section
@@ -19,112 +26,145 @@ export default function Contact() {
     >
       <div className="grid grid-cols-12 gap-y-10 lg:gap-x-10">
         <div className="col-span-12 lg:col-span-5">
-          <div className="mono text-[11px] tracking-[0.2em] uppercase text-(--text-2) mb-6">
-            (05) — Contact
+          <div className="mb-7">
+            <div className="mono text-[11px] tracking-[0.2em] uppercase text-(--text-2)">
+              (05) — Contact
+            </div>
           </div>
-          <h2 className="text-[34px] md:text-[48px] font-black tracking-[-0.03em] leading-[0.9]">
-            Let&apos;s build
-            <br />
-            something useful.
-          </h2>
+          <div className="relative isolate grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-1">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -z-10 left-[32%] top-[42%] h-70 w-90 -translate-x-1/2 -translate-y-1/2 opacity-[0.14] sm:left-[28%] sm:h-80 sm:w-110"
+              style={{ background: glow("var(--accent-2)") }}
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -z-10 left-[35%] top-[48%] h-45 w-60 -translate-x-1/2 -translate-y-1/2 opacity-[0.035]"
+              style={{ background: glow("var(--bd-red)") }}
+            />
+            <h2 className="relative text-[42px] font-black leading-[0.86] tracking-[-0.05em] md:text-[58px]">
+              Bring the
+              <br />
+              <span className="text-(--accent)">spark.</span>
+            </h2>
+            <p className="relative max-w-[34ch] text-[14px] leading-[1.65] text-(--text-2) sm:self-end lg:mt-5">
+              Have a project, question, or delightfully impractical idea? The
+              inbox is open.
+            </p>
+          </div>
 
-          <div className="mt-8 space-y-5">
-            <div className="flex gap-4">
+          <div className="mt-8 grid gap-3">
+            <div
+              className="group rounded-[18px] border p-4 transition-colors hover:bg-(--bg-2)"
+              style={{ borderColor: "var(--line)" }}
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex gap-3">
+                  <div
+                    aria-hidden="true"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border"
+                    style={{ borderColor: "var(--line)" }}
+                  >
+                    <Mail size={15} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
+                      Personal
+                    </div>
+                    <a
+                      href={`mailto:${profile.personalEmail}`}
+                      className="mt-1 block break-all text-[14px] font-medium underline decoration-(--bd-green) decoration-2 underline-offset-3"
+                    >
+                      {profile.personalEmail}
+                    </a>
+                  </div>
+                </div>
+                <ArrowUpRight
+                  aria-hidden="true"
+                  size={15}
+                  className="text-(--text-3) transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </div>
               <div
-                className="h-10 w-10 rounded-full border flex items-center justify-center shrink-0"
+                className="mt-3 border-t pt-3 mono text-[10px] text-(--text-2)"
                 style={{ borderColor: "var(--line)" }}
               >
-                <Mail size={16} />
-              </div>
-              <div className="min-w-0">
-                <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
-                  Personal Email
-                </div>
-                <a
-                  href={`mailto:${profile.personalEmail}`}
-                  className="mt-1 text-[14px] font-medium underline decoration-(--bd-green) decoration-2 block break-all"
-                >
-                  {profile.personalEmail}
-                </a>
-                <div className="mono text-[11px] text-(--text-2) mt-1">
-                  Primary • Fast response
-                </div>
+                Primary channel • Fast response
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div
+              className="group rounded-[18px] border p-4 transition-colors hover:bg-(--bg-2)"
+              style={{ borderColor: "var(--line)" }}
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex gap-3">
+                  <div
+                    aria-hidden="true"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border"
+                    style={{ borderColor: "var(--line)" }}
+                  >
+                    <GraduationCap size={16} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
+                      Institutional
+                    </div>
+                    <a
+                      href={`mailto:${profile.institutionalEmail}`}
+                      className="mt-1 block break-all text-[14px] font-medium"
+                    >
+                      {profile.institutionalEmail}
+                    </a>
+                  </div>
+                </div>
+                <ArrowUpRight
+                  aria-hidden="true"
+                  size={15}
+                  className="text-(--text-3) transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </div>
               <div
-                className="h-10 w-10 rounded-full border flex items-center justify-center shrink-0"
+                className="mt-3 border-t pt-3 mono text-[10px] text-(--text-2)"
                 style={{ borderColor: "var(--line)" }}
               >
-                <span aria-hidden="true">🎓</span>
-              </div>
-              <div className="min-w-0">
-                <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
-                  Institutional
-                </div>
-                <a
-                  href={`mailto:${profile.institutionalEmail}`}
-                  className="mt-1 text-[14px] font-medium block break-all"
-                >
-                  {profile.institutionalEmail}
-                </a>
-                <div className="mono text-[11px] text-(--text-2) mt-1">
-                  CUET CSE • Academic use
-                </div>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div
-                className="h-10 w-10 rounded-full border flex items-center justify-center shrink-0"
-                style={{ borderColor: "var(--line)" }}
-              >
-                <MapPin size={16} />
-              </div>
-              <div className="min-w-0">
-                <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
-                  Location
-                </div>
-                <div className="mt-1 text-[14px] font-medium">
-                  Jamalpur / Dhaka / Chittagong, Bangladesh
-                </div>
-                <div className="mono text-[11px] text-(--text-2) mt-1">
-                  Open to remote &amp; campus collabs
-                </div>
+                CUET CSE • Academic use
               </div>
             </div>
           </div>
 
           <div
-            className="mt-8 rounded-[18px] border p-4 bg-(--bg-2) flex items-center gap-4"
+            className="mt-10 flex items-center justify-between gap-4 border-y py-4"
             style={{ borderColor: "var(--line)" }}
           >
-            <Image
-              src={profile.portrait}
-              alt="Shajin"
-              width={96}
-              height={96}
-              className="h-12 w-12 rounded-full object-cover border"
-              style={{ borderColor: "var(--line)" }}
-            />
-            <div>
-              <div className="text-[14px] font-semibold">{profile.name}</div>
-              <div className="mono text-[11px] text-(--text-2)">
-                cse@cuet • {profile.githubHandle}
+            <div className="flex min-w-0 items-center gap-3">
+              <Image
+                src={profile.portrait}
+                alt=""
+                width={80}
+                height={80}
+                className="h-12 w-12 shrink-0 rounded-full object-cover"
+              />
+              <div className="min-w-0">
+                <div className="text-[14px] font-semibold">{profile.name}</div>
+                <div className="mono text-[10px] tracking-[0.12em] uppercase text-(--text-2)">
+                  Personal portfolio
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="mt-4 flex gap-2">
             <a
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 h-11 rounded-full border flex items-center justify-center gap-2 mono text-[11px] tracking-widest uppercase bg-(--card) hover:bg-(--bg-2) transition"
-              style={{ borderColor: "var(--line)" }}
+              className="group flex shrink-0 items-center gap-1.5 mono text-[10px] tracking-[0.12em] uppercase text-(--text-2) transition-colors hover:text-(--text)"
             >
-              <GithubIcon size={14} /> github.com/{profile.githubHandle}
+              <GithubIcon size={13} />
+              <span>{profile.githubHandle}</span>
+              <ArrowUpRight
+                aria-hidden="true"
+                size={12}
+                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
             </a>
           </div>
         </div>

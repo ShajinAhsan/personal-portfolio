@@ -204,7 +204,7 @@ export default function DroneCard({ project: p }: { project: Project }) {
     <article
       aria-labelledby={`project-${p.n}-title`}
       className="group relative rounded-[28px] border overflow-hidden grid md:grid-cols-12 mb-6"
-      style={{ borderColor: "var(--line)", background: "var(--card)" }}
+      style={{ borderColor: "var(--control-line)", background: "var(--card)" }}
     >
       <div className="md:col-span-5 p-7 md:p-9 flex flex-col">
         <div className="flex items-center gap-3">

@@ -46,7 +46,7 @@ const bracket = (x: number, y: number, w: number, h: number, l = 4) =>
 function AttendancePreview() {
   return (
     <div
-      className="relative min-h-[220px] md:min-h-0 p-3 bg-[#0F0F0E] md:col-span-7"
+      className="relative min-h-[220px] md:min-h-0 p-3 bg-[#0F0F0E] md:col-span-7 md:order-first"
       aria-hidden="true"
     >
       <div
@@ -270,9 +270,8 @@ export default function AttendanceCard({ project: p }: { project: Project }) {
     <article
       aria-labelledby={`project-${p.n}-title`}
       className="group relative rounded-[28px] border overflow-hidden grid md:grid-cols-12 mb-6"
-      style={{ borderColor: "var(--line)", background: "var(--card)" }}
+      style={{ borderColor: "var(--control-line)", background: "var(--card)" }}
     >
-      <AttendancePreview />
       <div className="md:col-span-5 p-7 md:p-9 flex flex-col">
         <div className="flex items-center gap-3">
           <span className="mono text-[11px] tracking-[0.2em]">{p.n}</span>
@@ -368,6 +367,7 @@ export default function AttendanceCard({ project: p }: { project: Project }) {
           </span>
         </div>
       </div>
+      <AttendancePreview />
     </article>
   );
 }

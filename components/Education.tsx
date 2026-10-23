@@ -10,7 +10,10 @@ export default function Education() {
       <div className="grid grid-cols-12 gap-y-8 md:gap-x-8">
         <div className="col-span-12 md:col-span-3">
           <div className="sticky top-23">
-            <h2 id="education-title" className="mono text-[11px] tracking-[0.2em] uppercase text-(--text-2)">
+            <h2
+              id="education-title"
+              className="mono text-[11px] tracking-[0.2em] uppercase text-(--text-2)"
+            >
               (03) — Education &amp; Journey
             </h2>
             <div className="mt-6 hidden md:block space-y-3">
@@ -94,7 +97,7 @@ export default function Education() {
 
               <div className="relative">
                 <span
-                  className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full opacity-66"
+                  className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full"
                   style={{ background: "var(--accent)" }}
                 />
                 <div className="mono text-[11px] text-(--text-2) mb-1">
@@ -111,7 +114,7 @@ export default function Education() {
 
               <div className="relative">
                 <span
-                  className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full opacity-77"
+                  className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full"
                   style={{ background: "var(--bd-red)" }}
                 />
                 <div className="mono text-[11px] text-(--text-2) mb-1">

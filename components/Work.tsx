@@ -24,7 +24,7 @@ function WeatherProject() {
     <article
       aria-labelledby={`project-${p.n}-title`}
       className="rounded-[28px] border overflow-hidden mb-6 grid md:grid-cols-12"
-      style={{ borderColor: "var(--line)", background: "var(--card)" }}
+      style={{ borderColor: "var(--control-line)", background: "var(--card)" }}
     >
       <div className="md:col-span-7 p-7 md:p-9 flex flex-col">
         <div className="flex items-center gap-3">
