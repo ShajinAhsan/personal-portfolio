@@ -274,7 +274,6 @@ export default function AttendanceCard({ project: p }: { project: Project }) {
     >
       <div className="md:col-span-5 p-7 md:p-9 flex flex-col">
         <div className="flex items-center gap-3">
-          <span className="mono text-[11px] tracking-[0.2em]">{p.n}</span>
           <span className="h-px w-8 bg-current opacity-20" />
           <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             {p.year} • Computer vision
