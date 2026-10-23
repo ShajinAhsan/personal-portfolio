@@ -1,9 +1,5 @@
 import { profile } from "@/data/profile";
-import {
-  ArrowUpRight,
-  GraduationCap,
-  Mail,
-} from "lucide-react";
+import { ArrowUpRight, GraduationCap, Mail } from "lucide-react";
 import Image from "next/image";
 import ContactForm from "./ContactForm";
 import { GithubIcon } from "./Icons";
@@ -28,7 +24,7 @@ export default function Contact() {
         <div className="col-span-12 lg:col-span-5">
           <div className="mb-7">
             <div className="mono text-[11px] tracking-[0.2em] uppercase text-(--text-2)">
-              (05) — Contact
+              (06) — Contact
             </div>
           </div>
           <div className="relative isolate grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-1">
@@ -45,7 +41,7 @@ export default function Contact() {
             <h2 className="relative text-[42px] font-black leading-[0.86] tracking-[-0.05em] md:text-[58px]">
               Bring the
               <br />
-              <span className="text-(--accent)">spark.</span>
+              <span className="text-(--accent-2)">spark.</span>
             </h2>
             <p className="relative max-w-[34ch] text-[14px] leading-[1.65] text-(--text-2) sm:self-end lg:mt-5">
               Have a project, question, or delightfully impractical idea? The

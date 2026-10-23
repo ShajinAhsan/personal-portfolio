@@ -4,6 +4,7 @@ import Education from "@/components/Education";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Now from "@/components/Now";
 import Work from "@/components/Work";
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
         <About />
         <Education />
         <Work />
+        <Now />
         <Contact />
       </main>
       <Footer />

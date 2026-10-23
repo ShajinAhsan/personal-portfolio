@@ -1197,3 +1197,65 @@ body {
     animation: none;
   }
 }
+
+/* ── Now section: drone hover demo (Now) ──
+   The drone itself is animated in the SVG (one 10s loop). These classes handle the floor grid and the spinning props. */
+.fl-hstatic {
+  display: none;
+}
+
+.fl-still {
+  display: none;
+}
+
+.fl-hline {
+  animation: fl-hline 3s cubic-bezier(0.7, 0, 1, 0.6) infinite;
+}
+
+.fl-prop {
+  animation: fl-prop 0.4s linear infinite;
+}
+
+@keyframes fl-hline {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translateY(165px);
+    opacity: 0.9;
+  }
+}
+
+@keyframes fl-prop {
+  to {
+    stroke-dashoffset: -76;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fl-live {
+    display: none;
+  }
+
+  .fl-still {
+    display: block;
+  }
+
+  .fl-hline {
+    display: none;
+  }
+
+  .fl-hstatic {
+    display: block;
+  }
+
+  .fl-prop {
+    animation: none;
+  }
+}
