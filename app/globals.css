@@ -1216,6 +1216,12 @@ body {
   animation: fl-prop 0.4s linear infinite;
 }
 
+/* Set by the IntersectionObserver in Now(): pauses CSS animations offscreen */
+[data-paused="true"] .fl-hline,
+[data-paused="true"] .fl-prop {
+  animation-play-state: paused;
+}
+
 @keyframes fl-hline {
   0% {
     transform: translateY(0);
@@ -1226,9 +1232,13 @@ body {
     opacity: 0.9;
   }
 
+  70% {
+    opacity: 0.9;
+  }
+
   100% {
     transform: translateY(165px);
-    opacity: 0.9;
+    opacity: 0;
   }
 }
 
@@ -1257,5 +1267,18 @@ body {
 
   .fl-prop {
     animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+
+  /* 3 fewer drone copies */
+  .fl-trail {
+    display: none;
+  }
+
+  /* 9 scan lines → 4 */
+  .fl-hline:nth-child(n + 5) {
+    display: none;
   }
 }
