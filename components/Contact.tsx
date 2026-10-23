@@ -41,7 +41,7 @@ export default function Contact() {
             <h2 className="relative text-[42px] font-black leading-[0.86] tracking-[-0.05em] md:text-[58px]">
               Bring the
               <br />
-              <span className="text-(--accent-2)">spark.</span>
+              <span className="text-(--bd-green)">spark.</span>
             </h2>
             <p className="relative max-w-[34ch] text-[14px] leading-[1.65] text-(--text-2) sm:self-end lg:mt-5">
               Have a project, question, or delightfully impractical idea? The

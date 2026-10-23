@@ -21,7 +21,7 @@ export default function Footer() {
           <h2 className="serif max-w-180 text-[clamp(3.5rem,9vw,8rem)] leading-[0.82] tracking-[-0.05em]">
             Got a weird
             <br />
-            <span className="text-(--accent-2)">idea?</span>
+            <span className="text-(--bd-green)">idea?</span>
           </h2>
           <div>
             <p className="mb-4 max-w-75 text-sm leading-relaxed text-(--text-2)">
@@ -100,7 +100,7 @@ export default function Footer() {
               <Activity
                 aria-hidden="true"
                 size={13}
-                className="text-(--accent-2)"
+                className="text-(--bd-green) animate-pulse"
               />
               <span>System online</span>
             </div>
