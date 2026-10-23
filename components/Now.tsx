@@ -53,6 +53,8 @@ const STREAKS = [
   { y: 210, len: 130 },
   { y: 245, len: 90 },
 ];
+const sideFade =
+  "linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%)";
 
 function Motion({
   type,
@@ -166,7 +168,96 @@ function GaugeRow({
     </g>
   );
 }
+const TRACE = { x: 640, y: 40, w: 150, h: 56 };
+const tracePts = PROFILE.map(([x], i) => [
+  TRACE.x + KEY_TIMES[i] * TRACE.w,
+  TRACE.y + TRACE.h / 2 - (x / 160) * (TRACE.h / 2 - 4),
+]);
+// smooth the polyline with quadratic midpoints
+const tracePath =
+  `M${tracePts[0][0]} ${tracePts[0][1]} ` +
+  tracePts
+    .slice(1)
+    .map(([x, y], i) => {
+      const [px, py] = tracePts[i];
+      return `Q${px.toFixed(1)} ${py.toFixed(1)} ${((px + x) / 2).toFixed(1)} ${((py + y) / 2).toFixed(1)}`;
+    })
+    .join(" ") +
+  ` L${tracePts[tracePts.length - 1][0]} ${tracePts[tracePts.length - 1][1]}`;
 
+function ErrorTrace() {
+  const mid = TRACE.y + TRACE.h / 2;
+  return (
+    <g>
+      <clipPath id="fl-trace-clip">
+        <rect x={TRACE.x} y={TRACE.y - 4} height={TRACE.h + 8} width="0">
+          <animate
+            attributeName="width"
+            values={`0;${TRACE.w};${TRACE.w}`}
+            keyTimes="0;0.95;1"
+            dur={`${T}s`}
+            repeatCount="indefinite"
+          />
+        </rect>
+      </clipPath>
+      <text
+        x={TRACE.x}
+        y={TRACE.y - 10}
+        className="mono"
+        fontSize="9"
+        letterSpacing="2"
+        fill="currentColor"
+        fillOpacity="0.5"
+      >
+        POSITION ERROR
+      </text>
+      <line
+        x1={TRACE.x}
+        y1={mid}
+        x2={TRACE.x + TRACE.w}
+        y2={mid}
+        stroke="currentColor"
+        strokeOpacity="0.25"
+        strokeDasharray="2 4"
+      />
+      <line
+        x1={TRACE.x}
+        y1={TRACE.y}
+        x2={TRACE.x}
+        y2={TRACE.y + TRACE.h}
+        stroke="currentColor"
+        strokeOpacity="0.25"
+      />
+      <path
+        d={tracePath}
+        clipPath="url(#fl-trace-clip)"
+        fill="none"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        style={{ stroke: "var(--accent)" }}
+      />
+      {/* playhead */}
+      <line
+        x1="0"
+        y1={TRACE.y - 2}
+        x2="0"
+        y2={TRACE.y + TRACE.h + 2}
+        stroke="currentColor"
+        strokeOpacity="0.4"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="translate"
+          values={`${TRACE.x} 0;${TRACE.x + TRACE.w} 0;${TRACE.x + TRACE.w} 0`}
+          keyTimes="0;0.95;1"
+          dur={`${T}s`}
+          repeatCount="indefinite"
+        />
+      </line>
+    </g>
+  );
+}
 function DroneScene() {
   return (
     <svg
@@ -178,26 +269,6 @@ function DroneScene() {
       style={{ color: "var(--text)" }}
     >
       <defs>
-        <radialGradient id="fl-glow-a">
-          <stop
-            offset="0"
-            style={{ stopColor: "var(--accent-2)", stopOpacity: 0.3 }}
-          />
-          <stop
-            offset="1"
-            style={{ stopColor: "var(--accent-2)", stopOpacity: 0 }}
-          />
-        </radialGradient>
-        <radialGradient id="fl-glow-b">
-          <stop
-            offset="0"
-            style={{ stopColor: "var(--bd-green)", stopOpacity: 0.22 }}
-          />
-          <stop
-            offset="1"
-            style={{ stopColor: "var(--bd-green)", stopOpacity: 0 }}
-          />
-        </radialGradient>
         <radialGradient id="fl-shadow">
           <stop
             offset="0"
@@ -211,7 +282,8 @@ function DroneScene() {
         <linearGradient id="fl-fade" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#fff" stopOpacity="0" />
           <stop offset="0.35" stopColor="#fff" stopOpacity="0.7" />
-          <stop offset="1" stopColor="#fff" stopOpacity="1" />
+          <stop offset="0.75" stopColor="#fff" stopOpacity="1" />
+          <stop offset="1" stopColor="#fff" stopOpacity="0" />
         </linearGradient>
         <mask id="fl-mask">
           <rect
@@ -292,10 +364,6 @@ function DroneScene() {
         </g>
       </defs>
 
-      {/* Sky glow */}
-      <circle cx={ANCHOR.x} cy={ANCHOR.y} r="340" fill="url(#fl-glow-a)" />
-      <circle cx="640" cy="300" r="240" fill="url(#fl-glow-b)" />
-
       {/* Wind streaks: only fly past during the gust */}
       <g
         className="fl-live"
@@ -365,6 +433,29 @@ function DroneScene() {
           values={`${GREEN};${RED};${AMBER};${GREEN};${GREEN}`}
         />
         <ellipse cx="0" cy="0" rx="130" ry="20" strokeDasharray="5 6" />
+        <ellipse cx="0" cy="0" rx="130" ry="20" strokeWidth="1.2" opacity="0">
+          <animate
+            attributeName="rx"
+            values="130;130;130;175;175"
+            keyTimes="0;0.72;0.73;0.86;1"
+            dur={`${T}s`}
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="ry"
+            values="20;20;20;27;27"
+            keyTimes="0;0.72;0.73;0.86;1"
+            dur={`${T}s`}
+            repeatCount="indefinite"
+          />
+          <animate
+            attributeName="opacity"
+            values="0;0;0.9;0;0"
+            keyTimes="0;0.72;0.73;0.86;1"
+            dur={`${T}s`}
+            repeatCount="indefinite"
+          />
+        </ellipse>
         <path
           d="M-156 0 H-120 M120 0 H156 M0 -26 V-14 M0 14 V26"
           strokeLinecap="round"
@@ -518,7 +609,7 @@ function DroneScene() {
             ● CORRECTING
           </text>
         </g>
-
+        <ErrorTrace />
         {/* Attitude gauges */}
         <GaugeRow x={270} y={424} label="ROLL" readings={rollReadings} />
         <GaugeRow x={540} y={424} label="DRIFT" readings={driftReadings} />
@@ -571,9 +662,6 @@ function DroneScene() {
 }
 
 export default function Now() {
-  const edgeFade =
-    "radial-gradient(ellipse 78% 88% at 50% 46%, #000 55%, transparent 100%)";
-
   return (
     <section
       id="now"
@@ -607,8 +695,8 @@ export default function Now() {
       </div>
 
       <div
-        className="relative mt-10 md:mt-14 w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[1000/440]"
-        style={{ maskImage: edgeFade, WebkitMaskImage: edgeFade }}
+        className="relative mt-10 md:mt-14 w-full aspect-4/3 sm:aspect-video lg:aspect-1000/440"
+        style={{ maskImage: sideFade, WebkitMaskImage: sideFade }}
       >
         <DroneScene />
       </div>
