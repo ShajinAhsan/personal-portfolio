@@ -55,7 +55,7 @@ function AttendancePreview() {
           borderColor: "color-mix(in srgb, var(--line) 60%, transparent)",
         }}
       >
-        <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/40">
+        <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/70">
           <span>Attendance.app / Live Feed</span>
           <div className="flex gap-1.5">
             <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
@@ -186,7 +186,7 @@ function AttendancePreview() {
               <span className="h-1.5 w-1.5 rounded-full bg-[#FF5F57] animate-pulse" />{" "}
               CAM 01 • LIVE
             </div>
-            <div className="absolute right-2 top-2 mono text-[7px] text-white/50">
+            <div className="absolute right-2 top-2 mono text-[7px] text-white/70">
               FACES IN FRAME: {PEOPLE.length}
             </div>
           </div>
@@ -194,7 +194,7 @@ function AttendancePreview() {
           <div className="mt-3 grid grid-cols-5 gap-2">
             {/* Attendance log */}
             <div className="col-span-3 rounded-[8px] bg-[#1E1E1A] border border-[#2A2A26] p-2">
-              <div className="flex justify-between mono text-[7px] text-white/40">
+              <div className="flex justify-between mono text-[7px] text-white/70">
                 <span>Attendance log</span>
                 <span>admin dashboard</span>
               </div>
@@ -204,7 +204,7 @@ function AttendancePreview() {
                     key={i}
                     className={`att-res-${i} flex items-center justify-between gap-2 mono text-[8px] leading-3`}
                   >
-                    <span className="text-white/40">{p.time}</span>
+                    <span className="text-white/70">{p.time}</span>
                     <span
                       className={`flex-1 ${p.id ? "text-white/80" : "text-[#FF5F57]"}`}
                     >
@@ -222,7 +222,7 @@ function AttendancePreview() {
 
             {/* Embedding + headcount */}
             <div className="col-span-2 rounded-[8px] bg-[#1E1E1A] border border-[#2A2A26] p-2">
-              <div className="flex justify-between mono text-[7px] text-white/40">
+              <div className="flex justify-between mono text-[7px] text-white/70">
                 <span>Embedding</span>
                 <span>128-D</span>
               </div>
@@ -240,7 +240,7 @@ function AttendancePreview() {
                   />
                 ))}
               </div>
-              <div className="mt-2 mono text-[7px] text-white/40">Present</div>
+              <div className="mt-2 mono text-[7px] text-white/70">Present</div>
               <div className="mt-1 flex gap-1">
                 {RECOGNIZED.map((i) => (
                   <div
@@ -257,7 +257,7 @@ function AttendancePreview() {
           </div>
         </div>
 
-        <div className="mt-5 mono text-[8px] tracking-[0.2em] uppercase text-white/30">
+        <div className="mt-5 mono text-[8px] tracking-[0.2em] uppercase text-white/70">
           Simulated Detection — Not Live Data
         </div>
       </div>

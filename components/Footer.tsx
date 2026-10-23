@@ -48,7 +48,7 @@ export default function Footer() {
           style={{ borderColor: "var(--line)" }}
         >
           <div>
-            <p className="mono mb-2 text-[10px] tracking-[0.18em] uppercase text-(--text-3)">
+            <p className="mono mb-2 text-[10px] tracking-[0.18em] uppercase text-(--text-2)">
               Explore
             </p>
             <nav
@@ -68,7 +68,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="mono mb-2 text-[10px] tracking-[0.18em] uppercase text-(--text-3)">
+            <p className="mono mb-2 text-[10px] tracking-[0.18em] uppercase text-(--text-2)">
               Elsewhere
             </p>
             <div className="flex flex-col items-start gap-1.5">
@@ -120,7 +120,7 @@ export default function Footer() {
         </div>
 
         <div
-          className="flex flex-wrap items-center justify-between gap-2 border-t py-4 mono text-[10px] tracking-[0.14em] uppercase text-(--text-3)"
+          className="flex flex-wrap items-center justify-between gap-2 border-t py-4 mono text-[10px] tracking-[0.14em] uppercase text-(--text-2)"
           style={{ borderColor: "var(--line)" }}
         >
           <span className="flex items-center gap-2">
