@@ -34,12 +34,12 @@ export default function Contact() {
           <div className="relative isolate grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-1">
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -z-10 left-[32%] top-[42%] h-70 w-90 -translate-x-1/2 -translate-y-1/2 opacity-[0.14] sm:left-[28%] sm:h-80 sm:w-110"
+              className="pointer-events-none absolute -z-10 left-[32%] top-[42%] h-70 w-90 -translate-x-1/2 -translate-y-1/2 opacity-[0.14] sm:left-[18%] sm:h-80 sm:w-95"
               style={{ background: glow("var(--accent-2)") }}
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -z-10 left-[35%] top-[48%] h-45 w-60 -translate-x-1/2 -translate-y-1/2 opacity-[0.035]"
+              className="pointer-events-none absolute -z-10 left-[35%] top-[48%] h-45 w-60 -translate-x-1/2 -translate-y-1/2 opacity-[0.035] sm:left-[22%]"
               style={{ background: glow("var(--bd-red)") }}
             />
             <h2 className="relative text-[42px] font-black leading-[0.86] tracking-[-0.05em] md:text-[58px]">
