@@ -1,4 +1,7 @@
+"use client";
+
 import { now } from "@/data/now";
+import { useEffect, useRef } from "react";
 
 /* ── Simulation timeline ──
    One 10s loop. A gust shoves the drone off its hover point, it overshoots, corrects and locks back on.
@@ -168,88 +171,90 @@ function GaugeRow({
     </g>
   );
 }
-const TRACE = { x: 640, y: 40, w: 150, h: 56 };
-const tracePts = PROFILE.map(([x], i) => [
-  TRACE.x + KEY_TIMES[i] * TRACE.w,
-  TRACE.y + TRACE.h / 2 - (x / 160) * (TRACE.h / 2 - 4),
-]);
-// smooth the polyline with quadratic midpoints
-const tracePath =
-  `M${tracePts[0][0]} ${tracePts[0][1]} ` +
-  tracePts
-    .slice(1)
-    .map(([x, y], i) => {
-      const [px, py] = tracePts[i];
-      return `Q${px.toFixed(1)} ${py.toFixed(1)} ${((px + x) / 2).toFixed(1)} ${((py + y) / 2).toFixed(1)}`;
-    })
-    .join(" ") +
-  ` L${tracePts[tracePts.length - 1][0]} ${tracePts[tracePts.length - 1][1]}`;
 
-function ErrorTrace() {
-  const mid = TRACE.y + TRACE.h / 2;
+function smoothPath(pts: number[][]) {
+  let d = `M${pts[0][0]} ${pts[0][1]}`;
+  for (let i = 1; i < pts.length; i++) {
+    const [px, py] = pts[i - 1];
+    const [x, y] = pts[i];
+    d += ` Q${px.toFixed(1)} ${py.toFixed(1)} ${((px + x) / 2).toFixed(1)} ${((py + y) / 2).toFixed(1)}`;
+  }
+  const last = pts[pts.length - 1];
+  return `${d} L${last[0]} ${last[1]}`;
+}
+
+// Same slot as GaugeRow: label on the left, a small live graph in the track area
+function DriftTrace({ x, y, label }: { x: number; y: number; label: string }) {
+  const x0 = x + 68,
+    w = 120,
+    h = 26,
+    mid = y - 3;
+  const pts = driftReadings.map((v, i) => [
+    x0 + KEY_TIMES[i] * w,
+    mid - v * (h / 2 - 2),
+  ]);
   return (
     <g>
-      <clipPath id="fl-trace-clip">
-        <rect x={TRACE.x} y={TRACE.y - 4} height={TRACE.h + 8} width="0">
+      <text
+        x={x}
+        y={y}
+        className="mono"
+        fontSize="10"
+        fill="currentColor"
+        fillOpacity="0.75"
+        letterSpacing="2"
+      >
+        {label}
+      </text>
+      <clipPath id="fl-drift-clip">
+        <rect x={x0} y={mid - h / 2 - 2} height={h + 4} width="0">
           <animate
             attributeName="width"
-            values={`0;${TRACE.w};${TRACE.w}`}
+            values={`0;${w};${w}`}
             keyTimes="0;0.95;1"
             dur={`${T}s`}
             repeatCount="indefinite"
           />
         </rect>
       </clipPath>
-      <text
-        x={TRACE.x}
-        y={TRACE.y - 10}
-        className="mono"
-        fontSize="9"
-        letterSpacing="2"
-        fill="currentColor"
-        fillOpacity="0.5"
-      >
-        POSITION ERROR
-      </text>
       <line
-        x1={TRACE.x}
+        x1={x0}
         y1={mid}
-        x2={TRACE.x + TRACE.w}
+        x2={x0 + w}
         y2={mid}
         stroke="currentColor"
         strokeOpacity="0.25"
         strokeDasharray="2 4"
       />
       <line
-        x1={TRACE.x}
-        y1={TRACE.y}
-        x2={TRACE.x}
-        y2={TRACE.y + TRACE.h}
+        x1={x0}
+        y1={mid - h / 2}
+        x2={x0}
+        y2={mid + h / 2}
         stroke="currentColor"
         strokeOpacity="0.25"
       />
       <path
-        d={tracePath}
-        clipPath="url(#fl-trace-clip)"
+        d={smoothPath(pts)}
+        clipPath="url(#fl-drift-clip)"
         fill="none"
         strokeWidth="1.8"
         strokeLinejoin="round"
         strokeLinecap="round"
         style={{ stroke: "var(--accent)" }}
       />
-      {/* playhead */}
       <line
         x1="0"
-        y1={TRACE.y - 2}
+        y1={mid - h / 2 - 2}
         x2="0"
-        y2={TRACE.y + TRACE.h + 2}
+        y2={mid + h / 2 + 2}
         stroke="currentColor"
         strokeOpacity="0.4"
       >
         <animateTransform
           attributeName="transform"
           type="translate"
-          values={`${TRACE.x} 0;${TRACE.x + TRACE.w} 0;${TRACE.x + TRACE.w} 0`}
+          values={`${x0} 0;${x0 + w} 0;${x0 + w} 0`}
           keyTimes="0;0.95;1"
           dur={`${T}s`}
           repeatCount="indefinite"
@@ -258,6 +263,7 @@ function ErrorTrace() {
     </g>
   );
 }
+
 function DroneScene() {
   return (
     <svg
@@ -279,21 +285,19 @@ function DroneScene() {
             style={{ stopColor: "var(--text)", stopOpacity: 0 }}
           />
         </radialGradient>
-        <linearGradient id="fl-fade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#fff" stopOpacity="0" />
-          <stop offset="0.35" stopColor="#fff" stopOpacity="0.7" />
-          <stop offset="0.75" stopColor="#fff" stopOpacity="1" />
-          <stop offset="1" stopColor="#fff" stopOpacity="0" />
+        <linearGradient
+          id="fl-floor"
+          gradientUnits="userSpaceOnUse"
+          x1="0"
+          y1={HORIZON}
+          x2="0"
+          y2="440"
+        >
+          <stop offset="0" stopColor="currentColor" stopOpacity="0" />
+          <stop offset="0.35" stopColor="currentColor" stopOpacity="0.7" />
+          <stop offset="0.75" stopColor="currentColor" stopOpacity="1" />
+          <stop offset="1" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
-        <mask id="fl-mask">
-          <rect
-            x="0"
-            y={HORIZON}
-            width="1000"
-            height={440 - HORIZON}
-            fill="url(#fl-fade)"
-          />
-        </mask>
 
         {/* Drone body, reused for the main drone and its motion trail */}
         <g id="fl-body">
@@ -389,20 +393,31 @@ function DroneScene() {
         })}
       </g>
 
-      {/* Floor: converging lines + grid that streams toward you */}
-      <g mask="url(#fl-mask)" stroke="currentColor" fill="none">
-        <line x1="0" y1={HORIZON} x2="1000" y2={HORIZON} strokeOpacity="0.3" />
-        <g strokeOpacity="0.14">
-          {FLOOR_X.map((x) => (
-            <line key={x} x1="500" y1={HORIZON} x2={x} y2="440" />
-          ))}
+      {/* Floor */}
+      <g fill="none">
+        {/* Static lines: faded with a gradient stroke (no mask = cheaper) */}
+        <g stroke="url(#fl-floor)">
+          <line
+            x1="0"
+            y1={HORIZON}
+            x2="1000"
+            y2={HORIZON}
+            strokeOpacity="0.3"
+          />
+          <g strokeOpacity="0.14">
+            {FLOOR_X.map((x) => (
+              <line key={x} x1="500" y1={HORIZON} x2={x} y2="440" />
+            ))}
+          </g>
+          <g strokeOpacity="0.14" className="fl-hstatic">
+            {FLOOR_Y.map((y) => (
+              <line key={y} x1="-200" y1={y} x2="1200" y2={y} />
+            ))}
+          </g>
         </g>
-        <g strokeOpacity="0.14" className="fl-hstatic">
-          {FLOOR_Y.map((y) => (
-            <line key={y} x1="-200" y1={y} x2="1200" y2={y} />
-          ))}
-        </g>
-        <g strokeOpacity="0.2">
+
+        {/* Scan lines: plain stroke, faded in and out by the CSS keyframes */}
+        <g stroke="currentColor" strokeOpacity="0.2">
           {SCAN_LINES.map((i) => (
             <line
               key={i}
@@ -433,6 +448,7 @@ function DroneScene() {
           values={`${GREEN};${RED};${AMBER};${GREEN};${GREEN}`}
         />
         <ellipse cx="0" cy="0" rx="130" ry="20" strokeDasharray="5 6" />
+        {/* Lock-on pulse ring */}
         <ellipse cx="0" cy="0" rx="130" ry="20" strokeWidth="1.2" opacity="0">
           <animate
             attributeName="rx"
@@ -609,10 +625,10 @@ function DroneScene() {
             ● CORRECTING
           </text>
         </g>
-        <ErrorTrace />
-        {/* Attitude gauges */}
+
+        {/* Telemetry */}
         <GaugeRow x={270} y={424} label="ROLL" readings={rollReadings} />
-        <GaugeRow x={540} y={424} label="DRIFT" readings={driftReadings} />
+        <DriftTrace x={540} y={424} label="DRIFT" />
       </g>
 
       {/* Still frame for visitors who prefer reduced motion */}
@@ -662,6 +678,38 @@ function DroneScene() {
 }
 
 export default function Now() {
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  // Pause SMIL + CSS animations while offscreen or when the tab is hidden
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    const svg = wrap?.querySelector("svg");
+    if (!wrap || !svg) return;
+
+    let inView = false;
+    const apply = () => {
+      const run = inView && !document.hidden;
+      wrap.dataset.paused = run ? "false" : "true";
+      if (run) svg.unpauseAnimations();
+      else svg.pauseAnimations();
+    };
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        apply();
+      },
+      { threshold: 0.05 },
+    );
+    io.observe(wrap);
+    document.addEventListener("visibilitychange", apply);
+
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", apply);
+    };
+  }, []);
+
   return (
     <section
       id="now"
@@ -695,6 +743,7 @@ export default function Now() {
       </div>
 
       <div
+        ref={wrapRef}
         className="relative mt-10 md:mt-14 w-full aspect-4/3 sm:aspect-video lg:aspect-1000/440"
         style={{ maskImage: sideFade, WebkitMaskImage: sideFade }}
       >
