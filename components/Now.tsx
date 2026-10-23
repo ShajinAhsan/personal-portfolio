@@ -34,9 +34,9 @@ const driftReadings = PROFILE.map(([x]) => x / 160);
 
 const ANCHOR = { x: 500, y: 185 };
 const HORIZON = 275;
-const GREEN = "#16C784";
-const AMBER = "#FFBD2E";
-const RED = "#FF5F57";
+const GREEN = "var(--bd-green)";
+const AMBER = "var(--text-2)";
+const RED = "var(--bd-red)";
 
 const MOTORS = [
   { x: -105, y: -16, far: true },
@@ -56,9 +56,6 @@ const STREAKS = [
   { y: 210, len: 130 },
   { y: 245, len: 90 },
 ];
-const sideFade =
-  "linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%)";
-
 function Motion({
   type,
   values,
@@ -490,25 +487,27 @@ function DroneScene() {
         </g>
 
         {/* Motion trail */}
-        {[
-          { delay: "0.12s", opacity: 0.2 },
-          { delay: "0.24s", opacity: 0.12 },
-          { delay: "0.36s", opacity: 0.06 },
-        ].map((g) => (
-          <g
-            key={g.delay}
-            transform={`translate(${ANCHOR.x} ${ANCHOR.y})`}
-            opacity={g.opacity}
-          >
-            <g>
-              <Motion type="translate" values={driftValues} begin={g.delay} />
+        <g className="fl-trail">
+          {[
+            { delay: "0.12s", opacity: 0.2 },
+            { delay: "0.24s", opacity: 0.12 },
+            { delay: "0.36s", opacity: 0.06 },
+          ].map((g) => (
+            <g
+              key={g.delay}
+              transform={`translate(${ANCHOR.x} ${ANCHOR.y})`}
+              opacity={g.opacity}
+            >
               <g>
-                <Motion type="rotate" values={rollValues} begin={g.delay} />
-                <use href="#fl-body" />
+                <Motion type="translate" values={driftValues} begin={g.delay} />
+                <g>
+                  <Motion type="rotate" values={rollValues} begin={g.delay} />
+                  <use href="#fl-body" />
+                </g>
               </g>
             </g>
-          </g>
-        ))}
+          ))}
+        </g>
 
         {/* The drone: gentle hover bob → gust drift → roll */}
         <g transform={`translate(${ANCHOR.x} ${ANCHOR.y})`}>
@@ -724,7 +723,7 @@ export default function Now() {
               className="inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-[10px]"
               style={{ borderColor: "var(--line)", background: "var(--card)" }}
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-[#16C784] animate-pulse" />
+              <span className="h-1.5 w-1.5 rounded-full bg-(--bd-green) animate-pulse" />
               Currently • {now.label}
             </span>
           </div>
@@ -745,9 +744,10 @@ export default function Now() {
       <div
         ref={wrapRef}
         className="relative mt-10 md:mt-14 w-full aspect-4/3 sm:aspect-video lg:aspect-1000/440"
-        style={{ maskImage: sideFade, WebkitMaskImage: sideFade }}
       >
         <DroneScene />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-[14%] bg-linear-to-r from-(--bg) to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-[14%] bg-linear-to-l from-(--bg) to-transparent" />
       </div>
 
       <dl
