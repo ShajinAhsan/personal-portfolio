@@ -63,7 +63,7 @@ html {
 
 ::selection {
   background: var(--accent-2);
-  color: var(--text);
+  color: #0F0F0E;
 }
 
 body {
