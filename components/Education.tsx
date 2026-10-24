@@ -1,4 +1,4 @@
-import { Satellite } from "lucide-react";
+import Learning from "./Learning";
 
 export default function Education() {
   return (
@@ -86,81 +86,7 @@ export default function Education() {
                 </p>
               </div>
             </div>
-
-            <div
-              className="relative border-l pl-8 md:pl-10 space-y-10"
-              style={{ borderColor: "var(--line)" }}
-            >
-              <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2) -ml-8 md:-ml-10 mb-2 pl-8 md:pl-10">
-                Learning Journey
-              </div>
-
-              <div className="relative">
-                <span
-                  className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full"
-                  style={{ background: "var(--accent)" }}
-                />
-                <div className="mono text-[11px] text-(--text-2) mb-1">
-                  2021 • Programming Hero
-                </div>
-                <h4 className="text-[15px] font-semibold">
-                  MERN Stack — Complete Web Development
-                </h4>
-                <p className="mt-2 text-[13px] text-(--text-2) leading-relaxed">
-                  Learned MongoDB, Express, React, Node from Programming Hero.
-                  Built first live projects including weather app.
-                </p>
-              </div>
-
-              <div className="relative">
-                <span
-                  className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full"
-                  style={{ background: "var(--bd-red)" }}
-                />
-                <div className="mono text-[11px] text-(--text-2) mb-1">
-                  2023 • Udemy
-                </div>
-                <h4 className="text-[15px] font-semibold">
-                  Arduino Step by Step: Getting Serious With Arduino
-                </h4>
-                <p className="mt-2 text-[13px] text-(--text-2) leading-relaxed">
-                  Advanced embedded systems, complex sensor interfacing, and
-                  hardware-level C++ programming. I built a line-following car
-                  and a remote-controlled wall socket.
-                </p>
-              </div>
-              <div className="relative">
-                <span
-                  className="absolute -left-9.25 md:-left-11.25 top-1 h-2.5 w-2.5 rounded-full"
-                  style={{ background: "var(--bd-red)" }}
-                />
-                <div className="mono text-[11px] text-(--text-2) mb-1">
-                  Recent • Phitron
-                </div>
-                <h4 className="text-[15px] font-semibold">
-                  CS Fundamentals Course
-                </h4>
-                <p className="mt-2 text-[13px] text-(--text-2) leading-relaxed">
-                  CS fundamentals — DSA, OOP, databases. Strengthening core CSE
-                  alongside CUET coursework.
-                </p>
-              </div>
-
-              <div
-                className="relative rounded-[14px] border p-3 bg-(--bg-2)"
-                style={{ borderColor: "var(--line)" }}
-              >
-                <div className="mono text-[9px] tracking-[0.2em] uppercase text-(--text-2) flex items-center gap-2">
-                  <Satellite size={12} /> Now Exploring
-                </div>
-                <div className="mt-2 text-[12px] font-medium leading-snug">
-                  Drone stabilization using cheap MPU6050 gyro sensor —
-                  Implemented PID control loops, sensor data filtering
-                  (Complementary/Kalman filters), and hardware-level I2C
-                  communication to stabilize multirotor flight dynamics.
-                </div>
-              </div>
-            </div>
+            <Learning />
           </div>
         </div>
       </div>

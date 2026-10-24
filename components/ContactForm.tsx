@@ -47,7 +47,16 @@ export default function ContactForm() {
             required
             maxLength={100}
             autoComplete="name"
-            aria-invalid={state.status === "error" ? true : undefined}
+            aria-invalid={
+              state.status === "error" && state.field === "name"
+                ? true
+                : undefined
+            }
+            aria-describedby={
+              state.status === "error" && state.field === "name"
+                ? "contact-error"
+                : undefined
+            }
             className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) transition w-full min-w-0"
             style={{ borderColor: "var(--control-line)" }}
           />
@@ -65,7 +74,16 @@ export default function ContactForm() {
             required
             maxLength={200}
             autoComplete="email"
-            aria-invalid={state.status === "error" ? true : undefined}
+            aria-invalid={
+              state.status === "error" && state.field === "email"
+                ? true
+                : undefined
+            }
+            aria-describedby={
+              state.status === "error" && state.field === "email"
+                ? "contact-error"
+                : undefined
+            }
             className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) transition w-full min-w-0"
             style={{ borderColor: "var(--control-line)" }}
           />
@@ -84,7 +102,16 @@ export default function ContactForm() {
           rows={5}
           required
           maxLength={5000}
-          aria-invalid={state.status === "error" ? true : undefined}
+          aria-invalid={
+            state.status === "error" && state.field === "message"
+              ? true
+              : undefined
+          }
+          aria-describedby={
+            state.status === "error" && state.field === "message"
+              ? "contact-error"
+              : undefined
+          }
           className="rounded-[20px] border p-5 text-[14px] leading-normal bg-(--bg) outline-none focus:border-(--text) transition resize-none"
           style={{ borderColor: "var(--control-line)" }}
         />
@@ -136,6 +163,7 @@ export default function ContactForm() {
         )}
         {state.status === "error" && (
           <div
+            id="contact-error"
             role="alert"
             className="mt-5 rounded-[18px] bg-(--bd-red) text-black px-4 py-2 mono text-[11px] tracking-wider inline-flex"
           >

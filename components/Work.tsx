@@ -44,7 +44,7 @@ function WeatherProject() {
           {p.title}
         </h3>
         <div className="mono text-[12px] tracking-[0.14em] uppercase text-(--text-2) mt-2">
-          Firebase
+          {p.subtitle}
         </div>
         <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] text-(--text-2) max-w-[48ch]">
           {p.desc}

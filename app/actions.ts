@@ -8,6 +8,7 @@ import { Resend } from "resend";
 export type ContactState = {
   status: "idle" | "success" | "error";
   message: string;
+  field?: "name" | "email" | "message" | "form";
   /** Echoed back on error so the form keeps what the visitor typed. */
   values: { name: string; email: string; message: string };
 };
@@ -16,6 +17,13 @@ const EMPTY = { name: "", email: "", message: "" };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW = "15 m";
+
+type ContactLimiters = {
+  ip: Ratelimit;
+  email: Ratelimit;
+};
+
+let limiters: ContactLimiters | null = null;
 
 function field(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -34,30 +42,41 @@ function retryAfter(reset: number) {
   return Math.max(1, Math.ceil((reset - Date.now()) / 60_000));
 }
 
-async function checkRateLimit(ip: string, email: string) {
+function getLimiters() {
+  if (limiters) return limiters;
+
   const url = process.env.UPSTASH_REDIS_REST_URL;
   const token = process.env.UPSTASH_REDIS_REST_TOKEN;
 
-  if (!url || !token) {
+  if (!url || !token) return null;
+
+  const redis = new Redis({ url, token });
+  limiters = {
+    ip: new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(RATE_LIMIT_MAX, RATE_LIMIT_WINDOW),
+      prefix: "contact:ip",
+    }),
+    email: new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(RATE_LIMIT_MAX, RATE_LIMIT_WINDOW),
+      prefix: "contact:email",
+    }),
+  };
+  return limiters;
+}
+
+async function checkRateLimit(ip: string, email: string) {
+  const configuredLimiters = getLimiters();
+
+  if (!configuredLimiters) {
     console.error("[contact] Upstash rate limiter is not configured");
     return { configured: false as const };
   }
 
-  const redis = new Redis({ url, token });
-  const ipLimiter = new Ratelimit({
-    redis,
-    limiter: Ratelimit.slidingWindow(RATE_LIMIT_MAX, RATE_LIMIT_WINDOW),
-    prefix: "contact:ip",
-  });
-  const emailLimiter = new Ratelimit({
-    redis,
-    limiter: Ratelimit.slidingWindow(RATE_LIMIT_MAX, RATE_LIMIT_WINDOW),
-    prefix: "contact:email",
-  });
-
   const [ipResult, emailResult] = await Promise.all([
-    ipLimiter.limit(ip),
-    emailLimiter.limit(email.toLowerCase()),
+    configuredLimiters.ip.limit(ip),
+    configuredLimiters.email.limit(email.toLowerCase()),
   ]);
   const blockedResult = [ipResult, emailResult].find((result) => !result.success);
 
@@ -85,6 +104,7 @@ export async function sendMessage(
     return {
       status: "error",
       message: "Fill in your name, email and message.",
+      field: "form",
       values,
     };
   }
@@ -92,6 +112,7 @@ export async function sendMessage(
     return {
       status: "error",
       message: "That email address doesn't look right. Check it and try again.",
+      field: "email",
       values,
     };
   }
@@ -103,6 +124,12 @@ export async function sendMessage(
     return {
       status: "error",
       message: "Your message is too long. Shorten it and try again.",
+      field:
+        values.name.length > 100
+          ? "name"
+          : values.email.length > 200
+            ? "email"
+            : "message",
       values,
     };
   }
@@ -115,6 +142,7 @@ export async function sendMessage(
     return {
       status: "error",
       message: "The form is temporarily unavailable. Please try again later.",
+      field: "form",
       values,
     };
   }
@@ -123,6 +151,7 @@ export async function sendMessage(
     return {
       status: "error",
       message: "The form is temporarily unavailable. Please try again later.",
+      field: "form",
       values,
     };
   }
@@ -131,6 +160,7 @@ export async function sendMessage(
     return {
       status: "error",
       message: `Too many messages. Please try again in about ${minutes} minute${minutes === 1 ? "" : "s"}.`,
+      field: "form",
       values,
     };
   }
@@ -142,6 +172,7 @@ export async function sendMessage(
       status: "error",
       message:
         "The form isn't set up yet. Email me directly at the address on this page.",
+      field: "form",
       values,
     };
   }
@@ -167,6 +198,7 @@ export async function sendMessage(
         status: "error",
         message:
           "Your message couldn't be sent. Try again, or email me directly.",
+        field: "form",
         values,
       };
     }
@@ -176,6 +208,7 @@ export async function sendMessage(
       status: "error",
       message:
         "Your message couldn't be sent. Try again, or email me directly.",
+      field: "form",
       values,
     };
   }

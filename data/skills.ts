@@ -11,7 +11,6 @@ export type SkillGroup = {
   icon: LucideIcon;
   items: string[];
 };
-
 export const skillGroups: SkillGroup[] = [
   {
     cat: "Web & Software",
@@ -27,25 +26,31 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    cat: "Problem Solving",
+    cat: "Core CS",
     icon: Binary,
-    items: ["C", "C++", "Python", "Data Structures", "Competitive Programming"],
+    items: [
+      "C",
+      "C++",
+      "Python",
+      "Data Structures",
+      "Algorithms",
+      "Competitive Programming",
+    ],
   },
   {
     cat: "Systems & Tools",
     icon: Terminal,
-    items: ["Linux", "Arch", "Kali", "Debian", "Git & GitHub"],
+    items: [
+      "Arch Linux",
+      "Debian",
+      "Kali Linux",
+      "Git & GitHub",
+      "Cybersecurity",
+    ],
   },
   {
     cat: "Side Quests",
     icon: Compass,
-    items: [
-      "Cybersecurity",
-      "Astronomy",
-      "History",
-      "Archaeology",
-      "Travel",
-      "Gaming",
-    ],
+    items: ["Astronomy", "History", "Archaeology", "Travel", "Gaming"],
   },
 ];

@@ -117,130 +117,6 @@ export default function Hero() {
                 <Mail size={14} /> Email Me
               </a>
             </div>
-
-            <div
-              className="mt-10 grid grid-cols-3 gap-4 border-t pt-6 max-w-105"
-              style={{ borderColor: "var(--line)" }}
-            >
-              {/* for later */}
-              {/* 
-              <div className="hidden p-6 md:p-8 flex-col justify-between">
-                <div className="flex justify-between">
-                  <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
-                    Studio / Desk Setup — Chittagong
-                  </div>
-                  <div className="flex gap-1.5">
-                    <span className="h-2 w-2 rounded-full bg-[#FF5F57]" />
-                    <span className="h-2 w-2 rounded-full bg-[#FFBD2E]" />
-                    <span className="h-2 w-2 rounded-full bg-[#28CA42]" />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-12 gap-3 mt-6">
-                  <div className="col-span-8">
-                    <div
-                      className="h-full min-h-[200px] rounded-[18px] border bg-[var(--card)] p-5 flex flex-col justify-between relative overflow-hidden"
-                      style={{ borderColor: "var(--line)" }}
-                    >
-                      <div
-                        className="absolute top-0 right-0 w-[180px] h-[180px] rounded-full blur-[30px] opacity-20"
-                        style={{ background: "var(--accent)" }}
-                      />
-                      <div className="mono text-[10px] tracking-widest uppercase text-(--text-2)">
-                        Now Exploring
-                      </div>
-                      <div className="relative">
-                        <div className="text-[26px] md:text-[30px] font-bold tracking-[-0.03em] leading-[0.95]">
-                          Hardware ×
-                          <br />
-                          Software
-                          <br />
-                          Interfaces
-                        </div>
-                        <div className="mt-3 mono text-[11px] text-(--text-2) leading-relaxed">
-                          Prototyping ideas at CUET labs. Breaking, fixing,
-                          learning.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-span-4 flex flex-col gap-3">
-                    <div className="rounded-[18px] bg-[var(--text)] text-[var(--bg)] p-4 flex-1 flex flex-col justify-between">
-                      <div className="mono text-[9px] tracking-[0.2em] uppercase text-(--text-2)">
-                        Experience
-                      </div>
-                      <div className="text-[42px] font-black leading-none tracking-[-0.05em]">
-                        02<span className="text-[18px] align-super">+</span>
-                      </div>
-                      <div className="mono text-[10px] text-(--text-2) leading-tight">
-                        Years building
-                        <br />
-                        side projects
-                      </div>
-                    </div>
-
-                    <div
-                      className="rounded-[18px] border p-4 bg-[var(--card)]"
-                      style={{ borderColor: "var(--line)" }}
-                    >
-                      <div className="mono text-[9px] tracking-[0.2em] uppercase text-(--text-2)">
-                        Stack Signal
-                      </div>
-                      <div className="mt-2 flex flex-wrap gap-1.5">
-                        {["C/C++", "React", "Systems", "IoT"].map((tag) => (
-                          <span
-                            key={tag}
-                            className="mono text-[9px] px-2 py-1 rounded-full border"
-                            style={{ borderColor: "var(--line)" }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-
-              <div>
-                <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2) mb-1.5">
-                  Based
-                </div>
-                <div className="text-[13px] font-medium leading-tight">
-                  Chittagong
-                  <br />
-                  <span className="text-(--text-2)">
-                    Madarganj / Dhaka origin
-                  </span>
-                </div>
-              </div>
-              <div>
-                <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2) mb-1.5">
-                  Studying
-                </div>
-                <div className="text-[13px] font-medium leading-tight">
-                  CSE at CUET
-                  <br />
-                  <span className="text-(--text-2)">{profile.studentId}</span>
-                </div>
-              </div>
-              <div>
-                <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2) mb-1.5">
-                  GitHub
-                </div>
-                <div className="text-[13px] font-medium leading-tight">
-                  <a
-                    href={profile.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline decoration-(--bd-green) decoration-2"
-                  >
-                    {profile.githubHandle}
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div className="relative isolate lg:col-span-5 order-1 lg:order-2">
@@ -299,18 +175,12 @@ export default function Hero() {
                       />
                     </div>
                   </div>
-                  {/* <div className="absolute top-3 left-3 mono text-[9px] tracking-widest uppercase px-2.5 py-1 rounded-full bg-white/90 text-black backdrop-blur">
-                    Flag • Bangladesh
-                  </div> */}
-                  {/* <div className="absolute top-3 right-3 h-7 w-7 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-[12px]">
-                    🇧🇩
-                  </div> */}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-span-12 mt-2 mb-6 lg:mt-6 lg:mb-0">
+        <div className="col-span-12 mt-6 mb-6 lg:mt-16 lg:mb-0">
           <TerminalCard />
         </div>
       </div>

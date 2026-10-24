@@ -52,11 +52,11 @@ function Flag() {
   return (
     <div
       aria-hidden
-      className="flex h-[54px] w-[90px] shrink-0 items-center justify-center rounded-[3px]"
+      className="flex h-13.5 w-22.5 shrink-0 items-center justify-center rounded-[3px]"
       style={{ background: "var(--bd-green)" }}
     >
       <span
-        className="h-[30px] w-[30px] -translate-x-[4px] rounded-full"
+        className="h-7.5 w-7.5 -translate-x-1 rounded-full"
         style={{ background: "var(--bd-red)" }}
       />
     </div>
@@ -495,9 +495,7 @@ export default function TerminalCard() {
   };
 
   const showHint = !busy && !line && entries.length <= INTRO.length;
-  const terminalBorderColor = focused
-    ? "var(--control-line)"
-    : "var(--line)";
+  const terminalBorderColor = focused ? "var(--control-line)" : "var(--line)";
 
   return (
     <div
@@ -535,7 +533,7 @@ export default function TerminalCard() {
             if (window.getSelection()?.toString()) return;
             inputRef.current?.focus({ preventScroll: true });
           }}
-          className="mono h-[300px] cursor-text space-y-1.5 overflow-y-auto p-4 text-[11px] leading-relaxed sm:h-[340px] sm:text-xs lg:h-[380px] lg:p-6 lg:text-[13px]"
+          className="mono h-75 cursor-text space-y-1.5 overflow-y-auto p-4 text-[11px] leading-relaxed sm:h-85 sm:text-xs lg:h-95 lg:p-6 lg:text-[13px]"
         >
           {entries.map((en) => (
             <div key={en.id}>
@@ -605,7 +603,7 @@ export default function TerminalCard() {
               exec(c);
               setLine("");
             }}
-            className="mono rounded-full border px-2.5 py-1 text-[10px] transition hover:bg-(--bg-2) disabled:opacity-40"
+            className="mono rounded-full border px-2.5 py-1 text-[10px] transition hover:bg-(--bg-2) disabled:opacity-40 cursor-pointer"
             style={{ borderColor: "var(--line)" }}
           >
             {c}
