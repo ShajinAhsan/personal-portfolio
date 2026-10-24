@@ -70,6 +70,13 @@ body {
   color: var(--text);
 }
 
+.mobile-menu-panel {
+  max-height: calc(100vh - 4rem);
+  max-height: calc(100dvh - 4rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
 /* In the base layer so Tailwind transition utilities (hover effects) still win */
 @layer base {
   .theme-transition * {

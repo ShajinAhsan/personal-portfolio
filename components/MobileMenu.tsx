@@ -8,12 +8,12 @@ import { useEffect, useRef, useState } from "react";
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     if (!open) return;
-    firstLinkRef.current?.focus();
+    firstLinkRef.current?.focus({ preventScroll: true });
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setOpen(false);
@@ -28,11 +28,17 @@ export default function MobileMenu() {
         setOpen(false);
       }
     };
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const onBreakpointChange = (e: MediaQueryListEvent) => {
+      if (e.matches) setOpen(false);
+    };
     window.addEventListener("keydown", onKey);
     document.addEventListener("pointerdown", onPointerDown);
+    mediaQuery.addEventListener("change", onBreakpointChange);
     return () => {
       window.removeEventListener("keydown", onKey);
       document.removeEventListener("pointerdown", onPointerDown);
+      mediaQuery.removeEventListener("change", onBreakpointChange);
     };
   }, [open]);
 
@@ -42,7 +48,7 @@ export default function MobileMenu() {
         ref={buttonRef}
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="md:hidden h-9 w-9 rounded-full border flex items-center justify-center cursor-pointer"
+        className="md:hidden h-11 w-11 rounded-full border flex items-center justify-center cursor-pointer"
         style={{ borderColor: "var(--line)" }}
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
@@ -66,54 +72,53 @@ export default function MobileMenu() {
         </div>
       </button>
 
-      {open && (
-        <nav
-          ref={menuRef}
-          id="mobile-menu"
-          aria-label="Mobile navigation"
-          className="md:hidden absolute inset-x-0 top-full border-t border-b px-6 py-6 flex flex-col gap-5 backdrop-blur-xl"
-          style={{
-            borderColor: "var(--line)",
-            background: "color-mix(in srgb, var(--bg) 88%, transparent)",
-          }}
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              ref={link === navLinks[0] ? firstLinkRef : undefined}
-              href={`#${link.id}`}
-              onClick={() => setOpen(false)}
-              className="text-left text-[28px] font-extrabold tracking-[-0.02em] leading-none flex items-center gap-3"
-            >
-              {link.label}
-              {link.id === "work" && (
-                <span className="mono text-[10px] px-2 py-1 rounded-full bg-(--bd-green) text-white dark:bg-[#007A5D]">
-                  {projectCount} projects
-                </span>
-              )}
-            </a>
-          ))}
-          <div
-            className="pt-4 border-t flex flex-col items-start gap-2"
-            style={{ borderColor: "var(--line)" }}
+      <nav
+        ref={menuRef}
+        id="mobile-menu"
+        aria-label="Mobile navigation"
+        hidden={!open}
+        className="mobile-menu-panel md:hidden absolute inset-x-0 top-full border-t border-b px-6 py-6 flex flex-col gap-5 backdrop-blur-xl"
+        style={{
+          borderColor: "var(--line)",
+          background: "color-mix(in srgb, var(--bg) 88%, transparent)",
+        }}
+      >
+        {navLinks.map((link) => (
+          <a
+            key={link.id}
+            ref={link === navLinks[0] ? firstLinkRef : undefined}
+            href={`#${link.id}`}
+            onClick={() => setOpen(false)}
+            className="text-left text-[28px] font-extrabold tracking-[-0.02em] leading-none flex items-center gap-3 hover:opacity-60 transition-opacity motion-reduce:transition-none"
           >
-            <a
-              href={`mailto:${profile.personalEmail}`}
-              className="mono text-[12px] underline break-all"
-            >
-              {profile.personalEmail}
-            </a>
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mono text-[12px] underline break-all"
-            >
-              github/{profile.githubHandle}
-            </a>
-          </div>
-        </nav>
-      )}
+            {link.label}
+            {link.id === "work" && (
+              <span className="mono text-[10px] px-2 py-1 rounded-full bg-(--bd-green) text-white dark:bg-[#007A5D]">
+                {projectCount} projects
+              </span>
+            )}
+          </a>
+        ))}
+        <div
+          className="pt-4 border-t flex flex-col items-start gap-2"
+          style={{ borderColor: "var(--line)" }}
+        >
+          <a
+            href={`mailto:${profile.personalEmail}`}
+            className="mono text-[12px] underline break-all hover:opacity-60 transition-opacity motion-reduce:transition-none"
+          >
+            {profile.personalEmail}
+          </a>
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mono text-[12px] underline break-all hover:opacity-60 transition-opacity motion-reduce:transition-none"
+          >
+            github/{profile.githubHandle}
+          </a>
+        </div>
+      </nav>
     </>
   );
 }
