@@ -9,7 +9,6 @@ export default function NotFound() {
       style={{
         background: "var(--bg)",
         color: "var(--text)",
-        paddingTop: "calc(3rem + var(--safe-area-inset-top))",
       }}
     >
       <div

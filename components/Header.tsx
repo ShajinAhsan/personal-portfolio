@@ -6,11 +6,8 @@ import ThemeToggle from "./ThemeToggle";
 export default function Header() {
   return (
     <header
-      className="sticky z-50 w-full border-b"
-      style={{
-        top: "var(--safe-area-inset-top)",
-        borderColor: "var(--line)",
-      }}
+      className="sticky top-0 z-50 w-full border-b"
+      style={{ borderColor: "var(--line)" }}
     >
       <div
         aria-hidden="true"

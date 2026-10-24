@@ -16,7 +16,6 @@
   --bd-green: #006A4E;
   --bd-red: #F42A41;
   --card: #FFFFFF;
-  --safe-area-inset-top: env(safe-area-inset-top, 0px);
 }
 
 .dark {
@@ -41,7 +40,7 @@ html {
 
 /* Keep anchored sections clear of the sticky header */
 [id] {
-  scroll-margin-top: calc(72px + var(--safe-area-inset-top));
+  scroll-margin-top: 72px;
 }
 
 * {

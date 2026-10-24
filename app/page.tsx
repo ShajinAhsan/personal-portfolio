@@ -15,8 +15,6 @@ export default function Home() {
       style={{
         background: "var(--bg)",
         color: "var(--text)",
-        paddingTop: "var(--safe-area-inset-top)",
-        boxSizing: "border-box",
       }}
     >
       <a
