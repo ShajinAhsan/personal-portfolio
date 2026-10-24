@@ -3,6 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "next-themes";
 import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -26,7 +27,6 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 const siteDescription =
   "Portfolio of Shajin Ahsan Shuvo, a CSE student at CUET building across MERN web development, Linux systems and hardware.";
 
