@@ -22,7 +22,7 @@ export default function Header() {
             aria-label="Back to top"
           >
             <div
-              className="h-8 w-8 rounded-full flex items-center justify-center text-[11px] font-bold tracking-widest border"
+              className="h-11 w-11 rounded-full flex items-center justify-center text-[11px] font-bold tracking-widest border"
               style={{
                 background: "var(--text)",
                 color: "var(--bg)",
@@ -65,7 +65,7 @@ export default function Header() {
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="h-9 w-9 rounded-full border flex items-center justify-center hover:scale-105 transition-transform cursor-pointer"
+            className="h-11 w-11 rounded-full border flex items-center justify-center hover:scale-105 transition-transform motion-reduce:transition-none motion-reduce:hover:scale-100 cursor-pointer"
             style={{ borderColor: "var(--line)", background: "var(--card)" }}
             aria-label="GitHub"
           >

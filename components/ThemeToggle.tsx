@@ -14,7 +14,7 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="h-9 w-9 rounded-full border flex items-center justify-center hover:scale-105 transition-all duration-300 cursor-pointer"
+      className="h-11 w-11 rounded-full border flex items-center justify-center hover:scale-105 transition-all duration-300 motion-reduce:transition-none motion-reduce:hover:scale-100 cursor-pointer"
       style={{ borderColor: "var(--line)", background: "var(--card)" }}
       aria-label="Toggle color theme"
     >
