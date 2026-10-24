@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Shajin Ahsan Shuvo",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     description:
       "MERN web dev, Linux systems and hands-on hardware. Portfolio of Shajin Ahsan Shuvo.",
     creator: "@shajinahsan",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.webp"],
   },
 };
 
@@ -95,7 +95,7 @@ export default function RootLayout({
               "@type": "Person",
               name: "Shajin Ahsan Shuvo",
               url: siteUrl,
-              image: `${siteUrl}/portrait.jpg`,
+              image: `${siteUrl}/portrait.webp`,
               jobTitle: "Computer Science and Engineering Student",
               worksFor: {
                 "@type": "EducationalOrganization",

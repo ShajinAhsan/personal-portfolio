@@ -11,7 +11,7 @@ export const profile = {
   facebookHandle: "shajinahsans",
   personalEmail: "shajinahsans@gmail.com",
   institutionalEmail: "u2504086@student.cuet.ac.bd",
-  portrait: "/portrait.jpg",
+  portrait: "/portrait.webp",
 } as const;
 
 export const navLinks = [
