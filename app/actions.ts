@@ -1,8 +1,8 @@
 "use server";
 
-import { headers } from "next/headers";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
+import { headers } from "next/headers";
 import { Resend } from "resend";
 
 export type ContactState = {
@@ -78,10 +78,16 @@ async function checkRateLimit(ip: string, email: string) {
     configuredLimiters.ip.limit(ip),
     configuredLimiters.email.limit(email.toLowerCase()),
   ]);
-  const blockedResult = [ipResult, emailResult].find((result) => !result.success);
+  const blockedResult = [ipResult, emailResult].find(
+    (result) => !result.success,
+  );
 
   return blockedResult
-    ? { configured: true as const, allowed: false as const, reset: blockedResult.reset }
+    ? {
+        configured: true as const,
+        allowed: false as const,
+        reset: blockedResult.reset,
+      }
     : { configured: true as const, allowed: true as const };
 }
 
@@ -177,7 +183,7 @@ export async function sendMessage(
     };
   }
 
-  const to = process.env.CONTACT_TO_EMAIL ?? "shajinahsans@gmail.com";
+  const to = process.env.CONTACT_TO_EMAIL ?? "hello@shajin.me";
   const from =
     process.env.CONTACT_FROM_EMAIL ?? "Portfolio <onboarding@resend.dev>";
   const safeName = values.name.replace(/[\r\n]+/g, " ");

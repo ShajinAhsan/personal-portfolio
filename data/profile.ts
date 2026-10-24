@@ -9,7 +9,7 @@ export const profile = {
   twitterHandle: "shajinahsan",
   facebook: "https://www.facebook.com/shajinahsans",
   facebookHandle: "shajinahsans",
-  personalEmail: "shajinahsans@gmail.com",
+  personalEmail: "hello@shajin.me",
   institutionalEmail: "u2504086@student.cuet.ac.bd",
   portrait: "/portrait.webp",
 } as const;
