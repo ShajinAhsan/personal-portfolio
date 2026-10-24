@@ -269,6 +269,7 @@ function LineFollowerPreview() {
 export default function LineFollowerCard({ project: p }: { project: Project }) {
   return (
     <article
+      id={`project-${p.n}`}
       aria-labelledby={`project-${p.n}-title`}
       className="group relative rounded-[28px] border overflow-hidden grid md:grid-cols-12 mb-6"
       style={{ borderColor: "var(--control-line)", background: "var(--card)" }}

@@ -19,7 +19,7 @@ export const learning: LearningNode[] = [
     desc: "Learned MongoDB, Express, React and Node. Built my first live projects, including the weather app.",
     status: "done",
     color: "var(--bd-green)",
-    unlocks: [{ label: "Weather App", href: "#work" }],
+    unlocks: [{ label: "Weather App", href: "#project-01" }],
   },
   {
     date: "2023",
@@ -28,8 +28,8 @@ export const learning: LearningNode[] = [
     status: "done",
     color: "var(--bd-green)",
     unlocks: [
-      { label: "Line Following Car", href: "#work" },
-      { label: "Remote Wall Socket", href: "#work" },
+      { label: "Line Following Car", href: "#project-05" },
+      { label: "Remote Wall Socket", href: "#project-04" },
     ],
   },
   {

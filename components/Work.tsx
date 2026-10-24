@@ -22,6 +22,7 @@ function WeatherProject() {
   const p = weatherProject;
   return (
     <article
+      id={`project-${p.n}`}
       aria-labelledby={`project-${p.n}-title`}
       className="rounded-[28px] border overflow-hidden mb-6 grid md:grid-cols-12"
       style={{ borderColor: "var(--control-line)", background: "var(--card)" }}
