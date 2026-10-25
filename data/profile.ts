@@ -1,6 +1,5 @@
 export const profile = {
   name: "Shajin Ahsan Shuvo",
-  studentId: "2504086",
   github: "https://github.com/shajinahsan",
   githubHandle: "shajinahsan",
   linkedin: "https://www.linkedin.com/in/shajinahsan",

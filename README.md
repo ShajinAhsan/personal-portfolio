@@ -101,7 +101,7 @@ There are a few commands `help` won't tell you about. Think like a recruiter. Or
 - **Content lives in `data/`.** Projects, skills, the skill tree and the "Now" section are plain TypeScript objects. Changing what the site says doesn't mean touching a component.
 - **Dark mode without the flash.** `next-themes` sets a class before first paint, and Tailwind's `dark:` variant is wired to it.
 - **Contact form.** A Server Action validates input, rejects bots with a hidden honeypot field, and sends mail through [Resend](https://resend.com). Your message is kept in the form if sending fails.
-- **Social previews.** The Open Graph image is 1200x630, with everything important inside the middle 630x630 square. Facebook crops link previews to 1:1 in some places, and this survives it.
+- **Social previews.** The Open Graph image is a 1200x630 JPEG (`public/og-image.jpg`), with everything important inside the middle 630x630 square. Facebook crops link previews to 1:1 in some places, and this survives it.
 - **Fonts** through `next/font`: Inter, Instrument Serif and JetBrains Mono.
 
 ---
@@ -124,23 +124,26 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Variable               | Needed for                   | If it's missing                                    |
 | ---------------------- | ---------------------------- | -------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL` | Metadata, sitemap, robots    | Falls back to `http://localhost:3000`              |
+| `NEXT_PUBLIC_SITE_URL` | Metadata, sitemap, robots    | Falls back to `https://shajin.me`                  |
 | `RESEND_API_KEY`       | The contact form             | The form shows a friendly "not set up yet" message |
 | `CONTACT_TO_EMAIL`     | Where messages are delivered | Defaults to my inbox                               |
 | `CONTACT_FROM_EMAIL`   | The sender address           | Defaults to Resend's test sender                   |
 | `OPENWEATHER_API_KEY`  | The live weather card        | The card shows "Live data unavailable right now"   |
-| `UPSTASH_REDIS_REST_URL` | Contact-form rate limiting | Rate limiting is unavailable until both Upstash values are set |
-| `UPSTASH_REDIS_REST_TOKEN` | Contact-form rate limiting | Rate limiting is unavailable until both Upstash values are set |
+| `UPSTASH_REDIS_REST_URL` | Contact-form rate limiting | Rate limiting is disabled; the form still sends |
+| `UPSTASH_REDIS_REST_TOKEN` | Contact-form rate limiting | Rate limiting is disabled; the form still sends |
+| `DEV_ORIGIN`           | LAN testing in `next dev`    | Defaults to `192.168.68.102`                       |
 
-The site runs fine with none of these set. It just can't send email or show live weather. Keep keys in `.env.local` and never commit them. They're only ever read on the server.
+The site runs fine with none of these set. It just can't send email or show live weather; rate limiting is disabled until both Upstash values are present. Keep keys in `.env.local` and never commit them. They're only ever read on the server.
 
 ### Scripts
 
 ```bash
-npm run dev     # local dev server
-npm run build   # production build
-npm run start   # serve the production build
-npm run lint    # eslint
+npm run dev        # local dev server
+npm run build      # production build
+npm run start      # serve the production build
+npm run lint       # eslint
+npm run typecheck  # tsc --noEmit
+npm run check      # typecheck + lint + build
 ```
 
 ---
@@ -152,14 +155,20 @@ app/
   layout.tsx            fonts, metadata, theme provider
   page.tsx              the page, section by section
   actions.ts            contact form Server Action (Resend)
+  error.tsx, not-found.tsx, global-error.tsx   status screens
   icon.svg              site icon
   globals.css           design tokens + every keyframe
 components/
   Hero, About, Education, Work, Now, Contact, Footer, Header
-  *Card.tsx             the animated project cards
+  ProjectCard.tsx       shared project shell + tags/actions
+  *Card.tsx             bespoke project preview scenes
+  DroneScene.tsx        the Now section SVG (server-rendered)
+  AnimationPauser.tsx   pauses CSS/SMIL animation offscreen
+  AboutIntro.tsx        the one small client piece of About
+  StatusScreen.tsx      shared 404/500 layout
   TerminalCard.tsx      the interactive terminal
-  Learning.tsx           the learning timeline
-  Skills.tsx             the skills section
+  Learning.tsx          the learning timeline
+  Skills.tsx            the skills section
   ThemeToggle, MobileMenu, ContactForm
 data/                   profile, projects, skills, learning, now
 lib/weather.ts          cached OpenWeather fetch
@@ -176,9 +185,9 @@ If you're forking this, change the words first:
 3. **`data/learning.ts`** has the skill tree. Add a node when you learn something new, and set `status` to `"done"`, `"now"` or `"locked"`.
 4. **`data/now.ts`** has the "Now" section text.
 5. **`data/projects.ts`** has the project cards' text.
-6. **`public/portrait.jpg`** is the photo. Swap it for yours.
+6. **`public/portrait.webp`** is the photo. Swap it for yours.
 
-The project cards are hand-built, one component each, so a new project means a new card. Copy the closest existing one and change the scene.
+Project cards share a shell in `components/ProjectCard.tsx`; each preview scene is bespoke. A new project means adding data and a preview component.
 
 ---
 

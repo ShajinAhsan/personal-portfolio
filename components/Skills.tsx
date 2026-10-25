@@ -41,6 +41,8 @@ export default function Skills() {
       next = (active + 1) % n;
     else if (e.key === "ArrowLeft" || e.key === "ArrowUp")
       next = (active - 1 + n) % n;
+    else if (e.key === "Home") next = 0;
+    else if (e.key === "End") next = n - 1;
     else return;
     e.preventDefault();
     setActive(next);
@@ -84,7 +86,7 @@ export default function Skills() {
             : `text-[11.5px] @md:text-[13px] @lg:text-[14px] ${
                 side === "l" ? "pr-2 text-right" : "pl-2 text-left"
               }`
-        } ${reserved ? "italic text-(--text-2) opacity-60" : "font-medium text-(--text)"}`}
+        } ${reserved ? "italic text-(--text-2)" : "font-medium text-(--text)"}`}
         style={{ animationDelay: `${i * 55 + 80}ms` }}
       >
         {reserved ? "Reserved" : label}
@@ -244,6 +246,7 @@ export default function Skills() {
       <div
         id="skill-panel"
         role="tabpanel"
+        tabIndex={0}
         aria-labelledby={`skill-tab-${active}`}
         className="@container relative mt-3 overflow-hidden rounded-[20px] border bg-(--card)"
         style={{ borderColor: "var(--line)" }}

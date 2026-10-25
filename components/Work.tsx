@@ -1,13 +1,5 @@
 import { profile } from "@/data/profile";
-import {
-  attendanceProject,
-  dashcamProject,
-  droneProject,
-  lineFollowerProject,
-  projectCount,
-  socketProject,
-  weatherProject,
-} from "@/data/projects";
+import { getProject, projectCount } from "@/data/projects";
 import { ExternalLink } from "lucide-react";
 import { Suspense } from "react";
 import AttendanceCard from "./AttendanceCard";
@@ -19,7 +11,7 @@ import SocketCard from "./SocketCard";
 import WeatherPreview, { WeatherFallback } from "./WeatherPreview";
 
 function WeatherProject() {
-  const p = weatherProject;
+  const p = getProject("01");
   return (
     <article
       id={`project-${p.n}`}
@@ -30,7 +22,7 @@ function WeatherProject() {
       <div className="md:col-span-7 p-7 md:p-9 flex flex-col">
         <div className="flex items-center gap-3">
           <span className="h-px w-8 bg-current opacity-20" />
-          <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
+          <span className="mono whitespace-nowrap text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
             Live since <time dateTime={p.year}>{p.year}</time>
           </span>
           <span className="ml-auto inline-flex items-center gap-1.5 mono text-[9px] px-2 py-1 rounded-full bg-[#16C784] text-black">
@@ -61,24 +53,28 @@ function WeatherProject() {
             </span>
           ))}
         </div>
-        <div className="mt-auto pt-8 flex gap-3">
-          <a
-            href={p.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="h-9 px-5 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-2 mono text-[11px] tracking-wider uppercase"
-          >
-            Live Site <ExternalLink size={12} />
-          </a>
-          <a
-            href={`${profile.github}/shajin-weather`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="h-9 px-5 rounded-full border inline-flex items-center gap-2 mono text-[11px] tracking-wider uppercase"
-            style={{ borderColor: "var(--line)" }}
-          >
-            <GithubIcon size={12} /> GitHub
-          </a>
+        <div className="mt-auto pt-8 flex flex-wrap gap-3">
+          {p.liveUrl && (
+            <a
+              href={p.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-9 px-5 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-2 whitespace-nowrap mono text-[11px] tracking-wider uppercase"
+            >
+              Live Site <ExternalLink size={12} />
+            </a>
+          )}
+          {p.github && (
+            <a
+              href={p.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-9 px-5 rounded-full border inline-flex items-center gap-2 whitespace-nowrap mono text-[11px] tracking-wider uppercase"
+              style={{ borderColor: "var(--line)" }}
+            >
+              <GithubIcon size={12} /> GitHub
+            </a>
+          )}
         </div>
       </div>
       <Suspense fallback={<WeatherFallback />}>
@@ -109,16 +105,23 @@ export default function Work() {
         <div className="mono text-[12px] leading-normal text-(--text-2) max-w-[32ch]">
           From my first weather site in 2022 to line-followers and gyro drones.
           Prototypes, shipped, documented on GitHub{" "}
-          <span className="underline">{profile.githubHandle}</span>.
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-6 items-center underline decoration-(--bd-green) decoration-2 underline-offset-2"
+          >
+            {profile.githubHandle}
+          </a>.
         </div>
       </div>
 
       <WeatherProject />
-      <DroneCard project={droneProject} />
-      <DashcamCard project={dashcamProject} />
-      <LineFollowerCard project={lineFollowerProject} />
-      <SocketCard project={socketProject} />
-      <AttendanceCard project={attendanceProject} />
+      <DroneCard project={getProject("03")} />
+      <DashcamCard project={getProject("02")} />
+      <LineFollowerCard project={getProject("05")} />
+      <SocketCard project={getProject("04")} />
+      <AttendanceCard project={getProject("06")} />
     </section>
   );
 }

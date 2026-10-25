@@ -1,7 +1,6 @@
-import { profile } from "@/data/profile";
 import type { Project } from "@/data/projects";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { GithubIcon } from "./Icons";
+import ProjectCard from "./ProjectCard";
 
 const TRACK =
   "M70 34 C90.0 31.0 130.0 30.0 160.0 30.0 C190.0 30.0 224.7 30.3 250.0 34.0 C275.3 37.7 298.7 44.0 312.0 52.0 C325.3 60.0 331.3 72.0 330.0 82.0 C328.7 92.0 317.3 105.3 304.0 112.0 C290.7 118.7 266.3 123.0 250.0 122.0 C233.7 121.0 219.7 110.3 206.0 106.0 C192.3 101.7 181.0 95.0 168.0 96.0 C155.0 97.0 142.0 107.7 128.0 112.0 C114.0 116.3 98.3 123.0 84.0 122.0 C69.7 121.0 51.0 113.7 42.0 106.0 C33.0 98.3 30.3 85.7 30.0 76.0 C29.7 66.3 33.3 55.0 40.0 48.0 C46.7 41.0 50.0 37.0 70.0 34.0 Z";
@@ -10,14 +9,14 @@ const SENSORS = ["S1", "S2", "S3", "S4", "S5"];
 
 function LineFollowerPreview() {
   return (
-    <div
+    <div data-pause=""
       className="relative min-h-[220px] md:min-h-0 p-3 bg-[#0F0F0E] md:col-span-7 md:order-first"
       aria-hidden="true"
     >
       <div
         className="h-full w-full rounded-[20px] border overflow-hidden relative p-5 flex flex-col justify-between bg-[#161614]"
         style={{
-          borderColor: "color-mix(in srgb, var(--line) 60%, transparent)",
+          borderColor: "var(--screen-line)",
         }}
       >
         <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/70">
@@ -267,68 +266,5 @@ function LineFollowerPreview() {
 }
 
 export default function LineFollowerCard({ project: p }: { project: Project }) {
-  return (
-    <article
-      id={`project-${p.n}`}
-      aria-labelledby={`project-${p.n}-title`}
-      className="group relative rounded-[28px] border overflow-hidden grid md:grid-cols-12 mb-6"
-      style={{ borderColor: "var(--control-line)", background: "var(--card)" }}
-    >
-      <div className="md:col-span-5 p-7 md:p-9 flex flex-col">
-        <div className="flex items-center gap-3">
-          <span className="h-px w-8 bg-current opacity-20" />
-          <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
-            <time dateTime={p.year}>{p.year}</time> • Autonomous
-          </span>
-        </div>
-
-        <h3
-          id={`project-${p.n}-title`}
-          className="mt-7 text-[28px] md:text-[34px] font-bold tracking-[-0.02em] leading-[0.95]"
-        >
-          {p.title}
-        </h3>
-        <div className="mono text-[12px] tracking-[0.14em] uppercase text-(--text-2) mt-2">
-          {p.subtitle}
-        </div>
-
-        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] text-(--text-2) max-w-[48ch]">
-          {p.desc}
-        </p>
-
-        <div className="mt-6 flex flex-wrap gap-2">
-          {p.tags.map((tag) => (
-            <span
-              key={tag}
-              className="mono text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full border"
-              style={{ borderColor: "var(--line)", background: "var(--bg-2)" }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-auto pt-8 flex gap-3">
-          {p.github && (
-            <a
-              href={p.github ?? profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-9 px-5 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-2 mono text-[10px] tracking-widest uppercase"
-            >
-              <GithubIcon size={12} /> GitHub
-            </a>
-          )}
-          <span
-            className="h-9 px-5 rounded-full border inline-flex items-center mono text-[10px] tracking-widest uppercase text-(--text-2)"
-            style={{ borderColor: "var(--control-line)" }}
-          >
-            Prototype
-          </span>
-        </div>
-      </div>
-
-      <LineFollowerPreview />
-    </article>
-  );
+  return <ProjectCard project={p} preview={<LineFollowerPreview />} />;
 }

@@ -15,7 +15,6 @@ const inter = Inter({
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
-  style: ["normal", "italic"],
   variable: "--font-instrument-serif",
   display: "swap",
 });
@@ -28,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const siteDescription =
-  "Portfolio of Shajin Ahsan Shuvo, a CSE student at CUET building across MERN web development, Linux systems and hardware.";
+  "Portfolio of Shajin Ahsan Shuvo, a CSE student at CUET working across MERN web development, Linux systems, and hardware.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -37,7 +36,6 @@ export const metadata: Metadata = {
     template: "%s | Shajin Ahsan Shuvo",
   },
   description: siteDescription,
-  alternates: { canonical: "/" },
   authors: [{ name: "Shajin Ahsan Shuvo", url: siteUrl }],
   creator: "Shajin Ahsan Shuvo",
   openGraph: {
@@ -50,9 +48,10 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/og-image.webp",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: "Shajin Ahsan Shuvo",
       },
     ],
@@ -63,11 +62,13 @@ export const metadata: Metadata = {
     description:
       "MERN web dev, Linux systems and hands-on hardware. Portfolio of Shajin Ahsan Shuvo.",
     creator: "@shajinahsan",
-    images: ["/og-image.webp"],
+    site: "@shajinahsan",
+    images: ["/og-image.jpg"],
   },
 };
 
 export const viewport: Viewport = {
+  colorScheme: "light dark",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#FCFCF9" },
     { media: "(prefers-color-scheme: dark)", color: "#10100F" },
@@ -95,24 +96,30 @@ export default function RootLayout({
               name: "Shajin Ahsan Shuvo",
               url: siteUrl,
               image: `${siteUrl}/portrait.webp`,
+              description: siteDescription,
               jobTitle: "Computer Science and Engineering Student",
-              worksFor: {
-                "@type": "EducationalOrganization",
+              affiliation: {
+                "@type": "CollegeOrUniversity",
                 name: "Chittagong University of Engineering & Technology",
               },
               sameAs: [
                 "https://github.com/shajinahsan",
                 "https://www.linkedin.com/in/shajinahsan",
                 "https://twitter.com/shajinahsan",
+                "https://www.facebook.com/shajinahsans",
               ],
-            }),
+            }).replace(/</g, "\\u003c"),
           }}
         />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
+        {process.env.VERCEL === "1" && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );

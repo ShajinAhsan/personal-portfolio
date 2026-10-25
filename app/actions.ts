@@ -24,6 +24,7 @@ type ContactLimiters = {
 };
 
 let limiters: ContactLimiters | null = null;
+let warnedAboutMissingLimiter = false;
 
 function field(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -70,8 +71,14 @@ async function checkRateLimit(ip: string, email: string) {
   const configuredLimiters = getLimiters();
 
   if (!configuredLimiters) {
-    console.error("[contact] Upstash rate limiter is not configured");
-    return { configured: false as const };
+    if (!warnedAboutMissingLimiter) {
+      warnedAboutMissingLimiter = true;
+      console.warn(
+        "[contact] Upstash is not configured; rate limiting is disabled. " +
+          "Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN to enable it.",
+      );
+    }
+    return { allowed: true as const };
   }
 
   const [ipResult, emailResult] = await Promise.all([
@@ -83,12 +90,8 @@ async function checkRateLimit(ip: string, email: string) {
   );
 
   return blockedResult
-    ? {
-        configured: true as const,
-        allowed: false as const,
-        reset: blockedResult.reset,
-      }
-    : { configured: true as const, allowed: true as const };
+    ? { allowed: false as const, reset: blockedResult.reset }
+    : { allowed: true as const };
 }
 
 export async function sendMessage(
@@ -153,14 +156,6 @@ export async function sendMessage(
     };
   }
 
-  if (!rateLimit.configured) {
-    return {
-      status: "error",
-      message: "The form is temporarily unavailable. Please try again later.",
-      field: "form",
-      values,
-    };
-  }
   if (!rateLimit.allowed) {
     const minutes = retryAfter(rateLimit.reset);
     return {

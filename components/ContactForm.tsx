@@ -57,7 +57,7 @@ export default function ContactForm() {
                 ? "contact-error"
                 : undefined
             }
-            className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) transition w-full min-w-0"
+            className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--accent) transition w-full min-w-0"
             style={{ borderColor: "var(--control-line)" }}
           />
         </label>
@@ -84,7 +84,7 @@ export default function ContactForm() {
                 ? "contact-error"
                 : undefined
             }
-            className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) transition w-full min-w-0"
+            className="h-12 rounded-full border px-5 text-[14px] bg-(--bg) outline-none focus:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--accent) transition w-full min-w-0"
             style={{ borderColor: "var(--control-line)" }}
           />
         </label>
@@ -112,7 +112,7 @@ export default function ContactForm() {
               ? "contact-error"
               : undefined
           }
-          className="rounded-[20px] border p-5 text-[14px] leading-normal bg-(--bg) outline-none focus:border-(--text) transition resize-none"
+          className="rounded-[20px] border p-5 text-[14px] leading-normal bg-(--bg) outline-none focus:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--accent) transition resize-none"
           style={{ borderColor: "var(--control-line)" }}
         />
       </label>
@@ -142,7 +142,7 @@ export default function ContactForm() {
           {pending
             ? "Sending…"
             : state.status === "success"
-              ? "Sent ✓"
+              ? "Send another"
               : (
                 <>
                   Send message
@@ -152,7 +152,7 @@ export default function ContactForm() {
         </button>
       </div>
 
-      <div aria-live="polite">
+      <div>
         {state.status === "success" && (
           <div
             role="status"

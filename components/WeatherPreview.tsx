@@ -16,12 +16,14 @@ function WeatherCard({
   const status = loading
     ? "Loading…"
     : weather
-      ? `Live API • Updated ${weather.updatedAt} Dhaka time`
+      ? `Cached • Updated ${weather.updatedAt} Dhaka time`
       : "Live data unavailable right now";
 
   return (
+    // Streamed inside Suspense: don't mark this with data-pause. The global
+    // AnimationPauser must not mutate this subtree before it hydrates.
     <div className="md:col-span-5 relative min-h-65 p-3 bg-[#0F0F0E]">
-      <div className="h-full w-full rounded-[20px] border border-[#2A2A26] overflow-hidden relative p-5 flex flex-col justify-between bg-[#161614]">
+      <div className="h-full w-full rounded-[20px] border border-(--screen-line) overflow-hidden relative p-5 flex flex-col justify-between bg-[#161614]">
         <div className="flex justify-between mono text-[9px] tracking-widest uppercase text-white/70">
           <span>Weather</span>
           <div className="flex gap-1.5" aria-hidden="true">
@@ -49,7 +51,7 @@ function WeatherCard({
             {stats.map((s) => (
               <div
                 key={s.k}
-                className="rounded-[10px] bg-[#1E1E1A] border border-[#2A2A26] p-2.5"
+                className="rounded-[10px] bg-[#1E1E1A] border border-(--screen-line) p-2.5"
               >
                 <div className="mono text-[7px] text-white/70 uppercase tracking-widest">
                   {s.k}
@@ -60,7 +62,7 @@ function WeatherCard({
               </div>
             ))}
           </div>
-          <div className="h-8 rounded-full bg-[#1E1E1A] border border-[#2A2A26] flex items-center px-3 gap-2">
+          <div className="h-8 rounded-full bg-[#1E1E1A] border border-(--screen-line) flex items-center px-3 gap-2">
             <span
               className={`h-1 w-1 rounded-full ${weather ? "bg-[#16C784] animate-ping [animation-duration:2000ms]" : "bg-white/30"}`}
             />
@@ -68,7 +70,7 @@ function WeatherCard({
           </div>
         </div>
         <div className="mono text-[8px] md:text-[10px] tracking-wide text-white/70 mt-4">
-          Data via OpenWeather • Auto-syncs turned on
+          Data via OpenWeather • Refreshes every 10 min
         </div>
       </div>
     </div>

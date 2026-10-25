@@ -10,7 +10,7 @@ export default function GamesList({ games }: { games: readonly string[] }) {
   const hiddenCount = games.length - VISIBLE;
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div id="games-list" className="flex flex-wrap gap-2">
       {games.map((game, i) => (
         <span
           key={game}
@@ -28,13 +28,14 @@ export default function GamesList({ games }: { games: readonly string[] }) {
           type="button"
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
-          className="mono text-[10px] px-2.5 py-1 rounded-full border inline-flex items-center gap-1 hover:bg-(--bg-2) transition cursor-pointer"
+          aria-controls="games-list"
+          className="mono text-[10px] px-2.5 py-1.5 min-h-6 rounded-full border inline-flex items-center gap-1 hover:bg-(--bg-2) transition cursor-pointer"
           style={{ borderColor: "var(--line-strong)" }}
         >
           {open ? "Show less" : `+${hiddenCount} more`}
           <ChevronDown
             size={10}
-            className={`transition-transform ${open ? "rotate-180" : ""}`}
+            className={`transition-transform motion-reduce:transition-none ${open ? "rotate-180" : ""}`}
           />
         </button>
       )}

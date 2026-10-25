@@ -50,8 +50,9 @@ export default function Contact() {
           </div>
 
           <div className="mt-8 grid gap-3">
-            <div
-              className="group rounded-[18px] border p-4 transition-colors hover:bg-(--bg-2)"
+            <a
+              href={`mailto:${profile.personalEmail}`}
+              className="group block rounded-[18px] border p-4 transition-colors hover:bg-(--bg-2)"
               style={{ borderColor: "var(--line)" }}
             >
               <div className="flex items-start justify-between gap-4">
@@ -67,18 +68,15 @@ export default function Contact() {
                     <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
                       Personal
                     </div>
-                    <a
-                      href={`mailto:${profile.personalEmail}`}
-                      className="mt-1 block break-all text-[14px] font-medium underline decoration-(--bd-green) decoration-2 underline-offset-3"
-                    >
+                    <span className="mt-1 block break-all text-[14px] font-medium underline decoration-(--bd-green) decoration-2 underline-offset-3">
                       {profile.personalEmail}
-                    </a>
+                    </span>
                   </div>
                 </div>
                 <ArrowUpRight
                   aria-hidden="true"
                   size={15}
-                  className="text-(--text-3) transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  className="text-(--text-2) transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0"
                 />
               </div>
               <div
@@ -87,10 +85,11 @@ export default function Contact() {
               >
                 Primary channel • Fast response
               </div>
-            </div>
+            </a>
 
-            <div
-              className="group rounded-[18px] border p-4 transition-colors hover:bg-(--bg-2)"
+            <a
+              href={`mailto:${profile.institutionalEmail}`}
+              className="group block rounded-[18px] border p-4 transition-colors hover:bg-(--bg-2)"
               style={{ borderColor: "var(--line)" }}
             >
               <div className="flex items-start justify-between gap-4">
@@ -106,18 +105,15 @@ export default function Contact() {
                     <div className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
                       Institutional
                     </div>
-                    <a
-                      href={`mailto:${profile.institutionalEmail}`}
-                      className="mt-1 block break-all text-[14px] font-medium"
-                    >
+                    <span className="mt-1 block break-all text-[14px] font-medium">
                       {profile.institutionalEmail}
-                    </a>
+                    </span>
                   </div>
                 </div>
                 <ArrowUpRight
                   aria-hidden="true"
                   size={15}
-                  className="text-(--text-3) transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  className="text-(--text-2) transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0"
                 />
               </div>
               <div
@@ -126,7 +122,7 @@ export default function Contact() {
               >
                 CUET CSE • Academic use
               </div>
-            </div>
+            </a>
           </div>
 
           <div
@@ -152,7 +148,7 @@ export default function Contact() {
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex shrink-0 items-center gap-1.5 mono text-[10px] tracking-[0.12em] uppercase text-(--text-2) transition-colors hover:text-(--text)"
+              className="group flex min-h-6 shrink-0 items-center gap-1.5 mono text-[10px] tracking-[0.12em] uppercase text-(--text-2) transition-colors hover:text-(--text)"
             >
               <GithubIcon size={13} />
               <span>{profile.githubHandle}</span>

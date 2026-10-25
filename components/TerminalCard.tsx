@@ -3,6 +3,7 @@
 import { profile } from "@/data/profile";
 import { projectCount } from "@/data/projects";
 import { ArrowDown, ArrowRight, ArrowUp, Terminal } from "lucide-react";
+import { useTheme } from "next-themes";
 import {
   useCallback,
   useEffect,
@@ -31,6 +32,8 @@ const COMMANDS = [
   "date",
   "echo",
   "sudo",
+  "open",
+  "theme",
   "clear",
 ];
 
@@ -112,6 +115,8 @@ function run(input: string): ReactNode {
             ["projects", "jump to my work"],
             ["contact", "ways to reach me"],
             ["git log", "recent history"],
+            ["open <section>", "jump to a section"],
+            ["theme", "switch light / dark"],
             ["clear", "wipe the screen"],
           ].map(([c, d]) => (
             <div key={c} className="contents">
@@ -319,6 +324,7 @@ export default function TerminalCard() {
   const [focused, setFocused] = useState(false);
   const [history, setHistory] = useState<string[]>([]);
   const [announcement, setAnnouncement] = useState("");
+  const { resolvedTheme, setTheme } = useTheme();
 
   const histIdx = useRef<number | null>(null);
   const nextId = useRef(0);
@@ -349,11 +355,72 @@ export default function TerminalCard() {
         `Command executed: ${cmd} (${announcementCountRef.current})`,
       );
 
-      if (cmd === "clear") {
+      const [name = "", ...args] = cmd.split(/\s+/);
+      const commandName = name.toLowerCase();
+
+      if (commandName === "clear") {
         setEntries([]);
         setAnnouncement("Terminal cleared");
         return;
       }
+
+      if (commandName === "open") {
+        const target = (args[0] ?? "").replace(/^#/, "").toLowerCase();
+
+        if (!target) {
+          push(
+            raw,
+            <Row>
+              <span className={dim}>
+                usage: open work | about | skills | education | now | contact
+              </span>
+            </Row>,
+          );
+          return;
+        }
+
+        const destination = document.getElementById(target);
+        if (!destination) {
+          push(
+            raw,
+            <Row>
+              <span className={dim}>section not found: {target}</span>
+            </Row>,
+          );
+          return;
+        }
+
+        const reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        inputRef.current?.blur();
+        destination.scrollIntoView({
+          behavior: reduce ? "auto" : "smooth",
+          block: "start",
+        });
+        push(
+          raw,
+          <Row>
+            <span className={dim}>opening {target}…</span>
+          </Row>,
+        );
+        setAnnouncement(`Opened ${target}`);
+        return;
+      }
+
+      if (commandName === "theme") {
+        const next = resolvedTheme === "dark" ? "light" : "dark";
+        setTheme(next);
+        push(
+          raw,
+          <Row>
+            <span className={dim}>theme: {next}</span>
+          </Row>,
+        );
+        setAnnouncement(`Theme switched to ${next}`);
+        return;
+      }
+
       push(raw, run(cmd));
 
       if (/^sudo\b.*\bhire\b/i.test(cmd)) {
@@ -363,7 +430,7 @@ export default function TerminalCard() {
         }, 700);
       }
     },
-    [push],
+    [push, resolvedTheme, setTheme],
   );
 
   useEffect(() => {
@@ -533,7 +600,7 @@ export default function TerminalCard() {
             if (window.getSelection()?.toString()) return;
             inputRef.current?.focus({ preventScroll: true });
           }}
-          className="mono h-75 cursor-text space-y-1.5 overflow-y-auto p-4 text-[11px] leading-relaxed sm:h-85 sm:text-xs lg:h-95 lg:p-6 lg:text-[13px]"
+          className="mono h-75 cursor-text space-y-1.5 overflow-y-auto p-4 text-[11px] leading-relaxed has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-[-2px] has-[:focus-visible]:outline-(--accent) sm:h-85 sm:text-xs lg:h-95 lg:p-6 lg:text-[13px]"
         >
           {entries.map((en) => (
             <div key={en.id}>
@@ -603,7 +670,7 @@ export default function TerminalCard() {
               exec(c);
               setLine("");
             }}
-            className="mono rounded-full border px-2.5 py-1 text-[10px] transition hover:bg-(--bg-2) disabled:opacity-40 cursor-pointer"
+            className="mono min-h-6 rounded-full border px-2.5 py-1 text-[10px] transition hover:bg-(--bg-2) disabled:opacity-40 cursor-pointer"
             style={{ borderColor: "var(--line)" }}
           >
             {c}

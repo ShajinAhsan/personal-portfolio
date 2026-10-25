@@ -36,6 +36,23 @@ function emojiFor(code: string) {
   return ICONS[code] ?? ICONS[code.slice(0, 2)] ?? "🌡️";
 }
 
+function isOpenWeatherResponse(value: unknown): value is OpenWeatherResponse {
+  if (typeof value !== "object" || value === null) return false;
+
+  const data = value as Partial<OpenWeatherResponse>;
+  const current = data.weather?.[0];
+
+  return (
+    typeof data.main?.temp === "number" &&
+    typeof data.main?.feels_like === "number" &&
+    typeof data.main?.humidity === "number" &&
+    typeof data.wind?.speed === "number" &&
+    typeof data.dt === "number" &&
+    typeof current?.description === "string" &&
+    typeof current?.icon === "string"
+  );
+}
+
 export function parseWeather(data: OpenWeatherResponse): Weather {
   const w = data.weather[0];
   return {
@@ -70,9 +87,15 @@ export async function getDhakaWeather(): Promise<Weather | null> {
       appid: key,
     }).toString();
 
-    const res = await fetch(url);
+    const res = await fetch(url, { signal: AbortSignal.timeout(5_000) });
     if (!res.ok) throw new Error(`OpenWeather responded ${res.status}`);
-    return parseWeather(await res.json());
+
+    const data: unknown = await res.json();
+    if (!isOpenWeatherResponse(data)) {
+      throw new Error("OpenWeather returned an unexpected payload");
+    }
+
+    return parseWeather(data);
   } catch (err) {
     console.error("[weather]", err);
     return null;

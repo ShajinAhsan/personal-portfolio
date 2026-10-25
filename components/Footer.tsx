@@ -7,6 +7,7 @@ const socialLinks = (
     ["GitHub", profile.github],
     ["LinkedIn", profile.linkedin],
     ["Twitter", profile.twitter],
+    ["Facebook", profile.facebook],
   ] as const
 ).filter(([, href]) => Boolean(href));
 const glow = (color: string) =>
@@ -74,7 +75,7 @@ export default function Footer() {
                 <a
                   key={link.id}
                   href={`#${link.id}`}
-                  className="text-[15px] text-(--text-2) transition-all hover:translate-x-1 hover:text-(--text)"
+                  className="inline-flex min-h-6 items-center text-[15px] text-(--text-2) transition-all hover:translate-x-1 hover:text-(--text) motion-reduce:transition-none motion-reduce:hover:translate-x-0"
                 >
                   {link.label}
                 </a>
@@ -93,13 +94,13 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-1.5 text-[15px] text-(--text-2) transition-colors hover:text-(--text)"
+                  className="group flex min-h-6 items-center gap-1.5 text-[15px] text-(--text-2) transition-colors hover:text-(--text)"
                 >
                   {label}
                   <ArrowUpRight
                     aria-hidden="true"
                     size={13}
-                    className="opacity-50 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    className="opacity-50 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0"
                   />
                 </a>
               ))}
@@ -164,7 +165,7 @@ export default function Footer() {
               <span className="text-(--bd-green)">%</span>{" "}
               <span className="text-(--text)">exit</span>
             </div>
-            <div className="flex items-center gap-1.5 opacity-60">
+            <div className="flex items-center gap-1.5">
               [Process completed]
               <span
                 className="inline-block h-3 w-1.5 animate-pulse"

@@ -29,7 +29,7 @@ function Node({ node }: { node: LearningNode }) {
 
       <div className="flex items-baseline justify-between gap-3">
         <h4
-          className={`text-[14px] font-semibold leading-snug ${locked ? "opacity-50" : ""}`}
+          className={`text-[14px] font-semibold leading-snug ${locked ? "text-(--text-2)" : ""}`}
         >
           {node.title}
         </h4>
@@ -98,15 +98,15 @@ export default function LearningTree() {
       className="relative border-l pl-8 md:pl-10 space-y-6"
       style={{ borderColor: "var(--line)" }}
     >
-      <div className="mono flex items-center gap-1.5 text-[10px] tracking-[0.2em] uppercase text-(--text-2) -ml-8 md:-ml-10 mb-2 pl-8 md:pl-10">
+      <h3 className="mono flex items-center gap-1.5 text-[10px] font-medium tracking-[0.2em] uppercase text-(--text-2) -ml-8 md:-ml-10 mb-2 pl-8 md:pl-10">
         <span>Skill tree — learn</span>
         <ArrowRight aria-hidden="true" size={12} />
         <span>ship</span>
-      </div>
+      </h3>
 
       {earlier.length > 0 && (
         <details className="group">
-          <summary className="relative flex cursor-pointer list-none items-center gap-1.5 mono text-[10px] tracking-[0.2em] uppercase text-(--text-2) transition hover:text-(--text) [&::-webkit-details-marker]:hidden">
+          <summary className="relative flex min-h-6 cursor-pointer list-none items-center gap-1.5 py-1.5 mono text-[10px] tracking-[0.2em] uppercase text-(--text-2) transition hover:text-(--text) [&::-webkit-details-marker]:hidden">
             <span
               className={`${dot} border border-dashed bg-(--bg)`}
               style={{ borderColor: "var(--text-3)" }}
@@ -115,7 +115,7 @@ export default function LearningTree() {
             Earlier unlocks ({earlier.length})
             <ChevronDown
               size={12}
-              className="transition-transform group-open:rotate-180"
+              className="transition-transform group-open:rotate-180 motion-reduce:transition-none"
             />
           </summary>
           <div className="mt-6 space-y-6">

@@ -1,21 +1,20 @@
-import { profile } from "@/data/profile";
 import type { Project } from "@/data/projects";
 import { ArrowRight } from "lucide-react";
-import { GithubIcon } from "./Icons";
+import ProjectCard from "./ProjectCard";
 
 const TRACE_PATH =
   "M0 40.0 C10.1 40.0 13.9 68.6 24.0 68.6 C41.6 68.6 48.4 23.1 66.0 23.1 C81.1 23.1 86.9 49.1 102.0 49.1 C115.9 49.1 121.1 35.5 135.0 35.5 C147.6 35.5 152.4 42.0 165.0 42.0 C177.6 42.0 182.4 39.2 195.0 39.2 C207.6 39.2 212.4 40.0 225.0 40.0 C256.5 40.0 268.5 40.0 300.0 40.0";
 
 function DronePreview() {
   return (
-    <div
+    <div data-pause=""
       className="relative min-h-55 md:min-h-0 p-3 bg-[#0F0F0E] md:col-span-7 md:order-first"
       aria-hidden="true"
     >
       <div
         className="h-full w-full rounded-[20px] border overflow-hidden relative p-5 flex flex-col justify-between bg-[#161614]"
         style={{
-          borderColor: "color-mix(in srgb, var(--line) 60%, transparent)",
+          borderColor: "var(--screen-line)",
         }}
       >
         <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/70">
@@ -200,71 +199,5 @@ function DronePreview() {
 }
 
 export default function DroneCard({ project: p }: { project: Project }) {
-  return (
-    <article
-      id={`project-${p.n}`}
-      aria-labelledby={`project-${p.n}-title`}
-      className="group relative rounded-[28px] border overflow-hidden grid md:grid-cols-12 mb-6"
-      style={{ borderColor: "var(--control-line)", background: "var(--card)" }}
-    >
-      <div className="md:col-span-5 p-7 md:p-9 flex flex-col">
-        <div className="flex items-center gap-3">
-          <span className="h-px w-8 bg-current opacity-20" />
-          <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
-            <time dateTime={p.year}>{p.year}</time> • In the lab
-          </span>
-          <span className="ml-auto inline-flex items-center gap-1.5 mono text-[9px] px-2 py-1 rounded-full bg-(--bd-red) text-black">
-            <span className="h-1 w-1 rounded-full bg-white animate-pulse" /> WIP
-          </span>
-        </div>
-
-        <h3
-          id={`project-${p.n}-title`}
-          className="mt-7 text-[28px] md:text-[34px] font-bold tracking-[-0.02em] leading-[0.95]"
-        >
-          {p.title}
-        </h3>
-        <div className="mono text-[12px] tracking-[0.14em] uppercase text-(--text-2) mt-2">
-          {p.subtitle}
-        </div>
-
-        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] text-(--text-2) max-w-[48ch]">
-          {p.desc}
-        </p>
-
-        <div className="mt-6 flex flex-wrap gap-2">
-          {p.tags.map((tag) => (
-            <span
-              key={tag}
-              className="mono text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full border"
-              style={{ borderColor: "var(--line)", background: "var(--bg-2)" }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-auto pt-8 flex gap-3">
-          {p.github && (
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-9 px-5 rounded-full bg-(--text) text-(--bg) inline-flex items-center gap-2 mono text-[10px] tracking-widest uppercase"
-            >
-              <GithubIcon size={12} /> GitHub
-            </a>
-          )}
-          <span
-            className="h-9 px-5 rounded-full border inline-flex items-center mono text-[10px] tracking-widest uppercase text-(--text-2)"
-            style={{ borderColor: "var(--control-line)" }}
-          >
-            Building
-          </span>
-        </div>
-      </div>
-
-      <DronePreview />
-    </article>
-  );
+  return <ProjectCard project={p} preview={<DronePreview />} />;
 }

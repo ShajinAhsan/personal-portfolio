@@ -1,7 +1,6 @@
-import { profile } from "@/data/profile";
 import type { Project } from "@/data/projects";
 import { ArrowRight } from "lucide-react";
-import { GithubIcon } from "./Icons";
+import ProjectCard from "./ProjectCard";
 
 type Person = {
   x: number;
@@ -45,14 +44,14 @@ const bracket = (x: number, y: number, w: number, h: number, l = 4) =>
 
 function AttendancePreview() {
   return (
-    <div
+    <div data-pause=""
       className="relative min-h-[220px] md:min-h-0 p-3 bg-[#0F0F0E] md:col-span-7 md:order-first"
       aria-hidden="true"
     >
       <div
         className="h-full w-full rounded-[20px] border overflow-hidden relative p-5 flex flex-col justify-between bg-[#161614]"
         style={{
-          borderColor: "color-mix(in srgb, var(--line) 60%, transparent)",
+          borderColor: "var(--screen-line)",
         }}
       >
         <div className="flex justify-between items-center mono text-[9px] tracking-widest uppercase text-white/70">
@@ -265,109 +264,59 @@ function AttendancePreview() {
   );
 }
 
+function AttendanceDetails() {
+  return (
+    <>
+      <div className="mt-5 flex flex-wrap items-center gap-1.5 mono text-[10px]">
+        {PIPELINE.map((step, i) => (
+          <span key={step} className="inline-flex items-center gap-1.5">
+            {i > 0 && (
+              <ArrowRight
+                aria-hidden="true"
+                className="text-(--text-2)"
+                size={11}
+              />
+            )}
+            <span
+              className="rounded-full border px-2 py-0.5"
+              style={{ borderColor: "var(--control-line)" }}
+            >
+              {step}
+            </span>
+          </span>
+        ))}
+      </div>
+
+      <div
+        className="mt-5 rounded-[14px] border p-3.5 bg-[var(--bg-2)]"
+        style={{ borderColor: "var(--control-line)" }}
+      >
+        <div className="mono text-[9px] tracking-[0.2em] uppercase text-(--text-2)">
+          Key challenges
+        </div>
+        <ul className="mt-2 space-y-1.5 text-[13px] leading-snug text-(--text-2)">
+          {CHALLENGES.map((c) => (
+            <li key={c} className="flex gap-2">
+              <ArrowRight
+                aria-hidden="true"
+                className="mt-0.5 shrink-0 text-(--bd-green)"
+                size={13}
+              />
+              {c}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
+}
+
 export default function AttendanceCard({ project: p }: { project: Project }) {
   return (
-    <article
-      id={`project-${p.n}`}
-      aria-labelledby={`project-${p.n}-title`}
-      className="group relative rounded-[28px] border overflow-hidden grid md:grid-cols-12 mb-6"
-      style={{ borderColor: "var(--control-line)", background: "var(--card)" }}
-    >
-      <div className="md:col-span-5 p-7 md:p-9 flex flex-col">
-        <div className="flex items-center gap-3">
-          <span className="h-px w-8 bg-current opacity-20" />
-          <span className="mono text-[10px] tracking-[0.2em] uppercase text-(--text-2)">
-            {p.year} • Computer vision
-          </span>
-        </div>
-
-        <h3
-          id={`project-${p.n}-title`}
-          className="mt-7 text-[28px] md:text-[34px] font-bold tracking-[-0.02em] leading-[0.95]"
-        >
-          {p.title}
-        </h3>
-        <div className="mono text-[12px] tracking-[0.14em] uppercase text-(--text-2) mt-2">
-          {p.subtitle}
-        </div>
-
-        <p className="mt-5 text-[14px] md:text-[15px] leading-[1.6] text-(--text-2) max-w-[48ch]">
-          {p.desc}
-        </p>
-
-        <div className="mt-5 flex flex-wrap items-center gap-1.5 mono text-[10px]">
-          {PIPELINE.map((step, i) => (
-            <span key={step} className="inline-flex items-center gap-1.5">
-              {i > 0 && (
-                <ArrowRight
-                  aria-hidden="true"
-                  className="text-(--text-2)"
-                  size={11}
-                />
-              )}
-              <span
-                className="rounded-full border px-2 py-0.5"
-                style={{ borderColor: "var(--control-line)" }}
-              >
-                {step}
-              </span>
-            </span>
-          ))}
-        </div>
-
-        <div
-          className="mt-5 rounded-[14px] border p-3.5 bg-[var(--bg-2)]"
-          style={{ borderColor: "var(--control-line)" }}
-        >
-          <div className="mono text-[9px] tracking-[0.2em] uppercase text-(--text-2)">
-            Key challenges
-          </div>
-          <ul className="mt-2 space-y-1.5 text-[13px] leading-snug text-(--text-2)">
-            {CHALLENGES.map((c) => (
-              <li key={c} className="flex gap-2">
-                <ArrowRight
-                  aria-hidden="true"
-                  className="mt-0.5 shrink-0 text-(--bd-green)"
-                  size={13}
-                />
-                {c}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-5 flex flex-wrap gap-2">
-          {p.tags.map((tag) => (
-            <span
-              key={tag}
-              className="mono text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-full border"
-              style={{ borderColor: "var(--line)", background: "var(--bg-2)" }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-auto pt-8 flex gap-3">
-          {p.github && (
-            <a
-              href={p.github ?? profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-9 px-5 rounded-full bg-[var(--text)] text-[var(--bg)] inline-flex items-center gap-2 mono text-[11px] tracking-widest uppercase"
-            >
-              <GithubIcon size={12} /> GitHub
-            </a>
-          )}
-          <span
-            className="h-9 px-5 rounded-full border inline-flex items-center mono text-[11px] tracking-widest uppercase text-(--text-2)"
-            style={{ borderColor: "var(--control-line)" }}
-          >
-            Prototype
-          </span>
-        </div>
-      </div>
-      <AttendancePreview />
-    </article>
+    <ProjectCard
+      project={p}
+      preview={<AttendancePreview />}
+      extra={<AttendanceDetails />}
+    />
   );
 }

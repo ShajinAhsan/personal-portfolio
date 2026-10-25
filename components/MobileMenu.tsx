@@ -59,10 +59,6 @@ export default function MobileMenu() {
             className="h-px w-4 bg-current block transition-all"
             style={{ transform: open ? "translateY(3.5px) rotate(45deg)" : "" }}
           />
-          {/* <span
-            className="h-[1.5px] w-3.5 bg-current block"
-            style={{ opacity: open ? 0 : 1 }}
-          /> */}
           <span
             className="h-px w-4 bg-current block transition-all"
             style={{
@@ -80,7 +76,7 @@ export default function MobileMenu() {
         className="mobile-menu-panel md:hidden absolute inset-x-0 top-full border-t border-b px-6 py-6 flex flex-col gap-5 backdrop-blur-xl"
         style={{
           borderColor: "var(--line)",
-          background: "color-mix(in srgb, var(--bg) 88%, transparent)",
+          background: "color-mix(in srgb, var(--bg) 96%, transparent)",
         }}
       >
         {navLinks.map((link) => (

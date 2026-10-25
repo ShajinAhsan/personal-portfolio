@@ -28,12 +28,8 @@ export default function Hero() {
               style={{ background: "var(--bd-green)" }}
             />
             <span className="mono text-[10px] tracking-[0.18em] uppercase">
-              Chittagong, BD — 22°20&apos;N
+              Chittagong, BD — 22°21&apos;N
             </span>
-            {/* <span className="h-1 w-1 rounded-full bg-(--text-3)" /> */}
-            {/* <span className="mono text-[10px] tracking-[0.18em] uppercase">
-              {profile.studentId}
-            </span> */}
           </div>
           <div className="inline-flex items-center gap-2">
             <span className="mono text-[10px] tracking-[0.18em] uppercase text-(--text-2)">
@@ -44,13 +40,6 @@ export default function Hero() {
 
         <div className="col-span-12 grid lg:grid-cols-12 gap-8 items-start">
           <div className="relative isolate lg:col-span-7 order-2 lg:order-1">
-            {/* <div
-              className="pointer-events-none absolute -top-8 -left-10 -z-10 h-85 w-[min(560px,90%)] rounded-full blur-[100px] opacity-25 dark:opacity-40"
-              style={{
-                background:
-                  "radial-gradient(circle, var(--bd-red) 0%, var(--accent-2) 30%, transparent 100%)",
-              }} Safari browser has some problem rendering blur, so i removed it
-            /> */}
             <div
               className="pointer-events-none absolute -z-10 top-[24%] left-[28%] h-140 w-140 sm:opacity-18 sm:w-190 -translate-x-1/2 -translate-y-1/2 opacity-[0.25]"
               style={{ background: glow("var(--accent-2)") }}
@@ -85,9 +74,9 @@ export default function Hero() {
 
             <div className="mt-6 md:mt-8 max-w-[56ch]">
               <p className="text-[24px] md:text-[30px] leading-[1.15] tracking-[-0.02em] font-normal">
-                22.46°N 91.97°E{" "}
-                <span className="text-xs text-(--text-2)">
-                  EXPLORING THE KNOWN & UNKNOWN
+                22.36°N 91.78°E{" "}
+                <span className="mt-1 block text-xs text-(--text-2) sm:mt-0 sm:inline">
+                  EXPLORING THE KNOWN &amp; UNKNOWN
                 </span>
               </p>
               <p className="mt-4 text-[15px] leading-[1.65] font-normal text-(--text-2) max-w-[44ch]">
@@ -149,8 +138,7 @@ export default function Hero() {
                     alt="Shajin Ahsan Shuvo — Formal portrait with Bangladesh flag"
                     fill
                     preload
-                    fetchPriority="high"
-                    sizes="(min-width: 1024px) 420px, 100vw"
+                    sizes="(min-width: 640px) 420px, 100vw"
                     className="object-cover object-top"
                   />
                   <div className="absolute inset-0 ring-1 ring-inset ring-black/5 dark:ring-white/10 rounded-[inherit]" />

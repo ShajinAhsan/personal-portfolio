@@ -16,11 +16,7 @@ export default function Header() {
       />
       <div className="mx-auto max-w-330 px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
-          <a
-            href="#top"
-            className="flex items-center gap-3"
-            aria-label="Back to top"
-          >
+          <a href="#top" className="flex items-center gap-3">
             <div
               className="h-11 w-11 rounded-full flex items-center justify-center text-[11px] font-bold tracking-widest border"
               style={{
@@ -34,6 +30,7 @@ export default function Header() {
             <span className="mono text-[11px] tracking-[0.2em] uppercase text-(--text-2) hidden lg:block">
               SHAJIN AHSAN
             </span>
+            <span className="sr-only">— back to top</span>
           </a>
           <nav
             className="hidden md:flex items-center gap-7"

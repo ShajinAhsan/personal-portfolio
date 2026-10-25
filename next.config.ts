@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
+const devOrigin = process.env.DEV_ORIGIN?.trim() ?? "192.168.68.102";
+
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
-  allowedDevOrigins: ["192.168.68.102"],
+  poweredByHeader: false,
+  allowedDevOrigins: [devOrigin],
   async headers() {
     return [
       {
@@ -15,6 +18,11 @@ const nextConfig: NextConfig = {
           {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
+          },
+          {
+            key: "Content-Security-Policy",
+            value:
+              "base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'",
           },
         ],
       },
